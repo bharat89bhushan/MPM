@@ -101,8 +101,10 @@ class StockDetailsController extends Controller
 			$model->qty = $model->value;
 			$model->value= strval(floatval($model->value)+floatval(StockDetails::model()->findByPk($model->id)->value));
 			if($model->save())
+			{
 				$this->redirect(array('admin','id'=>$model->id));
-			//	$this->redirect(array('view','id'=>$model->id));
+		//		$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$model->value=0;

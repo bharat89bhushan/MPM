@@ -35,6 +35,7 @@
 				array('label'=>'Users', 'url'=>array('/users/admin')),
 				array('label'=>'Items', 'url'=>array('/items/admin')),
 				array('label'=>'Stocks', 'url'=>array('/stockDetails/admin')),
+				array('label'=>'Reports', 'url'=>array('/stockTransDetails/admin')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

@@ -123,15 +123,40 @@ class StockDetails extends CActiveRecord
 	 public function afterSave()
         {
                 if(! $this->isNewRecord){
+			$trans_type = 1; //1-- Addition| 0-- Deduction
+			
+			$stocktrans = new StockTransDetails;
+			$stocktrans->item_id = $this->item_id;
+			$stocktrans->qty = $this->qty;
+			$stocktrans->value = $this->value;
+			$stocktrans->trans_type = $trans_type;
+			$stocktrans->date = new CDbExpression('NOW()');
+			$stocktrans->created_by = Yii::app()->user->id;
+			$stocktrans->save();
+			
+
+			$trans_type = 0; //1-- Addition| 0-- Deduction
                         $itemcomps = ItemsCompositionDetails::model()->findAllByAttributes(array('comp_id'=>$this->item_id));
                         foreach($itemcomps as $itemcomp)
                         {
+
 				$stockitemmodel = StockDetails::model()->findByAttributes(array('item_id'=>$itemcomp->Item_id));
 				$total = floatval($stockitemmodel->value);
 				$itemcompval = floatval($itemcomp->value);
 				$addqtyval = floatval($this->qty);
 				$stockitemmodel->value = strval($total-$itemcompval*$addqtyval);
-				$stockitemmodel->save();
+				if($stockitemmodel->save())
+				{
+					$stocktrans = new StockTransDetails;
+					$stocktrans->item_id = $itemcomp->Item_id;
+					$stocktrans->qty = strval($itemcompval*$addqtyval);
+					$stocktrans->value = $stockitemmodel->value;
+					$stocktrans->trans_type = $trans_type;
+					$stocktrans->date = new CDbExpression('NOW()');
+					$stocktrans->created_by = Yii::app()->user->id;
+					$stocktrans->save();
+						
+				}
                         }
 
 

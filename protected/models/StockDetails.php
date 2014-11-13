@@ -145,7 +145,7 @@ class StockDetails extends CActiveRecord
 				$itemcompval = floatval($itemcomp->value);
 				$addqtyval = floatval($this->qty);
 				$stockitemmodel->value = strval($total-$itemcompval*$addqtyval);
-				if($stockitemmodel->save())
+				if($stockitemmodel->saveAttributes(array('value')))
 				{
 					$stocktrans = new StockTransDetails;
 					$stocktrans->item_id = $itemcomp->Item_id;

@@ -26,6 +26,7 @@ return array(
 			'password'=>'daknet',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+			//'ipFilters'=>false,
 		),
 		
 	),
@@ -55,10 +56,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=stockmanagement',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=stockmanagement',
+			'username' => 'bharat',
+			'password' => 'bharat',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'daknet',
 			'charset' => 'utf8',
 		),
 		

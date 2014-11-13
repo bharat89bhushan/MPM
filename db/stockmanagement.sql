@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `org_id` int(2) NOT NULL DEFAULT '0',
   `unit_type` int(2) NOT NULL DEFAULT '0',
   `created_by` int(2) NOT NULL DEFAULT '0',
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --

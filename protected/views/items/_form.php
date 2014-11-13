@@ -62,7 +62,7 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 	<div class="row" id="div_org" style="display: none">
 		<?php echo $form->labelEx($model,'org_id'); ?>
 		<?php echo //$form->textField($model,'org_id'); 
-			$form->dropDownList($model,'org_id',array('0'=>'--Self--','1'=>'JK Trader','2'=>'Balaji'));?>
+			$form->dropDownList($model,'org_id',array('0'=>'--Self--','1'=>'Others'));?>
 		<?php echo $form->error($model,'org_id'); ?>
 	</div>
 

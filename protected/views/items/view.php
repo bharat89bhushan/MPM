@@ -24,9 +24,18 @@ $this->menu=array(
 		'id',
 		'code',
 		'name',
-		'type_id',
-		'is_manufactured',
-		'org_id',
+		array(
+		'name'=>'type_id',
+		'value'=> ($model['type_id']==1)?'Raw':'Semi',
+		),
+		array(
+		'name'=>'is_manufactured',
+		'value'=> $model['is_manufactured']?'Yes':'No',
+		),
+		array(
+		'name'=>'org_id',
+		'value'=> $model['org_id']?'Self':'Others',
+		),
 		'unit_type',
 		'created_by',
 		'date',

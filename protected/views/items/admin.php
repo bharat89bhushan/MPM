@@ -45,12 +45,27 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		array(
+			'name'=>'id',
+			'htmlOptions'=>array('width'=>'25')
+			),
 		'code',
 		'name',
-		'type_id',
-		'is_manufactured',
-		'org_id',
+		array(
+		'name'=>'type_id',
+		'value'=>'($data->type_id==1)?\'Raw\':\'Semi\'',
+		'filter' => array('1' => 'Raw', '2' => 'Semi'),
+		),
+		array(
+		'name'=>'is_manufactured',
+		'value'=>'$data->is_manufactured?\'Yes\':\'No\'',
+		'filter' => array('0' => 'No', '1' => 'Yes'),
+		),
+		array(
+		'name'=>'org_id',
+		'value'=>'$data->org_id?\'Others\':\'Self\'',
+		'filter' => array('0' => 'Self', '1' => 'Others'),
+		),
 		/*
 		'unit_type',
 		'created_by',

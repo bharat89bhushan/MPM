@@ -29,7 +29,7 @@
 		<?php echo $form->labelEx($model,'Item_id'); ?>
 		<?php //echo $form->textField($model,'Item_id'); 
 			$type_list=CHtml::listData(Items::model()->findAll(array('condition'=>'org_id='.$model->org_id)),'id','name');
-			echo $form->dropDownList($model,'Item_id',$type_list,array('empty'=>'Select Option'));
+			echo $form->dropDownList($model,'Item_id',$type_list,array(''=>'Select Option'));
 		?>
 		<?php echo $form->error($model,'Item_id'); ?>
 	</div>

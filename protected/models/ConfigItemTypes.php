@@ -1,25 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "stock_trans_details".
+ * This is the model class for table "config_item_types".
  *
- * The followings are the available columns in table 'stock_trans_details':
+ * The followings are the available columns in table 'config_item_types':
  * @property integer $id
- * @property integer $item_id
- * @property string $qty
- * @property integer $trans_type
- * @property string $date
- * @property integer $created_by
- * @property string $value
+ * @property string $name
+ * @property string $desc
  */
-class StockTransDetails extends CActiveRecord
+class ConfigItemTypes extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'stock_trans_details';
+		return 'config_item_types';
 	}
 
 	/**
@@ -30,12 +26,12 @@ class StockTransDetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('item_id, qty, trans_type, date, created_by, value', 'required'),
-			array('item_id, trans_type, created_by', 'numerical', 'integerOnly'=>true),
-			array('qty, value', 'length', 'max'=>10),
+			array('name', 'required'),
+			array('name', 'length', 'max'=>20),
+			array('desc', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, item_id, qty, trans_type, date, created_by, value', 'safe', 'on'=>'search'),
+			array('id, name, desc', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,8 +43,6 @@ class StockTransDetails extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Rel_trans_item_id'=>array(self::BELONGS_TO,'Items','item_id'),
-			'Rel_trans_users'=>array(self::BELONGS_TO,'Users','created_by'),
 		);
 	}
 
@@ -59,12 +53,8 @@ class StockTransDetails extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'item_id' => 'Item',
-			'qty' => 'Qty',
-			'trans_type' => 'Trans Type',
-			'date' => 'Date',
-			'created_by' => 'Created By',
-			'value' => 'Value',
+			'name' => 'Name',
+			'desc' => 'Desc',
 		);
 	}
 
@@ -85,23 +75,13 @@ class StockTransDetails extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with= array('Rel_trans_item_id','Rel_trans_users');
-	//	$criteria->compare('id',$this->id);
-	//	$criteria->compare('item_id',$this->item_id);
-		$criteria->compare('qty',$this->qty,true);
-		$criteria->compare('trans_type',$this->trans_type);
-		$criteria->compare('t.date',$this->date,true);
-	//	$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('value',$this->value,true);
-		$criteria->addSearchCondition('Rel_trans_users.username',$this->created_by);
-		$criteria->addSearchCondition('Rel_trans_item_id.code',$this->id);
-		$criteria->addSearchCondition('Rel_trans_item_id.name',$this->item_id);
-		
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('desc',$this->desc,true);
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'sort'=>array(
-                        'defaultOrder'=>'t.id DESC',
-                    ),
 		));
 	}
 
@@ -109,7 +89,7 @@ class StockTransDetails extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return StockTransDetails the static model class
+	 * @return ConfigItemTypes the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

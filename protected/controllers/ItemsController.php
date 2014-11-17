@@ -75,6 +75,7 @@ class ItemsController extends Controller
 		{
 			$model->attributes=$_POST['Items'];
 			$model->date=new CDbExpression('NOW()');
+			$model->created_by = Yii::app()->user->id;
 			if($model->save())
 			{
 				$stockmodel = new StockDetails;

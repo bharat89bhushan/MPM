@@ -6,11 +6,12 @@ $this->breadcrumbs=array(
 	'Production Plans'=>array('index'),
 	'Create',
 );
-
+/*
 $this->menu=array(
 	array('label'=>'List ProductionPlans', 'url'=>array('index')),
 	array('label'=>'Manage ProductionPlans', 'url'=>array('admin')),
 );
+\*/
 ?>
 
 <h1>Create ProductionPlans</h1>

@@ -14,6 +14,8 @@ class ProductionPlans extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $item_code;
+	 public $item_name;
 	public function tableName()
 	{
 		return 'production_plans';
@@ -32,7 +34,7 @@ class ProductionPlans extends CActiveRecord
 			array('value', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, item_id, value, status', 'safe', 'on'=>'search'),
+			array('id, item_id, value, status,item_code,item_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,11 +81,14 @@ class ProductionPlans extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+			$criteria->with= array('Rel_plan_item_id');
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('t.id',$this->id);
 		$criteria->compare('item_id',$this->item_id);
 		$criteria->compare('value',$this->value,true);
 		$criteria->compare('status',$this->status);
+		$criteria->addSearchCondition('Rel_plan_item_id.code',$this->item_code);
+		$criteria->addSearchCondition('Rel_plan_item_id.name',$this->item_name);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -75,6 +75,7 @@ class PlanItemStockRelations extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+	 
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -119,8 +120,9 @@ class PlanItemStockRelations extends CActiveRecord
 				$addqtyval = floatval($this->qty);
                 if($total < $itemcompval*$addqtyval)
 				{
-					 $this->addError('value', $total.' '.$itemcompval.' '.$addqtyval);
-                                        return false;
+		//			 $this->addError('value', $total.' '.$itemcompval.' '.$addqtyval);
+					 $this->addError('value', $itemcomp->Rel_item_item_id->name.'('.$itemcomp->Rel_item_item_id->code.') Stock insufficent');
+                     return false;
 				}
                }
 

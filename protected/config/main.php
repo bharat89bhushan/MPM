@@ -25,8 +25,8 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'daknet',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-			//'ipFilters'=>false,
+		//	'ipFilters'=>array('127.0.0.1','::1'),
+			'ipFilters'=>false,
 		),
 		
 	),

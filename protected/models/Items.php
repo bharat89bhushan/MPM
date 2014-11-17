@@ -51,6 +51,10 @@ class Items extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Rel_item_comp'=>array(self::HAS_MANY,'ItemsCompositionDetails','comp_id'),
+			'Rel_item_type'=>array(self::BELONGS_TO,'ConfigItemTypes','type_id'),
+			'Rel_org_id'=>array(self::BELONGS_TO,'Clients','org_id'),
+			'Rel_created_by'=>array(self::BELONGS_TO,'Users','created_by'),
+			'Rel_unit_type'=>array(self::BELONGS_TO,'ConfigUnits','unit_type'),
 		);
 	}
 
@@ -90,16 +94,19 @@ class Items extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('code',$this->code,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('type_id',$this->type_id);
+		$criteria->with=array('Rel_item_comp','Rel_item_type','Rel_org_id');
+
+		$criteria->compare('t.id',$this->id);
+		$criteria->compare('t.code',$this->code,true);
+		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('Rel_item_type.name',$this->type_id);
 		$criteria->compare('is_manufactured',$this->is_manufactured);
-		$criteria->compare('org_id',$this->org_id);
+		$criteria->compare('Rel_org_id.name',$this->org_id);
 		$criteria->compare('unit_type',$this->unit_type);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('date',$this->date,true);
-		$criteria->with=array('Rel_item_comp');
+
+		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

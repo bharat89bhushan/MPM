@@ -11,7 +11,7 @@ $this->menu=array(
 //	array('label'=>'List Items', 'url'=>array('index')),
 	array('label'=>'Create Item', 'url'=>array('create')),
 	array('label'=>'Update Item', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Item', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+//	array('label'=>'Delete Item', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Items', 'url'=>array('admin')),
 );
 ?>
@@ -25,19 +25,27 @@ $this->menu=array(
 		'code',
 		'name',
 		array(
-		'name'=>'type_id',
-		'value'=> ($model['type_id']==1)?'Raw':'Semi',
+		'label'=>'Type',
+		'name'=>'Rel_item_type.name',
+	//	'value'=> $model['Rel_item_type.name'],
 		),
 		array(
 		'name'=>'is_manufactured',
 		'value'=> $model['is_manufactured']?'Yes':'No',
 		),
 		array(
-		'name'=>'org_id',
-		'value'=> $model['org_id']?'Self':'Others',
+		'label'=>'Organisation',
+		'name'=>'Rel_org_id.name',
+	//	'value'=> $model['org_id']?'Self':'Others',
 		),
-		'unit_type',
-		'created_by',
+		array(
+		'label'=>'Unit',
+		'name'=>'Rel_unit_type.name',
+		),
+		array(
+		'label'=>'Created By',
+		'name'=>'Rel_created_by.username',
+		),
 		'date',
 	),
 )); ?>
@@ -52,8 +60,8 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_item_comp, $config);
         'id'=>'items-comp-grid',
         'dataProvider'=>$dataprovider,
         'columns'=>array(
-		array('name'=>'items-names','value'=>'$data->Rel_item_item_id->name'),
-		'Item_id',
+        	array('name'=>'Item Code','value'=>'$data->Rel_item_item_id->code'),
+		array('name'=>'Item Name','value'=>'$data->Rel_item_item_id->name'),
 		'value',
                 array(
                         'class'=>'CButtonColumn'

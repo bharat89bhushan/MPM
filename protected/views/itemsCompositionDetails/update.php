@@ -17,6 +17,6 @@ $this->menu=array(
 */
 ?>
 
-<h1>Update ItemsCompositionDetails <?php echo $model->icd_id; ?></h1>
+<h1>Update <?php echo $model->Rel_item_comp_id->code; ?> Composition</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

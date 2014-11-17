@@ -39,8 +39,12 @@ function clickedVal(){
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type_id'); ?>
-		<?php echo //$form->textField($model,'type_id'); 
-			$form->dropDownList($model,'type_id',array(''=>'Select Type','1'=>'Raw','2'=>'Semi'));?>
+		<?php 
+			$type_list=CHtml::listData(ConfigItemTypes::model()->findAll(),'id','name');
+		echo //$form->textField($model,'type_id'); 
+	
+			$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type'));
+	?>
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 
@@ -48,7 +52,11 @@ function clickedVal(){
 	<?php
 	$buttonToggler= <<<JS
     toggleInput=function(src,inputName){
-	$("#div_org").toggle();
+    if(src.checked)
+	$("#div_org").show();
+	else
+	$("#div_org").hide();
+	
     }
 JS;
 Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CClientScript::POS_READY);
@@ -61,15 +69,23 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 
 	<div class="row" id="div_org" style="display: none">
 		<?php echo $form->labelEx($model,'org_id'); ?>
-		<?php echo //$form->textField($model,'org_id'); 
-			$form->dropDownList($model,'org_id',array('0'=>'--Self--','1'=>'Others'));?>
+		<?php 
+		$type_list=CHtml::listData(Clients::model()->findAll(),'id','name');
+		echo //$form->textField($model,'org_id'); 
+		
+			$form->dropDownList($model,'org_id',$type_list,array('empty'=>'Select Option'));
+	?>
 		<?php echo $form->error($model,'org_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'unit_type'); ?>
-		<?php echo //$form->textField($model,'unit_type'); 
-			$form->dropDownList($model,'unit_type',array(''=>'Select Unit','1'=>'Pcs','2'=>'Gms'));?>
+		<?php 
+		$type_list=CHtml::listData(ConfigUnits::model()->findAll(),'id','name');
+		echo //$form->textField($model,'unit_type'); 
+			
+			$form->dropDownList($model,'unit_type',$type_list,array('empty'=>'Select Option'));
+	?>
 		<?php echo $form->error($model,'unit_type'); ?>
 	</div>
 

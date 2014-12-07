@@ -1,6 +1,6 @@
 <?php
 
-class ItemsController extends Controller
+class ConfigPropTypeValuesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,22 +27,18 @@ class ItemsController extends Controller
 	public function accessRules()
 	{
 		return array(
-			/*
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
-			*/
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-			//	'actions'=>array('create','update'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
-			/*
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-			*/
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -66,50 +62,16 @@ class ItemsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Items;
+		$model=new ConfigPropTypeValues;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Items']))
+		if(isset($_POST['ConfigPropTypeValues']))
 		{
-			$model->attributes=$_POST['Items'];
-			$model->date=new CDbExpression('NOW()');
-			$model->created_by = Yii::app()->user->id;
-			/*
-			if (isset($_POST['ItemProp']))
-        	 {
-            	 $model->Rel_item_prop = $_POST['ItemProp'];
-        	 }
-			if($model->saveWithRelated('Rel_item_prop'))*/
+			$model->attributes=$_POST['ConfigPropTypeValues'];
 			if($model->save())
-			{
-				$stockmodel = new StockDetails;
-				$stockmodel->item_id=$model->id;
-				if(!$stockmodel->save())
-					print_r($stockmodel->getErrors());
-				
-				if($model->size_prop_val_id){
-				$itemprop = new ItemProperties;
-				$itemprop->item_id = $model->id;
-				$itemprop->prop_val_id = $model->size_prop_val_id;
-				if(!$itemprop->save())
-					print_r($itemprop->getErrors());
-				}
-				
-				if($model->color_prop_val_id){
-				$itemprop = new ItemProperties;
-				$itemprop->item_id = $model->id;
-				$itemprop->prop_val_id = $model->color_prop_val_id;
-				if(!$itemprop->save())
-					print_r($itemprop->getErrors());
-				}
-				
-				
 				$this->redirect(array('view','id'=>$model->id));
-			}
-			else
-			$model->addError('Rel_item_prop', 'Error occured while saving item properties.');
 		}
 
 		$this->render('create',array(
@@ -129,40 +91,13 @@ class ItemsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Items']))
+		if(isset($_POST['ConfigPropTypeValues']))
 		{
-			$model->attributes=$_POST['Items'];
-			if($model->save()){
-				
-				
-		$itemprops = ItemProperties::model()->findAll('item_id='.$model->id);
-		foreach($itemprops as $itemprop)
-		{
-			if($itemprop->Rel_prop_val->Rel_prop_type->id == 1){
-			$itemprop->prop_val_id=	$model->size_prop_val_id ;
-			$itemprop->save();
-			}
-			elseif($itemprop->Rel_prop_val->Rel_prop_type->id == 2){
-			$itemprop->prop_val_id=	$model->color_prop_val_id ;
-			$itemprop->save();
-			}
-		}
-				
-				
-				
+			$model->attributes=$_POST['ConfigPropTypeValues'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
-			}
 		}
-		
-		$itemprops = ItemProperties::model()->findAll('item_id='.$model->id);
-		foreach($itemprops as $itemprop)
-		{
-			if($itemprop->Rel_prop_val->Rel_prop_type->id == 1)
-				$model->size_prop_val_id = $itemprop->prop_val_id;
-			elseif($itemprop->Rel_prop_val->Rel_prop_type->id == 2)
-				$model->color_prop_val_id = $itemprop->prop_val_id;
-		}
-		
+
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -175,19 +110,7 @@ class ItemsController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-
-	
-		$stockmodel = StockDetails::model()->find(array('condition'=>'item_id='.$id));
-	//	foreach($stockmodels as $stockmodel)
-			$stockmodel->delete();
-
-		$itemcompmodels = ItemsCompositionDetails::model()->findAll(array('condition'=>'comp_id='.$id));
-		foreach($itemcompmodels as $itemcompmodel)
-			$itemcompmodel->delete();
-	
-
 		$this->loadModel($id)->delete();
-
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -199,7 +122,7 @@ class ItemsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Items');
+		$dataProvider=new CActiveDataProvider('ConfigPropTypeValues');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -210,10 +133,10 @@ class ItemsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Items('search');
+		$model=new ConfigPropTypeValues('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Items']))
-			$model->attributes=$_GET['Items'];
+		if(isset($_GET['ConfigPropTypeValues']))
+			$model->attributes=$_GET['ConfigPropTypeValues'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -224,12 +147,12 @@ class ItemsController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Items the loaded model
+	 * @return ConfigPropTypeValues the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Items::model()->findByPk($id);
+		$model=ConfigPropTypeValues::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -237,23 +160,14 @@ class ItemsController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Items $model the model to be validated
+	 * @param ConfigPropTypeValues $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='items-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='config-prop-type-values-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-	 public function actionLoadChildByAjax($index)
-    {
-        $model = new ItemProperties;
-        $this->renderPartial('application.views.itemProperties._form', array(
-            'model' => $model,
-            'index' => $index,
-//            'display' => 'block',
-        ), false, true);
-    }
 }

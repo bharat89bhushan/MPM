@@ -74,11 +74,16 @@ class PlanItemStockRelationsController extends Controller
 		if(isset($_POST['PlanItemStockRelations']))
 		{
 			$model->attributes=$_POST['PlanItemStockRelations'];
-			
+			$model->qty = $model->value;
 					if($model->save())
 					{
 						$this->redirect(array('productionPlans/view','id'=>$model->plan_id));
-					}
+					}else{
+			//	print_r($model->getErrors());
+			//	print_r($model->getErrors());
+				//$this->redirect(array('admin','id'=>$model->id));
+			}
+			
 				
 		}
 		if(isset($_GET['plan_id']))

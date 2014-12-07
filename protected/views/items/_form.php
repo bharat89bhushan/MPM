@@ -89,6 +89,48 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 		<?php echo $form->error($model,'unit_type'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'size_prop_val_id'); ?>
+		<?php 
+		$type_list=CHtml::listData(ConfigPropTypeValues::model()->findAll('prop_type_id=1'),'id','name');
+		//	$type_list=CHtml::listData(ConfigPropTypeValues::model()->findAll(),'id','name');
+		echo// $form->textField($model,'size_prop_val_id'); 
+		$form->dropDownList($model,'size_prop_val_id',$type_list,array('empty'=>'Select Option'));
+	?>
+		<?php echo $form->error($model,'size_prop_val_id'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'color_prop_val_id'); ?>
+		<?php 
+		$type_list=CHtml::listData(ConfigPropTypeValues::model()->findAll('prop_type_id=2'),'id','name');
+		//	$type_list=CHtml::listData(ConfigPropTypeValues::model()->findAll(),'id','name');
+		echo// $form->textField($model,'size_prop_val_id'); 
+		$form->dropDownList($model,'color_prop_val_id',$type_list,array('empty'=>'Select Option'));
+	?>
+		<?php echo $form->error($model,'color_prop_val_id'); ?>
+	</div>
+
+
+<?php
+   // echo CHtml::link('Add Properties', '#', array('id' => 'loadChildByAjax'));
+    ?>
+    <!--
+ <div id="Rel_item_prop">
+        <?php
+       /* $index = 0;
+        foreach ($model->Rel_item_prop as $id => $child):
+            $this->renderPartial('application.views.itemProperties._form', array(
+                'model' => $child,
+                'index' => $id,
+                'display' => 'block'
+            ));
+            $index++;
+        endforeach;*/
+        ?>
+    </div>
+
+-->
+
 <!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'created_by'); ?>
@@ -102,6 +144,7 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 		<?php echo $form->error($model,'date'); ?>
 	</div>
 -->
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
@@ -109,3 +152,24 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<?php
+/*
+Yii::app()->clientScript->registerCoreScript('jquery');
+Yii::app()->clientScript->registerScript('loadchild', '
+var _index = ' . $index . ';
+$("#loadChildByAjax").click(function(e){
+    e.preventDefault();
+    var _url = "' . Yii::app()->controller->createUrl("loadChildByAjax", array("load_for" => $this->action->id)) . '&index="+_index;
+    $.ajax({
+        url: _url,
+        success:function(response){
+            $("#Rel_item_prop").append(response);
+         
+        }
+    });
+    _index++;
+});
+', CClientScript::POS_END);
+*/
+?>

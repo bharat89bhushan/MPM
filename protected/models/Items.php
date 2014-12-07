@@ -19,6 +19,8 @@ class Items extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	public $size_prop_val_id ;
+	public $color_prop_val_id ;
 	public function tableName()
 	{
 		return 'items';
@@ -32,13 +34,14 @@ class Items extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+	//		array('code, name, type_id, unit_type,size_prop_val_id,color_prop_val_id', 'required'),
 			array('code, name, type_id, unit_type', 'required'),
 			array('type_id, is_manufactured, org_id, unit_type', 'numerical', 'integerOnly'=>true),
 			array('code, name', 'length', 'max'=>30),
-			array('date', 'safe'),
+			array('date,size_prop_val_id,color_prop_val_id', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, code, name, type_id, is_manufactured, org_id, unit_type, created_by, date', 'safe', 'on'=>'search'),
+			array('id, code, name, type_id, is_manufactured, org_id, unit_type, created_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +58,7 @@ class Items extends CActiveRecord
 			'Rel_org_id'=>array(self::BELONGS_TO,'Clients','org_id'),
 			'Rel_created_by'=>array(self::BELONGS_TO,'Users','created_by'),
 			'Rel_unit_type'=>array(self::BELONGS_TO,'ConfigUnits','unit_type'),
+			'Rel_item_prop'=>array(self::HAS_MANY,'ItemProperties','item_id'),
 		);
 	}
 
@@ -73,6 +77,8 @@ class Items extends CActiveRecord
 			'unit_type' => 'Unit Type',
 			'created_by' => 'Created By',
 			'date' => 'Date',
+			'size_prop_val_id' => 'Size',
+			'color_prop_val_id' => 'Colour',
 		);
 	}
 
@@ -123,4 +129,34 @@ class Items extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function getPropValSize($id)
+	{
+		 $text = 'Not Defined';
+
+	$ItemProps = ItemProperties::model()->findAll('item_id='.$id);
+	  foreach($ItemProps as $ItemProp)
+        {
+            if($ItemProp->Rel_prop_val->Rel_prop_type->name == 'Size') 
+               $text = $ItemProp->Rel_prop_val->name;
+           //    $text = 'no';
+           
+        }
+	  return $text;    
+	}
+	public function getPropValColour($id)
+	{
+		 $text = 'Not Defined';
+
+	$ItemProps = ItemProperties::model()->findAll('item_id='.$id);
+	  foreach($ItemProps as $ItemProp)
+        {
+            if($ItemProp->Rel_prop_val->Rel_prop_type->name == 'Colour') 
+               $text = $ItemProp->Rel_prop_val->name;
+           
+        }
+	  return $text;    
+	}
+	
+	
 }

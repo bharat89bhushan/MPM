@@ -47,6 +47,14 @@ $this->menu=array(
 		'name'=>'Rel_created_by.username',
 		),
 		'date',
+		array(
+      	'label'=>'Size',
+      	'value'=> $model->getPropValSize($model->id), 
+		),
+		array(
+      	'label'=>'Colour',
+      	'value'=> $model->getPropValColour($model->id), 
+		),
 	),
 )); ?>
 

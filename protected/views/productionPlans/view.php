@@ -49,7 +49,9 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_plan_id, $config);
    //     'plan_id',
 		array('name'=>'Item Name','value'=>'$data->Rel_plan_rel_item_id->name'),
 		array('name'=>'Item Code','value'=>'$data->Rel_plan_rel_item_id->code'),
-		'value',
+		array('name'=>'In Stock','value'=>'$data->value'),
+		array('name'=>'Required Qty','value'=>'$data->req_qty'),
+	//	'value',
                 array(
                         'class'=>'CButtonColumn'
 			, 'viewButtonUrl'=>'Yii::app()->createUrl("/PlanItemStockRelations/view", array("id"=>$data["id"]))'

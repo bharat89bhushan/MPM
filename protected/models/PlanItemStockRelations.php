@@ -8,6 +8,7 @@
  * @property integer $plan_id
  * @property integer $item_id
  * @property string $value
+ * @property string $req_qty
  */
 class PlanItemStockRelations extends CActiveRecord
 {
@@ -30,10 +31,10 @@ class PlanItemStockRelations extends CActiveRecord
 		return array(
 			array('plan_id, item_id, value', 'required'),
 			array('plan_id, item_id', 'numerical', 'integerOnly'=>true),
-			array('value', 'length', 'max'=>10),
+			array('value, req_qty', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, plan_id, item_id, value', 'safe', 'on'=>'search'),
+			array('id, plan_id, item_id, value, req_qty', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,7 +60,8 @@ class PlanItemStockRelations extends CActiveRecord
 			'id' => 'ID',
 			'plan_id' => 'Plan',
 			'item_id' => 'Item',
-			'value' => 'Value',
+			'value' => 'In Stock',
+			'req_qty' => 'Required Qty',
 		);
 	}
 
@@ -102,20 +104,21 @@ class PlanItemStockRelations extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	public function afterSave(){
-		
-	}
-	public function beforeSave()
+	protected function beforeSave()
 	{
+		if(parent::beforeSave()){
+			if(! $this->isNewRecord){
+			$itemmode= Items::model()->findByPk($this->item_id);
+			if($itemmode->is_manufactured){
                $itemcomps = ItemsCompositionDetails::model()->findAllByAttributes(array('comp_id'=>$this->item_id));
                foreach($itemcomps as $itemcomp)
                {
                	$total =0.0;
-               	if(! $itemcomp->Rel_item_item_id->is_manufactured){
-				$total = floatval(StockDetails::model()->findByAttributes(array('item_id'=>$itemcomp->Item_id))->value);
-               	} else{
+      //         	if(! $itemcomp->Rel_item_item_id->is_manufactured){
+	//			$total = floatval(StockDetails::model()->findByAttributes(array('item_id'=>$itemcomp->Item_id))->value);
+     //         	} else{
                		$total = floatval(PlanItemStockRelations::model()->findByAttributes(array('item_id'=>$itemcomp->Item_id,'plan_id'=>$this->plan_id))->value);
-               	}
+     //         	}
 				$itemcompval = floatval($itemcomp->value);
 				$addqtyval = floatval($this->qty);
                 if($total < $itemcompval*$addqtyval)
@@ -156,12 +159,12 @@ class PlanItemStockRelations extends CActiveRecord
 				$addqtyval = floatval($this->qty);
 				$stockitemmodel->value = strval($stocktotal-$itemcompval*$addqtyval);
 				
-				if( $itemcomp->Rel_item_item_id->is_manufactured){
+		//		if( $itemcomp->Rel_item_item_id->is_manufactured){
 					$planitemmodel = PlanItemStockRelations::model()->findByAttributes(array('item_id'=>$itemcomp->Item_id,'plan_id'=>$this->plan_id));
 					$planitemtotal = floatval($planitemmodel->value);
 					$planitemmodel->value = strval($planitemtotal-$itemcompval*$addqtyval);
 					$planitemmodel->saveAttributes(array('value'));
-				}
+		//		}
 				
 				if($stockitemmodel->saveAttributes(array('value')) )
 				{
@@ -179,6 +182,22 @@ class PlanItemStockRelations extends CActiveRecord
 
 			
 	//	return parent::beforeSave();
-		return true;
+	//	return true;
+		}
+		else {
+				$total = floatval(StockDetails::model()->findByAttributes(array('item_id'=>$this->item_id))->value);
+				$addqtyval = floatval($this->qty);
+				if($total < $addqtyval)
+				{
+	
+					 $this->addError('value', $itemmode->name.'('.$itemmode->code.') Stock insufficent');
+                     return false;
+				}
+		}
+			}	
+	} else{
+		return false;
 	}
+		return true;
+	}	
 }

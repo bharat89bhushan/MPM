@@ -65,6 +65,26 @@ class ProductionPlansController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+	 
+	public function createPlanItemRel($comp_id,$planid,$planval){
+		
+		
+		$itemcomps=ItemsCompositionDetails::model()->findAll('comp_id='.$comp_id);
+		foreach($itemcomps as $itemcomp){
+		
+		$planrel = new PlanItemStockRelations;
+		$planrel->plan_id = $planid;
+		$planrel->item_id = $itemcomp->Item_id;
+		$planrel->req_qty = strval(floatval($itemcomp->value) * floatval($planval));
+		$planrel->value = '0';
+		$planrel->save();
+		$this->createPlanItemRel($itemcomp->Item_id,$planid,$planval);
+			
+		}
+		
+		
+	}
+	 
 	public function actionCreate()
 	{
 		$model=new ProductionPlans;
@@ -78,6 +98,16 @@ class ProductionPlansController extends Controller
 			$model->status=1;
 			if($model->save())
 			{
+			
+			$planrel = new PlanItemStockRelations;
+			$planrel->plan_id = $model->id;
+			$planrel->item_id = $model->item_id;
+			$planrel->req_qty = $model->value;
+			$planrel->value = "0";
+			$planrel->save();
+			
+			$this->createPlanItemRel($model->item_id,$model->id,$model->value);
+				
 				$this->redirect(array('view','id'=>$model->id));
 				//$this->redirect(array('admin','id'=>$model->id));
 			}

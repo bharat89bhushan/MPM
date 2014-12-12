@@ -22,7 +22,7 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'item_id'); ?>
 		<?php //echo $form->textField($model,'item_id'); 
-		$type_list=CHtml::listData(Items::model()->findAll(),'id','name');
+		$type_list=CHtml::listData(Items::model()->findAll(),'id','code');
 			echo $form->dropDownList($model,'item_id',$type_list); ?>
 		<?php echo $form->error($model,'item_id'); ?>
 	</div>

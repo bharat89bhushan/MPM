@@ -82,6 +82,10 @@ class ItemsController extends Controller
             	 $model->Rel_item_prop = $_POST['ItemProp'];
         	 }
 			if($model->saveWithRelated('Rel_item_prop'))*/
+			$model->type_id = $model->sub_type_id;
+			$subtypemodel = ConfigItemSubtypes::model()->findByPk($model->type_id);
+			$model->code = strtoupper($subtypemodel->Rel_item_type->name)."_".strtoupper($subtypemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
+			
 			if($model->save())
 			{
 				$stockmodel = new StockDetails;
@@ -132,21 +136,56 @@ class ItemsController extends Controller
 		if(isset($_POST['Items']))
 		{
 			$model->attributes=$_POST['Items'];
+			
+			$subtypemodel = ConfigItemSubtypes::model()->findByPk($model->type_id);
+			$model->code = strtoupper($subtypemodel->Rel_item_type->name)."_".strtoupper($subtypemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
+			
 			if($model->save()){
 				
 				
 		$itemprops = ItemProperties::model()->findAll('item_id='.$model->id);
 		foreach($itemprops as $itemprop)
 		{
-			if($itemprop->Rel_prop_val->Rel_prop_type->id == 1){
+			if($itemprop->Rel_prop_val->Rel_prop_type->id == 2){
+				if($model->size_prop_val_id ){
 			$itemprop->prop_val_id=	$model->size_prop_val_id ;
 			$itemprop->save();
+				}else{
+					$itemprop->delete();
+				}
 			}
-			elseif($itemprop->Rel_prop_val->Rel_prop_type->id == 2){
+			elseif($itemprop->Rel_prop_val->Rel_prop_type->id == 1){
+				if($model->color_prop_val_id){
 			$itemprop->prop_val_id=	$model->color_prop_val_id ;
 			$itemprop->save();
+				}else{
+					$itemprop->delete();
+				}
 			}
 		}
+		
+		if($model->size_prop_val_id){
+			$itemprop = ItemProperties::model()->findByAttributes(array('item_id'=>$model->id,'prop_val_id'=>$model->size_prop_val_id));
+			if(!$itemprop){
+				$itemprop = new ItemProperties;
+				$itemprop->item_id = $model->id;
+			}
+			$itemprop->prop_val_id = $model->size_prop_val_id;
+				if(!$itemprop->save())
+					print_r($itemprop->getErrors());
+		}
+				
+		if($model->color_prop_val_id){
+			$itemprop = ItemProperties::model()->findByAttributes(array('item_id'=>$model->id,'prop_val_id'=>$model->color_prop_val_id));
+			if(!$itemprop){
+				$itemprop = new ItemProperties;
+				$itemprop->item_id = $model->id;
+			}
+				$itemprop->prop_val_id = $model->color_prop_val_id;
+				if(!$itemprop->save())
+					print_r($itemprop->getErrors());
+		}
+		
 				
 				
 				
@@ -157,9 +196,9 @@ class ItemsController extends Controller
 		$itemprops = ItemProperties::model()->findAll('item_id='.$model->id);
 		foreach($itemprops as $itemprop)
 		{
-			if($itemprop->Rel_prop_val->Rel_prop_type->id == 1)
+			if($itemprop->Rel_prop_val->Rel_prop_type->id == 2)
 				$model->size_prop_val_id = $itemprop->prop_val_id;
-			elseif($itemprop->Rel_prop_val->Rel_prop_type->id == 2)
+			elseif($itemprop->Rel_prop_val->Rel_prop_type->id == 1)
 				$model->color_prop_val_id = $itemprop->prop_val_id;
 		}
 		
@@ -255,5 +294,46 @@ class ItemsController extends Controller
             'index' => $index,
 //            'display' => 'block',
         ), false, true);
+    }
+    
+    
+    public function actionDynamicStates()
+    {
+       
+    
+   $data=ConfigItemSubtypes::model()->findAll('type_id=:type_id', 
+                  array(':type_id'=>(int) $_POST['Items']['type_id']));
+                  
+    $data=CHtml::listData($data,'id','name');
+     echo CHtml::tag('option',
+                   array('value'=>""),CHtml::encode("Select"),true);
+    foreach($data as $value=>$name)
+    {
+        echo CHtml::tag('option',
+                   array('value'=>$value),CHtml::encode($name),true);
+    }
+    
+   // echo (int)$_POST['Items']['type_id'];
+    
+    }
+     public function actionSetCode()
+    {
+    /*   
+   
+   $data=ConfigItemSubtypes::model()->findAll('id=:id', 
+                  array(':id'=>(int) $_POST['Items']['sub_type_id']));
+                  
+    $data=CHtml::listData($data,'id','name');
+    foreach($data as $value=>$name)
+    {
+        echo CHtml::tag('option',
+                   array('value'=>$value),CHtml::encode($name),true);
+    }
+    */
+  //  echo (int)$_POST['Items']['sub_type_id'];
+    
+ //   echo "Bharat";
+ echo CHtml::tag('input', array('value' => 'bharat'));
+    
     }
 }

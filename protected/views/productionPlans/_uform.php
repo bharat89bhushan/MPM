@@ -1,13 +1,13 @@
 <?php
-/* @var $this ItemsCompositionDetailsController */
-/* @var $model ItemsCompositionDetails */
+/* @var $this ProductionPlansController */
+/* @var $model ProductionPlans */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'items-composition-details-form',
+	'id'=>'production-plans-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -20,18 +20,11 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'comp_id'); ?>
-		<?php echo $form->textField($model,'comp_id',array('readonly' => true)); ?>
-		<?php echo $form->error($model,'comp_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Item_id'); ?>
-		<?php //echo $form->textField($model,'Item_id'); 
-			$type_list=CHtml::listData(Items::model()->findAll(array('condition'=>'org_id='.$model->org_id)),'id','code');
-			echo $form->dropDownList($model,'Item_id',$type_list,array(''=>'Select Option'));
-		?>
-		<?php echo $form->error($model,'Item_id'); ?>
+		<?php echo $form->labelEx($model,'item_id'); ?>
+		<?php  $form->hiddenField($model,'item_id'); 
+		$type_list=CHtml::listData(Items::model()->findAll(),'id','code');
+			echo $form->dropDownList($model,'item_id',$type_list,array("disabled"=>"disabled")); ?>
+		<?php echo $form->error($model,'item_id'); ?>
 	</div>
 
 	<div class="row">
@@ -40,6 +33,12 @@
 		<?php echo $form->error($model,'value'); ?>
 	</div>
 
+<!--	<div class="row">
+		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->textField($model,'status'); ?>
+		<?php echo $form->error($model,'status'); ?>
+	</div>
+-->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

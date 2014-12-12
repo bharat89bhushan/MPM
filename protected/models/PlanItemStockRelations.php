@@ -163,7 +163,8 @@ class PlanItemStockRelations extends CActiveRecord
 					$planitemmodel = PlanItemStockRelations::model()->findByAttributes(array('item_id'=>$itemcomp->Item_id,'plan_id'=>$this->plan_id));
 					$planitemtotal = floatval($planitemmodel->value);
 					$planitemmodel->value = strval($planitemtotal-$itemcompval*$addqtyval);
-					$planitemmodel->saveAttributes(array('value'));
+			//		$planitemmodel->req_qty = strval(floatval($planitemmodel->req_qty)-($itemcompval*$addqtyval));
+					$planitemmodel->saveAttributes(array('value','req_qty'));
 		//		}
 				
 				if($stockitemmodel->saveAttributes(array('value')) )

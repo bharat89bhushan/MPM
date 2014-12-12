@@ -113,6 +113,7 @@ class PlanItemStockRelationsController extends Controller
 			
 			$model->qty = $model->value;
 			$model->value= strval(floatval($model->value)+floatval(PlanItemStockRelations::model()->findByPk($model->id)->value));
+			$model->req_qty = strval(floatval($model->req_qty)-floatval($model->qty));
 			
 			if($model->save()){
 			//	$this->redirect(array('view','id'=>$model->id));

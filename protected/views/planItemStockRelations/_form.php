@@ -27,9 +27,9 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'item_id'); ?>
-		<?php 
-			$type_list=CHtml::listData(Items::model()->findAll(),'id','name');
-			echo $form->dropDownList($model,'item_id',$type_list,array('empty'=>'Select Item'));
+		<?php $form->hiddenField($model,'item_id');
+			$type_list=CHtml::listData(Items::model()->findAll(),'id','code');
+			echo $form->dropDownList($model,'item_id',$type_list,array('empty'=>'Select Item',"disabled"=>"disabled"));
 			?>
 		<?php echo $form->error($model,'item_id'); ?>
 	</div>

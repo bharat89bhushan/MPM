@@ -19,8 +19,11 @@ class Items extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	public $size_prop_val_id ;
-	public $color_prop_val_id ;
+	public $size_prop_val_id;
+	public $color_prop_val_id;
+	public $sub_type_id;
+	
+	
 	public function tableName()
 	{
 		return 'items';
@@ -35,10 +38,10 @@ class Items extends CActiveRecord
 		// will receive user inputs.
 		return array(
 	//		array('code, name, type_id, unit_type,size_prop_val_id,color_prop_val_id', 'required'),
-			array('code, name, type_id, unit_type', 'required'),
+			array('name, type_id, unit_type', 'required'),
 			array('type_id, is_manufactured, org_id, unit_type', 'numerical', 'integerOnly'=>true),
 			array('code, name', 'length', 'max'=>30),
-			array('date,size_prop_val_id,color_prop_val_id', 'safe'),
+			array('date,size_prop_val_id,color_prop_val_id,sub_type_id', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, code, name, type_id, is_manufactured, org_id, unit_type, created_by', 'safe', 'on'=>'search'),
@@ -54,7 +57,7 @@ class Items extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Rel_item_comp'=>array(self::HAS_MANY,'ItemsCompositionDetails','comp_id'),
-			'Rel_item_type'=>array(self::BELONGS_TO,'ConfigItemTypes','type_id'),
+			'Rel_item_subtype'=>array(self::BELONGS_TO,'ConfigItemSubtypes','type_id'),
 			'Rel_org_id'=>array(self::BELONGS_TO,'Clients','org_id'),
 			'Rel_created_by'=>array(self::BELONGS_TO,'Users','created_by'),
 			'Rel_unit_type'=>array(self::BELONGS_TO,'ConfigUnits','unit_type'),
@@ -100,12 +103,12 @@ class Items extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->with=array('Rel_item_comp','Rel_item_type','Rel_org_id');
+		$criteria->with=array('Rel_item_comp','Rel_item_subtype','Rel_org_id');
 
 		$criteria->compare('t.id',$this->id);
 		$criteria->compare('t.code',$this->code,true);
 		$criteria->compare('t.name',$this->name,true);
-		$criteria->compare('Rel_item_type.name',$this->type_id);
+		$criteria->compare('Rel_item_subtype.name',$this->type_id);
 		$criteria->compare('is_manufactured',$this->is_manufactured);
 		$criteria->compare('Rel_org_id.name',$this->org_id);
 		$criteria->compare('unit_type',$this->unit_type);

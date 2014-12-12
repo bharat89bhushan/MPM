@@ -78,7 +78,7 @@ class ProductionPlansController extends Controller
 		$planrel->req_qty = strval(floatval($itemcomp->value) * floatval($planval));
 		$planrel->value = '0';
 		$planrel->save();
-		$this->createPlanItemRel($itemcomp->Item_id,$planid,$planval);
+		$this->createPlanItemRel($itemcomp->Item_id,$planid,$planrel->req_qty);
 			
 		}
 		

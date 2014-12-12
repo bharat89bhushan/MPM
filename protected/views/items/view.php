@@ -26,7 +26,7 @@ $this->menu=array(
 		'name',
 		array(
 		'label'=>'Type',
-		'name'=>'Rel_item_type.name',
+		'name'=>'Rel_item_subtype.name',
 	//	'value'=> $model['Rel_item_type.name'],
 		),
 		array(
@@ -35,7 +35,7 @@ $this->menu=array(
 		),
 		array(
 		'label'=>'Organisation',
-		'name'=>'Rel_org_id.name',
+		'name'=>$model['is_manufactured']?'Rel_org_id.name':"NA",
 	//	'value'=> $model['org_id']?'Self':'Others',
 		),
 		array(

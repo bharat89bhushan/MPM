@@ -19,62 +19,40 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-
-
+	<div class="row">
+		<?php echo $form->labelEx($model,'code'); ?>
+		<?php echo $form->textField($model,'code',array('readonly'=>'true','size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->error($model,'code'); ?>
+	</div>
 
 	<div class="row">
-		
-		<?php
-	$buttonToggler_type= <<<JS
-    toggleInput_type=function(src){
-    if(src==1 || src ==0)
-	$("#div_manu").hide();
-	else
-	$("#div_manu").show();
-	
-    }
-JS;
-	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
-	?>
-		
-		
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textField($model,'name',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->error($model,'name'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'type_id'); ?>
 		<?php 
-			$type_list=CHtml::listData(ConfigItemTypes::model()->findAll(),'id','name');
-		echo //$form->textField($model,'type_id'); 
-	
-	//		$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type'));
-				$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type','onchange'=>'js:toggleInput_type(this.selectedIndex)',
-				'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>CController::createUrl('items/dynamicStates'),
-                        'update'=>'#'.CHtml::activeId($model,'sub_type_id'),
-       ) ));
+		echo //($model->Rel_item_subtype)?$model->Rel_item_subtype->Rel_item_type->name:"Not Defined"; //$form->textField($model,'type_id'); 
+		$form->textField($model,'',array('readonly'=>'true','value'=>($model->Rel_item_subtype)?$model->Rel_item_subtype->Rel_item_type->name:"Not Defined"));
 	?>
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 
-
-		<div class="row">
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'sub_type_id'); ?>
 		<?php 
-	//		$type_list=CHtml::listData(ConfigItemTypes::model()->findAll(),'id','name');
-		echo //$form->textField($model,'type_id'); 
+		echo// ($model->Rel_item_subtype)?$model->Rel_item_subtype->name:"Not Defined"; 
+		$form->textField($model,'',array('readonly'=>'true','value'=>($model->Rel_item_subtype)?$model->Rel_item_subtype->name:"Not Defined")); 
 	
-			$form->dropDownList($model,'sub_type_id',array(),array('empty'=>'Select','onchange'=>"($(this).find('option:selected').val())?$('#codearea').val($(this).find('option:selected').text().toUpperCase()+'_'):$('#codearea').val('');",
-	//		$form->dropDownList($model,'sub_type_id',array(),array('empty'=>'Selec','onchange'=>"javascript:$('#codearea').val($(#".CHtml::activeId($model,'sub_type_id').").find('option:selected').text())",
-			/*	'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>CController::createUrl('items/setCode'),
-                   //     'update'=>'#'.CHtml::activeId($model,'tmp'),
-                        'update'=>'#codearea',
-       )*/
-				)
-			);
 	?>
 		<?php echo $form->error($model,'sub_type_id'); ?>
 	</div>
-	<div class="row" id="div_manu" style="display: none">
+	
+	
+	<div class="row">
 	<?php
 	$buttonToggler= <<<JS
     toggleInput=function(src,inputName){
@@ -85,52 +63,30 @@ JS;
 	
     }
 JS;
-	Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CClientScript::POS_READY);
-	?>
-		<?php echo $form->labelEx($model,'is_manufactured'); 
+Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CClientScript::POS_READY);
+?>
+		<?php echo $form->labelEx($model,'is_manufactured');
+		echo ($model->is_manufactured)?"Yes":"No";
 		//echo $form->textField($model,'is_manufactured');
-			echo $form->checkBox($model,'is_manufactured',array('value' => '1', 'uncheckValue'=>'0','onchange'=>'js:toggleInput(this,"ModelName[org_id]")'));?>
+		//	echo $form->checkBox($model,'is_manufactured',array('value' => '1', 'uncheckValue'=>'0','onchange'=>'js:toggleInput(this,"ModelName[org_id]")'));
+		?>
 		<?php echo $form->error($model,'is_manufactured'); ?>
 	</div>
 
-	<div class="row" id="div_org" style="display: none">
+	<div class="row" id="div_org">
 		<?php echo $form->labelEx($model,'org_id'); ?>
 		<?php 
+		$type_list;
+		if($model->is_manufactured)
 		$type_list=CHtml::listData(Clients::model()->findAll(),'id','name');
+		else
+		$type_list = array("0"=>"NA");
 		echo //$form->textField($model,'org_id'); 
 		
-			$form->dropDownList($model,'org_id',$type_list,array('empty'=>'Select Option'));
+		$form->dropDownList($model,'org_id',$type_list,array());
 	?>
 		<?php echo $form->error($model,'org_id'); ?>
 	</div>
-
-
-	
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>30,'maxlength'=>30,//'onKeyUp'=>"$('#codearea').val($(this).val()+$('#sub_text_id').text());",
-				'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>CController::createUrl('items/setCode'),
-                   //     'update'=>'#'.CHtml::activeId($model,'code'),
-                        'update'=>'#code',
-       ) 
-		
-		)); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-<!--
-	<div class="row">
-		<?php echo $form->labelEx($model,'code'); ?>
-		<div id="code-div">
-		<?php echo $form->textField($model,'code',array('id'=>'codearea','size'=>30,'maxlength'=>30)); ?>
-		</div>
-		<?php echo $form->error($model,'code'); ?>
-	</div>
-
--->	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'unit_type'); ?>

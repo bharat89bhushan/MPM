@@ -26,17 +26,8 @@ $this->menu=array(
 		'name',
 		array(
 		'label'=>'Type',
-		'name'=>'Rel_item_subtype.name',
+		'name'=>'Rel_item_type.name',
 	//	'value'=> $model['Rel_item_type.name'],
-		),
-		array(
-		'name'=>'is_manufactured',
-		'value'=> $model['is_manufactured']?'Yes':'No',
-		),
-		array(
-		'label'=>'Organisation',
-		'name'=>$model['is_manufactured']?'Rel_org_id.name':"NA",
-	//	'value'=> $model['org_id']?'Self':'Others',
 		),
 		array(
 		'label'=>'Unit',
@@ -58,7 +49,7 @@ $this->menu=array(
 	),
 )); ?>
 
-<?php 
+<?php /*
 if($model->is_manufactured)
 {
 $config = array('keyField'=>'icd_id');
@@ -83,4 +74,5 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_item_comp, $config);
 )); 
  echo CHtml::link('Add', array('ItemsCompositionDetails/create','comp_id'=>$model->id,'org_id'=>$model->org_id));
 }
+*/
 ?>

@@ -76,23 +76,17 @@ class ItemsController extends Controller
 			$model->attributes=$_POST['Items'];
 			$model->date=new CDbExpression('NOW()');
 			$model->created_by = Yii::app()->user->id;
-			/*
-			if (isset($_POST['ItemProp']))
-        	 {
-            	 $model->Rel_item_prop = $_POST['ItemProp'];
-        	 }
-			if($model->saveWithRelated('Rel_item_prop'))*/
-			$model->type_id = $model->sub_type_id;
-			$subtypemodel = ConfigItemSubtypes::model()->findByPk($model->type_id);
-			$model->code = strtoupper($subtypemodel->Rel_item_type->name)."_".strtoupper($subtypemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
+			
+			$typemodel = ConfigItemTypes::model()->findByPk($model->type_id);
+			$model->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
 			
 			if($model->save())
 			{
-				$stockmodel = new StockDetails;
+			/*	$stockmodel = new StockDetails;
 				$stockmodel->item_id=$model->id;
 				if(!$stockmodel->save())
 					print_r($stockmodel->getErrors());
-				
+			*/	
 				if($model->size_prop_val_id){
 				$itemprop = new ItemProperties;
 				$itemprop->item_id = $model->id;
@@ -137,8 +131,8 @@ class ItemsController extends Controller
 		{
 			$model->attributes=$_POST['Items'];
 			
-			$subtypemodel = ConfigItemSubtypes::model()->findByPk($model->type_id);
-			$model->code = strtoupper($subtypemodel->Rel_item_type->name)."_".strtoupper($subtypemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
+			$typemodel = ConfigItemTypes::model()->findByPk($model->type_id);
+			$model->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
 			
 			if($model->save()){
 				
@@ -214,16 +208,6 @@ class ItemsController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-
-	
-		$stockmodel = StockDetails::model()->find(array('condition'=>'item_id='.$id));
-	//	foreach($stockmodels as $stockmodel)
-			$stockmodel->delete();
-
-		$itemcompmodels = ItemsCompositionDetails::model()->findAll(array('condition'=>'comp_id='.$id));
-		foreach($itemcompmodels as $itemcompmodel)
-			$itemcompmodel->delete();
-	
 
 		$this->loadModel($id)->delete();
 
@@ -316,24 +300,5 @@ class ItemsController extends Controller
    // echo (int)$_POST['Items']['type_id'];
     
     }
-     public function actionSetCode()
-    {
-    /*   
-   
-   $data=ConfigItemSubtypes::model()->findAll('id=:id', 
-                  array(':id'=>(int) $_POST['Items']['sub_type_id']));
-                  
-    $data=CHtml::listData($data,'id','name');
-    foreach($data as $value=>$name)
-    {
-        echo CHtml::tag('option',
-                   array('value'=>$value),CHtml::encode($name),true);
-    }
-    */
-  //  echo (int)$_POST['Items']['sub_type_id'];
-    
- //   echo "Bharat";
- echo CHtml::tag('input', array('value' => 'bharat'));
-    
-    }
+     
 }

@@ -20,11 +20,11 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'item_id'); ?>
-		<?php  $form->hiddenField($model,'item_id'); 
+		<?php echo $form->labelEx($model,'article_id'); ?>
+		<?php  echo $form->hiddenField($model,'article_id'); 
 		$type_list=CHtml::listData(Items::model()->findAll(),'id','code');
-			echo $form->dropDownList($model,'item_id',$type_list,array("disabled"=>"disabled")); ?>
-		<?php echo $form->error($model,'item_id'); ?>
+			echo $form->dropDownList($model,'',$type_list,array("disabled"=>"disabled")); ?>
+		<?php echo $form->error($model,'article_id'); ?>
 	</div>
 
 	<div class="row">

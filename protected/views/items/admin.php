@@ -55,19 +55,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'name',
 		array(
 		'name'=>'type_id',
-		'value'=>'$data->Rel_item_subtype->name',
-		'filter' => CHtml::listData( ConfigItemSubtypes::model()->findAll(), 'name','name' )
+		'value'=>'$data->Rel_item_type->name',
+		'filter' => CHtml::listData( ConfigItemTypes::model()->findAll(), 'name','name' )
 		),
-		array(
-		'name'=>'is_manufactured',
-		'value'=>'$data->is_manufactured?\'Yes\':\'No\'',
-		'filter' => array('0' => 'No', '1' => 'Yes'),
-		),
-		array(
-		'name'=>'org_id',
-		'value'=>'$data->Rel_org_id->name',
-		'filter' => CHtml::listData( Clients::model()->findAll(), 'name','name' )
-		),
+		'qty',
 		/*
 		'unit_type',
 		'created_by',

@@ -1436,3 +1436,2132 @@ in /home/ubuntu/workspace/index.php (13)
 2014/12/13 12:14:24 [warning] [application] Failed to set unsafe attribute "1" of "Items".
 in /home/ubuntu/workspace/protected/controllers/ItemsController.php (138)
 in /home/ubuntu/workspace/index.php (13)
+2014/12/15 15:19:58 [error] [php] Trying to get property of non-object (/home/ubuntu/yii/framework/base/CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 /home/ubuntu/yii/framework/zii/widgets/grid/CGridColumn.php(231): CDataColumn->getDataCellContent()
+#1 /home/ubuntu/yii/framework/zii/widgets/grid/CGridColumn.php(154): CDataColumn->renderDataCellContent()
+#2 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(638): CDataColumn->renderDataCell()
+#3 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(622): CGridView->renderDataCell()
+#4 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(578): CGridView->renderTableRow()
+#5 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(488): CGridView->renderTableBody()
+#6 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(181): CGridView->renderItems()
+#7 unknown(0): CGridView->renderSection()
+#8 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#9 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(149): CGridView->renderContent()
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(181): CGridView->run()
+#11 /home/ubuntu/workspace/protected/views/items/admin.php(80): ItemsController->widget()
+#12 /home/ubuntu/yii/framework/web/CBaseController.php(126): require()
+#13 /home/ubuntu/yii/framework/web/CBaseController.php(95): ItemsController->renderInternal()
+#14 /home/ubuntu/yii/framework/web/CController.php(869): ItemsController->renderFile()
+#15 /home/ubuntu/yii/framework/web/CController.php(782): ItemsController->renderPartial()
+#16 /home/ubuntu/workspace/protected/controllers/ItemsController.php(259): ItemsController->render()
+#17 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ItemsController->actionAdmin()
+#18 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ItemsController->runAction()
+#20 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#22 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ItemsController->filterAccessControl()
+#23 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#24 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#25 /home/ubuntu/yii/framework/web/CController.php(265): ItemsController->runActionWithFilters()
+#26 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ItemsController->run()
+#27 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#28 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#29 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=items/admin
+in /home/ubuntu/workspace/protected/views/items/admin.php (80)
+in /home/ubuntu/workspace/protected/controllers/ItemsController.php (259)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/15 16:51:44 [error] [exception.CException] exception 'CException' with message 'Property "Items.is_manufactured" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('is_manufactured')
+#1 /home/ubuntu/workspace/protected/models/Items.php(105): CActiveRecord->__get('is_manufactured')
+#2 /home/ubuntu/workspace/protected/views/items/admin.php(47): Items->search()
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#7 /home/ubuntu/workspace/protected/controllers/ItemsController.php(243): CController->render('admin', Array)
+#8 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ItemsController->actionAdmin()
+#9 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/admin')
+#19 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php?r=items/admin
+---
+2014/12/15 16:53:38 [error] [exception.CException] exception 'CException' with message 'Property "Items.sub_type_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('sub_type_id')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('sub_type_id')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1981): CHtml::resolveValue(Object(Items), 'sub_type_id')
+#3 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(Items), 'sub_type_id', Array, Array)
+#4 /home/ubuntu/workspace/protected/views/items/_form.php(65): CActiveForm->dropDownList(Object(Items), 'sub_type_id', Array, Array)
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/workspace/protected/views/items/create.php(19): CController->renderPartial('_form', Array)
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#13 /home/ubuntu/workspace/protected/controllers/ItemsController.php(115): CController->render('create', Array)
+#14 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ItemsController->actionCreate()
+#15 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#22 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/create')
+#25 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#26 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/index.php?r=items/create
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=items/admin
+---
+2014/12/15 16:59:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=items/create
+---
+2014/12/15 17:00:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=items/create
+---
+2014/12/15 17:06:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=items/update&id=1
+---
+2014/12/15 17:38:15 [error] [php] Use of undefined constant qty - assumed 'qty' (/home/ubuntu/workspace/protected/views/items/admin.php:61)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(869): ItemsController->renderFile()
+#1 /home/ubuntu/yii/framework/web/CController.php(782): ItemsController->renderPartial()
+#2 /home/ubuntu/workspace/protected/controllers/ItemsController.php(243): ItemsController->render()
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ItemsController->actionAdmin()
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ItemsController->runAction()
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ItemsController->filterAccessControl()
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): ItemsController->runActionWithFilters()
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ItemsController->run()
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=items/admin
+in /home/ubuntu/workspace/protected/views/items/admin.php (61)
+in /home/ubuntu/workspace/protected/controllers/ItemsController.php (243)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 13:12:54 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mpm.stock_details' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `stock_details`.
+in /home/ubuntu/workspace/protected/controllers/StockDetailsController.php (146)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 13:12:54 [error] [exception.CDbException] exception 'CDbException' with message 'The table "stock_details" for active record class "StockDetails" cannot be found in the database.' in /home/ubuntu/yii/framework/db/ar/CActiveRecord.php:2385
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(StockDetails))
+#1 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(79): CActiveRecord->getMetaData()
+#2 /home/ubuntu/workspace/protected/controllers/StockDetailsController.php(146): CActiveRecord->__construct('search')
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): StockDetailsController->actionAdmin()
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('stockDetails/ad...')
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=stockDetails/admin
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=items/admin
+---
+2014/12/16 13:17:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/ubuntu/yii/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /home/ubuntu/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('articles/admin')
+#9 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=articles/admin
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=items/admin
+---
+2014/12/16 14:00:20 [error] [exception.CException] exception 'CException' with message 'Property "Articles.org_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('org_id')
+#1 /home/ubuntu/workspace/protected/views/articles/view.php(43): CActiveRecord->__get('org_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/ubuntu/workspace/protected/controllers/ArticlesController.php(59): CController->render('view', Array)
+#7 [internal function]: ArticlesController->actionView('1')
+#8 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ArticlesController), Array)
+#9 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ArticlesController), Object(ReflectionMethod), Array)
+#10 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('articles/view')
+#20 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=articles/view&id=1
+---
+2014/12/16 14:04:12 [error] [exception.CException] exception 'CException' with message 'Property "Articles.org_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('org_id')
+#1 /home/ubuntu/workspace/protected/views/articles/view.php(50): CActiveRecord->__get('org_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/ubuntu/workspace/protected/controllers/ArticlesController.php(59): CController->render('view', Array)
+#7 [internal function]: ArticlesController->actionView('1')
+#8 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ArticlesController), Array)
+#9 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ArticlesController), Object(ReflectionMethod), Array)
+#10 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('articles/view')
+#20 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=articles/view&id=1
+---
+2014/12/16 14:04:21 [error] [exception.CException] exception 'CException' with message 'Property "Articles.org_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('org_id')
+#1 /home/ubuntu/workspace/protected/views/articles/view.php(50): CActiveRecord->__get('org_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/ubuntu/workspace/protected/controllers/ArticlesController.php(59): CController->render('view', Array)
+#7 [internal function]: ArticlesController->actionView('1')
+#8 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ArticlesController), Array)
+#9 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ArticlesController), Object(ReflectionMethod), Array)
+#10 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('articles/view')
+#20 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=articles/view&id=1
+---
+2014/12/16 15:03:47 [error] [exception.CException] exception 'CException' with message 'Property "ArticleDetails.article" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('article')
+#1 /home/ubuntu/workspace/protected/views/articleDetails/_form.php(25): CActiveRecord->__get('article')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/workspace/protected/views/articleDetails/create.php(18): CController->renderPartial('_form', Array)
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#10 /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php(94): CController->render('create', Array)
+#11 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ArticleDetailsController->actionCreate()
+#12 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#15 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#21 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ArticleDetails/...')
+#22 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#23 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/index.php?r=ArticleDetails/create
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=articles/view&id=1
+---
+2014/12/16 15:04:44 [error] [php] Trying to get property of non-object (/home/ubuntu/workspace/protected/views/articleDetails/_form.php:25)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(869): ArticleDetailsController->renderFile()
+#1 /home/ubuntu/workspace/protected/views/articleDetails/create.php(18): ArticleDetailsController->renderPartial()
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require()
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): ArticleDetailsController->renderInternal()
+#4 /home/ubuntu/yii/framework/web/CController.php(869): ArticleDetailsController->renderFile()
+#5 /home/ubuntu/yii/framework/web/CController.php(782): ArticleDetailsController->renderPartial()
+#6 /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php(94): ArticleDetailsController->render()
+#7 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ArticleDetailsController->actionCreate()
+#8 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ArticleDetailsController->runAction()
+#10 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#12 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ArticleDetailsController->filterAccessControl()
+#13 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#14 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#15 /home/ubuntu/yii/framework/web/CController.php(265): ArticleDetailsController->runActionWithFilters()
+#16 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ArticleDetailsController->run()
+#17 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#18 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#19 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ArticleDetails/create
+in /home/ubuntu/workspace/protected/views/articleDetails/_form.php (25)
+in /home/ubuntu/workspace/protected/views/articleDetails/create.php (18)
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (94)
+2014/12/16 15:47:57 [error] [exception.CException] exception 'CException' with message 'Property "ArticleProcessDetails." is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2451): CHtml::resolveValue(Object(ArticleProcessDetails), '')
+#3 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1533): CHtml::activeInputField('text', Object(ArticleProcessDetails), '', Array)
+#4 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(792): CHtml::activeTextField(Object(ArticleProcessDetails), '', Array)
+#5 /home/ubuntu/workspace/protected/views/articleProcessDetails/_form.php(30): CActiveForm->textField(Object(ArticleProcessDetails), '')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/workspace/protected/views/articleProcessDetails/create.php(18): CController->renderPartial('_form', Array)
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#11 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#13 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#14 /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php(86): CController->render('create', Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ArticleProcessDetailsController->actionCreate()
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ArticleProcessD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ArticleProcessDetails/create&article_detail_id=1
+---
+2014/12/16 15:48:49 [error] [exception.CException] exception 'CException' with message 'Property "ArticleProcessDetails." is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2451): CHtml::resolveValue(Object(ArticleProcessDetails), '')
+#3 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1533): CHtml::activeInputField('text', Object(ArticleProcessDetails), '', Array)
+#4 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(792): CHtml::activeTextField(Object(ArticleProcessDetails), '', Array)
+#5 /home/ubuntu/workspace/protected/views/articleProcessDetails/_form.php(30): CActiveForm->textField(Object(ArticleProcessDetails), '')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/workspace/protected/views/articleProcessDetails/create.php(18): CController->renderPartial('_form', Array)
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#11 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#13 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#14 /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php(86): CController->render('create', Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ArticleProcessDetailsController->actionCreate()
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ArticleProcessD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ArticleProcessDetails/create&article_detail_id=1
+---
+2014/12/16 16:32:05 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:35:23 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:36:44 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:41:37 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:42:22 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:42:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "article/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('article/view')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=article/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=ArticleDetails/create&article_id=1
+---
+2014/12/16 16:42:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "article/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('article/view')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=article/view&id=1
+---
+2014/12/16 16:42:59 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:43:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "article".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('article')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('article')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('articleDetails/...')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=articleDetails/article/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=ArticleDetails/create&article_id=1
+---
+2014/12/16 16:43:17 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:43:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "articles".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('articles')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('articles')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('articleDetails/...')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=articleDetails/articles/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=ArticleDetails/create&article_id=1
+---
+2014/12/16 16:44:12 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:46:14 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:46:14 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:46:34 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (112)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 16:46:34 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (112)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 18:04:35 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlans.Rel_plan_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('Rel_plan_id')
+#1 /home/ubuntu/workspace/protected/views/productionPlans/view.php(43): CActiveRecord->__get('Rel_plan_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(61): CController->render('view', Array)
+#7 [internal function]: ProductionPlansController->actionView('1')
+#8 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlansController), Array)
+#9 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlansController), Object(ReflectionMethod), Array)
+#10 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlans...')
+#20 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=productionPlans/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/create
+---
+2014/12/16 18:06:30 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlans.Rel_plan_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('Rel_plan_id')
+#1 /home/ubuntu/workspace/protected/views/productionPlans/view.php(44): CActiveRecord->__get('Rel_plan_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(61): CController->render('view', Array)
+#7 [internal function]: ProductionPlansController->actionView('1')
+#8 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlansController), Array)
+#9 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlansController), Object(ReflectionMethod), Array)
+#10 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlans...')
+#20 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=productionPlans/view&id=1
+---
+2014/12/16 18:43:11 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Rel_production_plan.producton_plan_id' in 'where clause'. The SQL statement executed was: SELECT `Rel_production_plan`.`id` AS `t1_c0`, `Rel_production_plan`.`production_plan_id` AS `t1_c1`, `Rel_production_plan`.`article_detail_id` AS `t1_c2`, `Rel_production_plan`.`date` AS `t1_c3` FROM `production_plan_details` `Rel_production_plan`  WHERE (`Rel_production_plan`.`producton_plan_id`=:ypl0).
+in /home/ubuntu/workspace/protected/views/productionPlans/view.php (44)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php (61)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/16 18:43:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Rel_production_plan.producton_plan_id' in 'where clause'. The SQL statement executed was: SELECT `Rel_production_plan`.`id` AS `t1_c0`, `Rel_production_plan`.`production_plan_id` AS `t1_c1`, `Rel_production_plan`.`article_detail_id` AS `t1_c2`, `Rel_production_plan`.`date` AS `t1_c3` FROM `production_plan_details` `Rel_production_plan`  WHERE (`Rel_production_plan`.`producton_plan_id`=:ypl0)' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveFinder.php(808): CDbCommand->queryAll()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveFinder.php(509): CJoinElement->runQuery(Object(CJoinQuery))
+#3 /home/ubuntu/yii/framework/db/ar/CActiveFinder.php(163): CJoinElement->lazyFind(Object(ProductionPlans))
+#4 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(281): CActiveFinder->lazyFind(Object(ProductionPlans))
+#5 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(143): CActiveRecord->getRelated('Rel_production_...')
+#6 /home/ubuntu/workspace/protected/views/productionPlans/view.php(44): CActiveRecord->__get('Rel_production_...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#11 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(61): CController->render('view', Array)
+#12 [internal function]: ProductionPlansController->actionView('1')
+#13 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlansController), Array)
+#14 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlansController), Object(ReflectionMethod), Array)
+#15 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#22 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlans...')
+#25 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#26 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#27 {main}
+REQUEST_URI=/index.php?r=productionPlans/view&id=1
+---
+2014/12/16 19:04:53 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set('article_id', '1')
+#1 /home/ubuntu/yii/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct(Array)
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1474): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(93): CController->render('create', Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/16 19:05:45 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set('article_id', '1')
+#1 /home/ubuntu/yii/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct(Array)
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1474): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(93): CController->render('create', Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/16 19:06:18 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set('article_id', '1')
+#1 /home/ubuntu/yii/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct(Array)
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1474): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(93): CController->render('create', Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/16 19:10:04 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlanDetails.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('article_id')
+#1 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->__get('article_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#10 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(94): CController->render('create', Array)
+#11 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#12 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#15 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#21 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#22 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#23 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/16 19:10:41 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set('article_id', '1')
+#1 /home/ubuntu/yii/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct(Array)
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1474): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(94): CController->render('create', Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/16 19:11:24 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set('article_id', '1')
+#1 /home/ubuntu/yii/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct(Array)
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1474): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(94): CController->render('create', Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/16 19:13:27 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.article_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/schema/CDbCriteria.php(160): CComponent->__set('article_id', '1')
+#1 /home/ubuntu/yii/framework/db/schema/CDbCommandBuilder.php(588): CDbCriteria->__construct(Array)
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1474): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/create.php(18): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(94): CController->render('create', Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): ProductionPlanDetailsController->actionCreate()
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/16 19:22:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlan/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlan/...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlan/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/17 08:48:41 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlans." is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1981): CHtml::resolveValue(Object(ProductionPlans), '')
+#3 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(ProductionPlans), '', Array, Array)
+#4 /home/ubuntu/workspace/protected/views/productionPlans/_uform.php(26): CActiveForm->dropDownList(Object(ProductionPlans), '', Array, Array)
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/workspace/protected/views/productionPlans/update.php(21): CController->renderPartial('_uform', Array)
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#13 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(143): CController->render('update', Array)
+#14 [internal function]: ProductionPlansController->actionUpdate('1')
+#15 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlansController), Array)
+#16 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlansController), Object(ReflectionMethod), Array)
+#17 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#26 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlans...')
+#27 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/index.php?r=productionPlans/update&id=1
+HTTP_REFERER=http://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 09:38:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=http://mpm-bharat89.c9.io/index.php?r=items/create
+---
+2014/12/17 09:38:48 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 09:38:48 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 15:23:10 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlans." is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1981): CHtml::resolveValue(Object(ProductionPlans), '')
+#3 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(ProductionPlans), '', Array, Array)
+#4 /home/ubuntu/workspace/protected/views/productionPlans/_uform.php(26): CActiveForm->dropDownList(Object(ProductionPlans), '', Array, Array)
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/workspace/protected/views/productionPlans/update.php(21): CController->renderPartial('_uform', Array)
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#13 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(143): CController->render('update', Array)
+#14 [internal function]: ProductionPlansController->actionUpdate('1')
+#15 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlansController), Array)
+#16 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlansController), Object(ReflectionMethod), Array)
+#17 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#26 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlans...')
+#27 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/index.php?r=productionPlans/update&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/admin
+---
+2014/12/17 15:28:20 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =.
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php (31)
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php (21)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (121)
+2014/12/17 15:28:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(121): CController->render('update', Array)
+#13 [internal function]: ProductionPlanDetailsController->actionUpdate('4')
+#14 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 15:31:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =.
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php (31)
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php (21)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (121)
+2014/12/17 15:31:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(121): CController->render('update', Array)
+#13 [internal function]: ProductionPlanDetailsController->actionUpdate('5')
+#14 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=5
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:19:32 [error] [php] Undefined variable: model (/home/ubuntu/yii/framework/base/CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 /home/ubuntu/yii/framework/zii/widgets/grid/CButtonColumn.php(321): CButtonColumn->renderButton()
+#1 /home/ubuntu/yii/framework/zii/widgets/grid/CGridColumn.php(231): CButtonColumn->getDataCellContent()
+#2 /home/ubuntu/yii/framework/zii/widgets/grid/CGridColumn.php(154): CButtonColumn->renderDataCellContent()
+#3 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(638): CButtonColumn->renderDataCell()
+#4 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(622): CGridView->renderDataCell()
+#5 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(578): CGridView->renderTableRow()
+#6 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(488): CGridView->renderTableBody()
+#7 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(181): CGridView->renderItems()
+#8 unknown(0): CGridView->renderSection()
+#9 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#10 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(149): CGridView->renderContent()
+#11 /home/ubuntu/yii/framework/web/CBaseController.php(181): CGridView->run()
+#12 /home/ubuntu/workspace/protected/views/productionPlans/view.php(65): ProductionPlansController->widget()
+#13 /home/ubuntu/yii/framework/web/CBaseController.php(126): require()
+#14 /home/ubuntu/yii/framework/web/CBaseController.php(95): ProductionPlansController->renderInternal()
+#15 /home/ubuntu/yii/framework/web/CController.php(869): ProductionPlansController->renderFile()
+#16 /home/ubuntu/yii/framework/web/CController.php(782): ProductionPlansController->renderPartial()
+#17 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(61): ProductionPlansController->render()
+#18 unknown(0): ProductionPlansController->actionView()
+#19 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#20 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#21 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#22 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlansController->runAction()
+#23 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#24 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#25 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlansController->filterAccessControl()
+#26 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#27 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#28 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlansController->runActionWithFilters()
+#29 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlansController->run()
+#30 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#31 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#32 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=productionPlans/view&id=1
+in /home/ubuntu/workspace/protected/views/productionPlans/view.php (65)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php (61)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 16:21:03 [error] [php] Undefined variable: model (/home/ubuntu/yii/framework/base/CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 /home/ubuntu/yii/framework/zii/widgets/grid/CButtonColumn.php(321): CButtonColumn->renderButton()
+#1 /home/ubuntu/yii/framework/zii/widgets/grid/CGridColumn.php(231): CButtonColumn->getDataCellContent()
+#2 /home/ubuntu/yii/framework/zii/widgets/grid/CGridColumn.php(154): CButtonColumn->renderDataCellContent()
+#3 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(638): CButtonColumn->renderDataCell()
+#4 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(622): CGridView->renderDataCell()
+#5 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(578): CGridView->renderTableRow()
+#6 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(488): CGridView->renderTableBody()
+#7 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(181): CGridView->renderItems()
+#8 unknown(0): CGridView->renderSection()
+#9 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#10 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(149): CGridView->renderContent()
+#11 /home/ubuntu/yii/framework/web/CBaseController.php(181): CGridView->run()
+#12 /home/ubuntu/workspace/protected/views/productionPlans/view.php(65): ProductionPlansController->widget()
+#13 /home/ubuntu/yii/framework/web/CBaseController.php(126): require()
+#14 /home/ubuntu/yii/framework/web/CBaseController.php(95): ProductionPlansController->renderInternal()
+#15 /home/ubuntu/yii/framework/web/CController.php(869): ProductionPlansController->renderFile()
+#16 /home/ubuntu/yii/framework/web/CController.php(782): ProductionPlansController->renderPartial()
+#17 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(61): ProductionPlansController->render()
+#18 unknown(0): ProductionPlansController->actionView()
+#19 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#20 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#21 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#22 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlansController->runAction()
+#23 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#24 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#25 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlansController->filterAccessControl()
+#26 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#27 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#28 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlansController->runActionWithFilters()
+#29 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlansController->run()
+#30 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#31 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#32 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=productionPlans/view&id=1
+in /home/ubuntu/workspace/protected/views/productionPlans/view.php (65)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php (61)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 16:25:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =.
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php (31)
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php (21)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (121)
+2014/12/17 16:25:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(121): CController->render('update', Array)
+#13 [internal function]: ProductionPlanDetailsController->actionUpdate('4')
+#14 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=4&article_id=1&production_plan_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:25:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =.
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php (31)
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php (21)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (121)
+2014/12/17 16:25:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(121): CController->render('update', Array)
+#13 [internal function]: ProductionPlanDetailsController->actionUpdate('4')
+#14 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=4&article_id=1&production_plan_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/update".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=4&article_id=1&production_plan_id=1
+---
+2014/12/17 16:42:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:42:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:43:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:43:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:44:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:45:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:45:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ProductionPlanDetails".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('ProductionPlanD...')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlans...')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=productionPlans/ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:46:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:47:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/17 16:47:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:47:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:47:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:48:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/update".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=5
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:48:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:50:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:53:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:55:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 16:56:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/17 16:57:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+HTTP_REFERER=http://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:01:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/create&production_plan_id=1&article_id=1
+---
+2014/12/17 17:01:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:02:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/delete".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?ajax=items-comp-grid&id=5&r=ProductionPlanDetails%2Fdelete
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:05:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:05:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/ubuntu/workspace/protected/controllers/ItemsController.php:257
+Stack trace:
+#0 /home/ubuntu/workspace/protected/controllers/ItemsController.php(59): ItemsController->loadModel('4')
+#1 [internal function]: ItemsController->actionView('4')
+#2 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ItemsController), Array)
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ItemsController), Object(ReflectionMethod), Array)
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('Items/view')
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=Items/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:06:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/ubuntu/workspace/protected/controllers/ItemsController.php:257
+Stack trace:
+#0 /home/ubuntu/workspace/protected/controllers/ItemsController.php(59): ItemsController->loadModel('4')
+#1 [internal function]: ItemsController->actionView('4')
+#2 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ItemsController), Array)
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ItemsController), Object(ReflectionMethod), Array)
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('Items/view')
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=Items/view&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:08:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProductionPlanDetails/view".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:08:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails
+---
+2014/12/17 17:08:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "productionPlanDetails/create".' in /home/ubuntu/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('productionPlanD...')
+#1 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=productionPlanDetails/create
+---
+2014/12/17 17:17:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:181
+Stack trace:
+#0 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(66): ProductionPlanDetailsController->loadModel('1')
+#1 [internal function]: ProductionPlanDetailsController->actionView('1')
+#2 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:18:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =.
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php (31)
+in /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php (21)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (127)
+2014/12/17 17:18:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1. The SQL statement executed was: SELECT * FROM `article_details` `t` WHERE article_id =' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 /home/ubuntu/workspace/protected/views/productionPlanDetails/_form.php(31): CActiveRecord->findAll(Array)
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#6 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_form', Array)
+#8 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#10 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#12 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(127): CController->render('update', Array)
+#13 [internal function]: ProductionPlanDetailsController->actionUpdate('4')
+#14 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#15 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#16 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#26 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=4
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=productionPlans/view&id=1
+---
+2014/12/17 17:39:22 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlanDetails.org_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('org_id')
+#1 /home/ubuntu/workspace/protected/views/productionPlanDetails/view.php(52): CActiveRecord->__get('org_id')
+#2 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#4 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#5 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(67): CController->render('view', Array)
+#7 [internal function]: ProductionPlanDetailsController->actionView('5')
+#8 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#9 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#10 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#20 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5
+---
+2014/12/17 18:01:01 [error] [php] Undefined index: qty (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:65)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (65)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:01:32 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:02:14 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:03:22 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:04:48 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:07:37 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:09:41 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:09:48 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:10:32 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:10:35 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:10:45 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:12:45 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:13:12 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:13:15 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:66)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (66)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 18:18:10 [error] [exception.CException] exception 'CException' with message 'Property "CDataColumn.label" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/YiiBase.php(220): CComponent->__set('label', 'Required')
+#1 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(359): CGridView->initColumns()
+#3 /home/ubuntu/yii/framework/web/CBaseController.php(147): CGridView->init()
+#4 /home/ubuntu/yii/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 /home/ubuntu/workspace/protected/views/productionPlanDetails/view.php(54): CBaseController->widget('zii.widgets.gri...', Array)
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#10 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(69): CController->render('view', Array)
+#11 [internal function]: ProductionPlanDetailsController->actionView('5')
+#12 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#13 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#14 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#23 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#24 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/view&id=5&qty=10
+---
+2014/12/17 19:01:37 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (112)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/17 19:01:37 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (112)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/18 10:48:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=http://mpm-bharat89.c9.io/index.php?r=items/create
+---
+2014/12/18 10:49:09 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/18 10:49:09 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/18 14:16:37 [warning] [application] Failed to set unsafe attribute "status" of "ProductionPlanDetails".
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (116)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/18 14:23:09 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlanDetails.artcle_detail_id" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('artcle_detail_i...')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('artcle_detail_i...')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2451): CHtml::resolveValue(Object(ProductionPlanDetails), 'artcle_detail_i...')
+#3 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1788): CHtml::activeInputField('hidden', Object(ProductionPlanDetails), 'artcle_detail_i...', Array)
+#4 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(823): CHtml::activeHiddenField(Object(ProductionPlanDetails), 'artcle_detail_i...', Array)
+#5 /home/ubuntu/workspace/protected/views/productionPlanDetails/_uform.php(30): CActiveForm->hiddenField(Object(ProductionPlanDetails), 'artcle_detail_i...')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#7 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#9 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_uform', Array)
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#11 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#13 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#14 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(129): CController->render('update', Array)
+#15 [internal function]: ProductionPlanDetailsController->actionUpdate('8')
+#16 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#17 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#18 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#25 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#27 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#28 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#29 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=ProductionPlans/view&id=2
+---
+2014/12/18 14:23:26 [error] [exception.CException] exception 'CException' with message 'Property "ProductionPlanDetails." is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('')
+#1 /home/ubuntu/yii/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('')
+#2 /home/ubuntu/yii/framework/web/helpers/CHtml.php(1981): CHtml::resolveValue(Object(ProductionPlanDetails), '')
+#3 /home/ubuntu/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(ProductionPlanDetails), '', Array, Array)
+#4 /home/ubuntu/workspace/protected/views/productionPlanDetails/_uform.php(32): CActiveForm->dropDownList(Object(ProductionPlanDetails), '', Array, Array)
+#5 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#6 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#7 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#8 /home/ubuntu/workspace/protected/views/productionPlanDetails/update.php(21): CController->renderPartial('_uform', Array)
+#9 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#11 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#12 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#13 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(129): CController->render('update', Array)
+#14 [internal function]: ProductionPlanDetailsController->actionUpdate('8')
+#15 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#16 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#17 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#26 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#27 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1
+---
+2014/12/18 17:18:01 [error] [php] Undefined index: count (/home/ubuntu/workspace/protected/views/productionPlans/view.php:68)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(869): ProductionPlansController->renderFile()
+#1 /home/ubuntu/yii/framework/web/CController.php(782): ProductionPlansController->renderPartial()
+#2 /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php(62): ProductionPlansController->render()
+#3 unknown(0): ProductionPlansController->actionView()
+#4 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#5 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlansController->runAction()
+#8 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlansController->filterAccessControl()
+#11 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#13 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlansController->runActionWithFilters()
+#14 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlansController->run()
+#15 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#17 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlans/view&id=2
+in /home/ubuntu/workspace/protected/views/productionPlans/view.php (68)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlansController.php (62)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/18 17:21:18 [error] [php] Undefined variable: count (/home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php:141)
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#3 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#9 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#10 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (141)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/18 17:22:27 [error] [exception.CException] exception 'CException' with message 'Property "StockTransDetails.updated" is not defined.' in /home/ubuntu/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(161): CComponent->__set('updated', Object(CDbExpression))
+#1 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(133): CActiveRecord->__set('updated', Object(CDbExpression))
+#2 [internal function]: ProductionPlanDetailsController->actionUpdate('8')
+#3 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ProductionPlanDetailsController), Array)
+#4 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ProductionPlanDetailsController), Object(ReflectionMethod), Array)
+#5 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#14 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ProductionPlanD...')
+#15 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1
+---
+2014/12/19 16:45:20 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'qty' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `stock_trans_details` `t`  LEFT OUTER JOIN `items` `Rel_trans_item_id` ON (`t`.`item_id`=`Rel_trans_item_id`.`id`) WHERE ((qty LIKE :ycp0) AND (trans_type=:ycp1)).
+in /home/ubuntu/workspace/protected/views/stockTransDetails/admin.php (76)
+in /home/ubuntu/workspace/protected/controllers/StockTransDetailsController.php (147)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/19 16:45:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'qty' in where clause is ambiguous. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `stock_trans_details` `t`  LEFT OUTER JOIN `items` `Rel_trans_item_id` ON (`t`.`item_id`=`Rel_trans_item_id`.`id`) WHERE ((qty LIKE :ycp0) AND (trans_type=:ycp1))' in /home/ubuntu/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/ubuntu/yii/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/ubuntu/yii/framework/db/ar/CActiveFinder.php(764): CDbCommand->queryScalar()
+#2 /home/ubuntu/yii/framework/db/ar/CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 /home/ubuntu/yii/framework/db/ar/CActiveRecord.php(1610): CActiveFinder->count(Object(CDbCriteria))
+#4 /home/ubuntu/yii/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /home/ubuntu/yii/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /home/ubuntu/yii/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /home/ubuntu/yii/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /home/ubuntu/yii/framework/zii/widgets/CBaseListView.php(125): CDataProvider->getData()
+#9 /home/ubuntu/yii/framework/zii/widgets/grid/CGridView.php(339): CBaseListView->init()
+#10 /home/ubuntu/yii/framework/web/CBaseController.php(147): CGridView->init()
+#11 /home/ubuntu/yii/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 /home/ubuntu/workspace/protected/views/stockTransDetails/admin.php(76): CBaseController->widget('zii.widgets.gri...', Array)
+#13 /home/ubuntu/yii/framework/web/CBaseController.php(126): require('/home/ubuntu/wo...')
+#14 /home/ubuntu/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/ubuntu/wo...', Array, true)
+#15 /home/ubuntu/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/ubuntu/wo...', Array, true)
+#16 /home/ubuntu/yii/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#17 /home/ubuntu/workspace/protected/controllers/StockTransDetailsController.php(147): CController->render('admin', Array)
+#18 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(49): StockTransDetailsController->actionAdmin()
+#19 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /home/ubuntu/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#26 /home/ubuntu/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#28 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('stockTransDetai...')
+#29 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#30 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/index.php?StockTransDetails%5Bid%5D=&StockTransDetails%5Bitem_id%5D=&StockTransDetails%5Bqty%5D=18&StockTransDetails%5Btrans_type%5D=0&StockTransDetails%5Bdate%5D=&StockTransDetails_page=1&ajax=stock-trans-details-grid&r=stockTransDetails%2Fadmin
+HTTP_REFERER=https://mpm-bharat89.c9.io/index.php?r=stockTransDetails/admin
+---
+2014/12/20 07:03:25 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/models/ProductionPlanDetails.php:121)
+Stack trace:
+#0 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(121): ProductionPlanDetails->save()
+#1 unknown(0): ProductionPlanDetailsController->actionUpdate()
+#2 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1&qty=21
+in /home/ubuntu/workspace/protected/models/ProductionPlanDetails.php (121)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (121)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 07:06:01 [error] [php] Creating default object from empty value (/home/ubuntu/workspace/protected/models/ProductionPlanDetails.php:122)
+Stack trace:
+#0 /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php(121): ProductionPlanDetails->save()
+#1 unknown(0): ProductionPlanDetailsController->actionUpdate()
+#2 /home/ubuntu/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#3 /home/ubuntu/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /home/ubuntu/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(133): ProductionPlanDetailsController->runAction()
+#6 /home/ubuntu/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/ubuntu/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/ubuntu/yii/framework/web/filters/CInlineFilter.php(58): ProductionPlanDetailsController->filterAccessControl()
+#9 /home/ubuntu/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/ubuntu/yii/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/ubuntu/yii/framework/web/CController.php(265): ProductionPlanDetailsController->runActionWithFilters()
+#12 /home/ubuntu/yii/framework/web/CWebApplication.php(282): ProductionPlanDetailsController->run()
+#13 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/ubuntu/workspace/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ProductionPlanDetails/update&id=8&production_plan_id=2&article_id=1&qty=2
+in /home/ubuntu/workspace/protected/models/ProductionPlanDetails.php (122)
+in /home/ubuntu/workspace/protected/controllers/ProductionPlanDetailsController.php (121)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:11:26 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:12:18 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:12:18 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:12:47 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:13:10 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:13:10 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:13:44 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/20 12:13:44 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/21 11:58:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=http://mpm-bharat89.c9.io/index.php?r=items/create
+---
+2014/12/21 11:59:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setCode".' in /home/ubuntu/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/ubuntu/yii/framework/web/CController.php(270): CController->missingAction('setCode')
+#1 /home/ubuntu/yii/framework/web/CWebApplication.php(282): CController->run('setCode')
+#2 /home/ubuntu/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('items/setCode')
+#3 /home/ubuntu/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/ubuntu/workspace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=items/setCode
+HTTP_REFERER=http://mpm-bharat89.c9.io/index.php?r=items/create
+---
+2014/12/21 12:02:13 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/21 12:02:42 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/21 12:02:42 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/21 12:03:01 [warning] [application] Failed to set unsafe attribute "0" of "ArticleDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleDetailsController.php (80)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/21 12:03:13 [warning] [application] Failed to set unsafe attribute "0" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)
+2014/12/21 12:03:13 [warning] [application] Failed to set unsafe attribute "1" of "ArticleProcessDetails".
+in /home/ubuntu/workspace/protected/controllers/ArticleProcessDetailsController.php (79)
+in /home/ubuntu/workspace/index.php (13)

@@ -19,9 +19,6 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-
-
-
 	<div class="row">
 		
 		<?php
@@ -43,37 +40,33 @@ JS;
 			$type_list=CHtml::listData(ConfigItemTypes::model()->findAll(),'id','name');
 		echo //$form->textField($model,'type_id'); 
 	
-	//		$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type'));
-				$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type','onchange'=>'js:toggleInput_type(this.selectedIndex)',
+		$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type'));
+	/*			$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type','onchange'=>'js:toggleInput_type(this.selectedIndex)',
 				'ajax' => array(
                         'type'=>'POST',
                         'url'=>CController::createUrl('items/dynamicStates'),
                         'update'=>'#'.CHtml::activeId($model,'sub_type_id'),
        ) ));
+       */
 	?>
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 
-
+<!--
 		<div class="row">
-		<?php echo $form->labelEx($model,'sub_type_id'); ?>
+		<?php /*echo $form->labelEx($model,'sub_type_id'); ?>
 		<?php 
 	//		$type_list=CHtml::listData(ConfigItemTypes::model()->findAll(),'id','name');
 		echo //$form->textField($model,'type_id'); 
 	
 			$form->dropDownList($model,'sub_type_id',array(),array('empty'=>'Select','onchange'=>"($(this).find('option:selected').val())?$('#codearea').val($(this).find('option:selected').text().toUpperCase()+'_'):$('#codearea').val('');",
 	//		$form->dropDownList($model,'sub_type_id',array(),array('empty'=>'Selec','onchange'=>"javascript:$('#codearea').val($(#".CHtml::activeId($model,'sub_type_id').").find('option:selected').text())",
-			/*	'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>CController::createUrl('items/setCode'),
-                   //     'update'=>'#'.CHtml::activeId($model,'tmp'),
-                        'update'=>'#codearea',
-       )*/
 				)
 			);
 	?>
 		<?php echo $form->error($model,'sub_type_id'); ?>
 	</div>
+	
 	<div class="row" id="div_manu" style="display: none">
 	<?php
 	$buttonToggler= <<<JS
@@ -101,11 +94,11 @@ JS;
 		
 			$form->dropDownList($model,'org_id',$type_list,array('empty'=>'Select Option'));
 	?>
-		<?php echo $form->error($model,'org_id'); ?>
+		<?php echo $form->error($model,'org_id'); */?>
 	</div>
 
 
-	
+	-->
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -163,6 +156,16 @@ JS;
 	?>
 		<?php echo $form->error($model,'color_prop_val_id'); ?>
 	</div>
+<!--
+	<div class="row">
+		<?php echo $form->labelEx($model,'qty'); ?>
+		<div id="code-div">
+		<?php echo $form->textField($model,'qty'); ?>
+		</div>
+		<?php echo $form->error($model,'qty'); ?>
+	</div>
+
+-->	
 
 
 <?php

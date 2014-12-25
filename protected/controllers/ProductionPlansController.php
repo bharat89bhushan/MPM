@@ -33,6 +33,7 @@ class ProductionPlansController extends Controller
 				'users'=>array('*'),
 			),
 			*/
+			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 		//		'actions'=>array('create','update'),
 				'users'=>array('@'),
@@ -95,10 +96,11 @@ class ProductionPlansController extends Controller
 		if(isset($_POST['ProductionPlans']))
 		{
 			$model->attributes=$_POST['ProductionPlans'];
+			$model->date=new CDbExpression('NOW()');
 			$model->status=1;
 			if($model->save())
 			{
-			
+			/*
 			$planrel = new PlanItemStockRelations;
 			$planrel->plan_id = $model->id;
 			$planrel->item_id = $model->item_id;
@@ -107,7 +109,7 @@ class ProductionPlansController extends Controller
 			$planrel->save();
 			
 			$this->createPlanItemRel($model->item_id,$model->id,$model->value);
-				
+				*/
 				$this->redirect(array('view','id'=>$model->id));
 				//$this->redirect(array('admin','id'=>$model->id));
 			}

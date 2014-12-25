@@ -49,10 +49,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		array('name'=>'item_code','header'=>'Item Code','value'=>'$data->Rel_plan_item_id->code','filter'=> CHtml::activeTextField($model, 'item_code')),
-		array('name'=>'item_name','header'=>'Item Name','value'=>'$data->Rel_plan_item_id->name','filter'=> CHtml::activeTextField($model, 'item_name')),
+		array('name'=>'article_code','header'=>'Article Code','value'=>'$data->Rel_article->code','filter'=> CHtml::activeTextField($model, 'article_code')),
+		array('name'=>'article_name','header'=>'Article Name','value'=>'$data->Rel_article->name','filter'=> CHtml::activeTextField($model, 'article_name')),
 		'value',
 		array('name'=>'status','value'=>'(!$data->status)?\'Complete\':\'In Progress\'','filter' => array('0' => 'Complete', '1' => 'In Progress'),),
+		'date',
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}{update}',

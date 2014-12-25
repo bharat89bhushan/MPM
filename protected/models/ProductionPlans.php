@@ -5,17 +5,18 @@
  *
  * The followings are the available columns in table 'production_plans':
  * @property integer $id
- * @property integer $item_id
+ * @property integer $article_id
  * @property string $value
  * @property integer $status
+ * @property string $date
  */
 class ProductionPlans extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
-	 public $item_code;
-	 public $item_name;
+	 public $article_code;
+	 public $article_name;
 	public function tableName()
 	{
 		return 'production_plans';
@@ -29,12 +30,12 @@ class ProductionPlans extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('item_id, value, status', 'required'),
-			array('item_id, status', 'numerical', 'integerOnly'=>true),
+			array('article_id, value, status', 'required'),
+			array('article_id, status', 'numerical', 'integerOnly'=>true),
 			array('value', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, item_id, value, status,item_code,item_name', 'safe', 'on'=>'search'),
+			array('id, article_id, value, status,item_code,item_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,8 +47,8 @@ class ProductionPlans extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Rel_plan_id'=>array(self::HAS_MANY,'PlanItemStockRelations','plan_id'),
-			'Rel_plan_item_id'=>array(self::BELONGS_TO,'Items','item_id'),
+			'Rel_production_plan'=>array(self::HAS_MANY,'ProductionPlanDetails','production_plan_id'),
+			'Rel_article'=>array(self::BELONGS_TO,'Articles','article_id'),
 		);
 	}
 
@@ -58,9 +59,10 @@ class ProductionPlans extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'item_id' => 'Item',
-			'value' => 'Value',
+			'article_id' => 'Article',
+			'value' => 'Qty',
 			'status' => 'Status',
+			'date' => 'Date',
 		);
 	}
 
@@ -81,14 +83,15 @@ class ProductionPlans extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-			$criteria->with= array('Rel_plan_item_id');
+			$criteria->with= array('Rel_article');
 
 		$criteria->compare('t.id',$this->id);
-		$criteria->compare('item_id',$this->item_id);
+		$criteria->compare('article_id',$this->article_id);
 		$criteria->compare('value',$this->value,true);
-		$criteria->compare('status',$this->status);
-		$criteria->addSearchCondition('Rel_plan_item_id.code',$this->item_code);
-		$criteria->addSearchCondition('Rel_plan_item_id.name',$this->item_name);
+		$criteria->compare('status',$this->status,true);
+		$criteria->compare('date',$this->date);
+		$criteria->addSearchCondition('Rel_article.code',$this->article_code);
+		$criteria->addSearchCondition('Rel_article.name',$this->article_name);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

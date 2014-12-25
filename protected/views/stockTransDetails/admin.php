@@ -55,7 +55,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'value'=>'$data->Rel_trans_item_id->code'
 			),
 			array(
-				'name'=>'item_id',
+			'name'=>'item_id',
 			'header'=>'Item Name',
 			'value'=>'$data->Rel_trans_item_id->name'
 			),
@@ -66,11 +66,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'filter' => array('0' => 'Deduction', '1' => 'Addition'),
 		),
 		'date',
-	//	'created_by',
-		array(
-			'name'=>'created_by',
-			'value'=>'$data->Rel_trans_users->username'
-			),
 		/*
 		'value',
 		array(

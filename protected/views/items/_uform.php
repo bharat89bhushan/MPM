@@ -35,12 +35,12 @@
 		<?php echo $form->labelEx($model,'type_id'); ?>
 		<?php 
 		echo //($model->Rel_item_subtype)?$model->Rel_item_subtype->Rel_item_type->name:"Not Defined"; //$form->textField($model,'type_id'); 
-		$form->textField($model,'',array('readonly'=>'true','value'=>($model->Rel_item_subtype)?$model->Rel_item_subtype->Rel_item_type->name:"Not Defined"));
+		$form->textField($model,'',array('readonly'=>'true','value'=>($model->Rel_item_type)?$model->Rel_item_type->name:"Not Defined"));
 	?>
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 
-	
+	<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'sub_type_id'); ?>
 		<?php 
@@ -87,7 +87,7 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 	?>
 		<?php echo $form->error($model,'org_id'); ?>
 	</div>
-
+-->
 	<div class="row">
 		<?php echo $form->labelEx($model,'unit_type'); ?>
 		<?php 

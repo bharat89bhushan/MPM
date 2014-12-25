@@ -9,8 +9,7 @@
  * @property string $qty
  * @property integer $trans_type
  * @property string $date
- * @property integer $created_by
- * @property string $value
+ * @property integer $production_plan_detail_id
  */
 class StockTransDetails extends CActiveRecord
 {
@@ -30,12 +29,12 @@ class StockTransDetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('item_id, qty, trans_type, date, created_by, value', 'required'),
-			array('item_id, trans_type, created_by', 'numerical', 'integerOnly'=>true),
-			array('qty, value', 'length', 'max'=>10),
+			array('item_id, qty, trans_type, date, production_plan_detail_id', 'required'),
+			array('item_id, trans_type,production_plan_detail_id', 'numerical', 'integerOnly'=>true),
+			array('qty', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, item_id, qty, trans_type, date, created_by, value', 'safe', 'on'=>'search'),
+			array('id, item_id, qty, trans_type, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,7 +47,6 @@ class StockTransDetails extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Rel_trans_item_id'=>array(self::BELONGS_TO,'Items','item_id'),
-			'Rel_trans_users'=>array(self::BELONGS_TO,'Users','created_by'),
 		);
 	}
 
@@ -63,8 +61,7 @@ class StockTransDetails extends CActiveRecord
 			'qty' => 'Qty',
 			'trans_type' => 'Trans Type',
 			'date' => 'Date',
-			'created_by' => 'Created By',
-			'value' => 'Value',
+			'production_plan_detail_id' => 'Production Plan Details',
 		);
 	}
 
@@ -85,15 +82,13 @@ class StockTransDetails extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with= array('Rel_trans_item_id','Rel_trans_users');
+		$criteria->with= array('Rel_trans_item_id');
 	//	$criteria->compare('id',$this->id);
 	//	$criteria->compare('item_id',$this->item_id);
 		$criteria->compare('qty',$this->qty,true);
 		$criteria->compare('trans_type',$this->trans_type);
 		$criteria->compare('t.date',$this->date,true);
 	//	$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('value',$this->value,true);
-		$criteria->addSearchCondition('Rel_trans_users.username',$this->created_by);
 		$criteria->addSearchCondition('Rel_trans_item_id.code',$this->id);
 		$criteria->addSearchCondition('Rel_trans_item_id.name',$this->item_id);
 		

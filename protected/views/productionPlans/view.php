@@ -23,44 +23,47 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		array(
-		'label'=>'Item Code',
-		'name'=>'Rel_plan_item_id.code',
+		'label'=>'Article Code',
+		'name'=>'Rel_article.code',
 		),
 		array(
-		'label'=>'Item Name',
-		'name'=>'Rel_plan_item_id.name',
+		'label'=>'Article Name',
+		'name'=>'Rel_article.name',
 		),
 		'value',
 		array(
 		'name'=>'status',
 		'value'=> $model['status']?'InProgress':'Completed',
 		),
+		'date',
 	),
 )); ?>
 <?php 
 
 $config = array('keyField'=>'id');
-$dataprovider = new CArrayDataProvider($rawData=$model->Rel_plan_id, $config);
+$dataprovider = new CArrayDataProvider($rawData=$model->Rel_production_plan, $config);
  
 	$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'items-comp-grid',
         'dataProvider'=>$dataprovider,
         'columns'=>array(
    //     'plan_id',
-		array('name'=>'Item Name','value'=>'$data->Rel_plan_rel_item_id->name'),
-		array('name'=>'Item Code','value'=>'$data->Rel_plan_rel_item_id->code'),
-		array('name'=>'In Stock','value'=>'$data->value'),
-		array('name'=>'Required Qty','value'=>'$data->req_qty'),
+   
+		array('name'=>'Process','value'=>'$data->Rel_article_detail->Rel_process->name'),
+	//	array('name'=>'Item Code','value'=>'$data->Rel_plan_rel_item_id->code'),
+		array('name'=>'Created','value'=>'$data->date'),
+		array('name'=>'Completed','value'=>'$data->status?NULL:$data->updated'),
 	//	'value',
                 array(
                         'class'=>'CButtonColumn'
-			, 'viewButtonUrl'=>'Yii::app()->createUrl("/PlanItemStockRelations/view", array("id"=>$data["id"]))'
-            , 'updateButtonUrl'=>'Yii::app()->createUrl("/PlanItemStockRelations/update", array("id"=>$data["id"]))'
-            , 'deleteButtonUrl'=>'Yii::app()->createUrl("/PlanItemStockRelations/delete", array("id"=>$data["id"]))'
-		,'template'=>'{update}'
+			, 'viewButtonUrl'=>'Yii::app()->createUrl("/ProductionPlanDetails/view", array("id"=>$data["id"],"qty"=>'.$model->value.'))'
+            , 'updateButtonUrl'=>'Yii::app()->createUrl("/ProductionPlanDetails/update", array("id"=>$data["id"],"production_plan_id"=>'.$model->id.',"article_id"=>'.$model->article_id.',"qty"=>'.$model->value.'))'
+            , 'deleteButtonUrl'=>'Yii::app()->createUrl("/ProductionPlanDetails/delete", array("id"=>$data["id"]))'
+		,//'template'=>'{update}'
             
                 ),
         ),
 )); 
- echo CHtml::link('Add', array('PlanItemStockRelations/create','plan_id'=>$model->id));
+ echo CHtml::link('Add', array('ProductionPlanDetails/create','production_plan_id'=>$model->id,'article_id'=>$model->article_id));
+ 
 ?>

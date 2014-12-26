@@ -32,6 +32,10 @@ $this->menu=array(
 		'name'=>'Rel_article_detail.Rel_process.name',
 		),
 		array(
+		'label'=>'Party',
+		'name'=>'Rel_party_id.name',
+		),
+		array(
 		'name'=>'status',
 		'value'=> $model['status']?'InProgress':'Completed',
 		),
@@ -40,6 +44,27 @@ $this->menu=array(
 )); ?>
 <?php 
 if($model->status){
+if($model->party_id){	
+$config = array('keyField'=>'id');
+$dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_process_details, $config);
+ 
+	$this->widget('zii.widgets.grid.CGridView', array(
+        'id'=>'items-comp-grid',
+        'dataProvider'=>$dataprovider,
+        'columns'=>array(
+        	array('name'=>'Item Code','value'=>'$data->Rel_item->code'),
+		array('name'=>'Item Name','value'=>'$data->Rel_item->name'),
+		array(
+         'name' => 'Party Stock',
+         'value' => '($pmodel=PartyItemStock::model()->findByAttributes(array("item_id"=>$data->item_id,"party_id"=>'.$model->party_id.')))?$pmodel->qty:"NA"',
+     	),
+		 array(
+         'name' => 'Required',
+         'value' => 'strval(floatval($data->qty)*floatval('.$model->val.'))',
+     	),
+        ),
+));
+}else{
 $config = array('keyField'=>'id');
 $dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_process_details, $config);
  
@@ -59,7 +84,8 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_
          'value' => 'strval(floatval($data->qty)*floatval('.$model->val.'))',
      	),
         ),
-)); 
+));	
+}
 }else{
 $config = array('keyField'=>'id');
 $dataprovider = new CArrayDataProvider($rawData=$model->Rel_stock_trans, $config);

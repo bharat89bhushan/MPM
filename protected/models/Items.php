@@ -39,6 +39,7 @@ class Items extends CActiveRecord
 			array('name, type_id, unit_type', 'required'),
 			array('type_id, unit_type', 'numerical', 'integerOnly'=>true),
 			array('code, name', 'length', 'max'=>30),
+	
 			array('date,size_prop_val_id,color_prop_val_id,qty', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -58,6 +59,7 @@ class Items extends CActiveRecord
 			'Rel_created_by'=>array(self::BELONGS_TO,'Users','created_by'),
 			'Rel_unit_type'=>array(self::BELONGS_TO,'ConfigUnits','unit_type'),
 			'Rel_item_prop'=>array(self::HAS_MANY,'ItemProperties','item_id'),
+			'Rel_item_party_stock'=>array(self::HAS_MANY,'PartyItemStock','item_id'),
 		);
 	}
 

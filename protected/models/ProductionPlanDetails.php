@@ -10,6 +10,7 @@
  * @property integer $status
  * @property string $date
  * @property string $updated
+ * @property integer $party_id
  */
 class ProductionPlanDetails extends CActiveRecord
 {
@@ -34,11 +35,11 @@ class ProductionPlanDetails extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('production_plan_id, article_detail_id', 'required'),
-			array('production_plan_id, article_detail_id,status', 'numerical', 'integerOnly'=>true),
+			array('production_plan_id, article_detail_id,status,party_id', 'numerical', 'integerOnly'=>true),
 			array('tmp_article_id, date,val,status,updated','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, production_plan_id, article_detail_id, date,status', 'safe', 'on'=>'search'),
+			array('id, production_plan_id, article_detail_id, date,status,party_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,6 +53,7 @@ class ProductionPlanDetails extends CActiveRecord
 		return array(
 			'Rel_production_plan'=>array(self::BELONGS_TO,'ProductionPlan','production_plan_id'),
 			'Rel_article_detail'=>array(self::BELONGS_TO,'ArticleDetails','article_detail_id'),
+			'Rel_party_id'=>array(self::BELONGS_TO,'Parties','party_id'),
 			'Rel_stock_trans'=>array(self::HAS_MANY,'StockTransDetails','production_plan_detail_id'),
 		
 		);
@@ -68,6 +70,7 @@ class ProductionPlanDetails extends CActiveRecord
 			'article_detail_id' => 'Article Detail',
 			'date' => 'Date',
 			'updated' =>'Updated',
+			'party_id' =>'Party',
 		);
 	}
 
@@ -105,6 +108,7 @@ class ProductionPlanDetails extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return ProductionPlanDetails the static model class
 	 */
+	 
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -115,10 +119,19 @@ class ProductionPlanDetails extends CActiveRecord
 				if(!$this->status){
 				$processmodels=$this->Rel_article_detail->Rel_process_details;
 				foreach($processmodels as $processmodel){
+					if($this->party_id){
+					$partystockmodel=PartyItemStock::model()->findByAttributes(array('item_id'=>$processmodel->item_id,'party_id'=>$this->party_id));
+					if((!$partystockmodel) || floatval($partystockmodel->qty) < floatval($processmodel->qty)*floatval($this->val))
+					{
+						$this->addError('status', $processmodel->Rel_item->name.'('.$processmodel->Rel_item->code.') Stock insufficent to '.$this->Rel_party_id->name);
+						return false;
+					}
+					}else{
 					if(floatval($processmodel->Rel_item->qty) < floatval($processmodel->qty)*floatval($this->val))
 					{
 						$this->addError('status', $processmodel->Rel_item->name.'('.$processmodel->Rel_item->code.') Stock insufficent');
 						return false;
+					}	
 					}
 				}
 				}
@@ -129,4 +142,13 @@ class ProductionPlanDetails extends CActiveRecord
 		return true;
 	}
 	
+/*	public function getPartyStock($item){
+		 $item_model = PartyItemStock::model()->findByAttributes(array('item_id'=>$item,'party_id'=>$model->party_id));	
+         if($item_model){
+         	return $item_model->qty;
+         }else{
+         	return $model->party_id;
+         }
+	}
+*/
 }

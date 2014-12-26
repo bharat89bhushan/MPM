@@ -33,6 +33,14 @@
 	
 		<?php echo $form->error($model,'article_detail_id'); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'party_id'); ?>
+			<?php  
+		$party_list=CHtml::listData(Parties::model()->findAll(),'id','name');
+			echo $form->dropDownList($model,'party_id',$party_list,array('empty'=>'Self')); ?>
+	
+		<?php echo $form->error($model,'party_id'); ?>
+	</div>
 <!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'date'); ?>

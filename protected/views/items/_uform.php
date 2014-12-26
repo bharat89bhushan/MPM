@@ -119,7 +119,7 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 	?>
 		<?php echo $form->error($model,'color_prop_val_id'); ?>
 	</div>
-
+	
 
 <?php
    // echo CHtml::link('Add Properties', '#', array('id' => 'loadChildByAjax'));

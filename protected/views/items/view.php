@@ -46,6 +46,10 @@ $this->menu=array(
       	'label'=>'Colour',
       	'value'=> $model->getPropValColour($model->id), 
 		),
+		array(
+      	'label'=>'Qty(Self)',
+      	'value'=> $model->qty, 
+		),
 	),
 )); ?>
 
@@ -75,4 +79,31 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_item_comp, $config);
  echo CHtml::link('Add', array('ItemsCompositionDetails/create','comp_id'=>$model->id,'org_id'=>$model->org_id));
 }
 */
+?>
+
+<?php 
+
+$config = array('keyField'=>'id');
+$dataprovider = new CArrayDataProvider($rawData=$model->Rel_item_party_stock, $config);
+ 
+	$this->widget('zii.widgets.grid.CGridView', array(
+        'id'=>'items-comp-grid',
+        'dataProvider'=>$dataprovider,
+        'columns'=>array(
+        	array('name'=>'Party Code','value'=>'$data->Rel_party_id->code'),
+		array('name'=>'Party Name','value'=>'$data->Rel_party_id->name'),
+		'qty',
+                array(
+                        'class'=>'CButtonColumn'
+			, 'viewButtonUrl'=>'Yii::app()->createUrl("/PartyItemStock/view", array("id"=>$data["id"]))'
+            , 'updateButtonUrl'=>'Yii::app()->createUrl("/PartyItemStock/update", array("id"=>$data["id"]))'
+            , 'deleteButtonUrl'=>'Yii::app()->createUrl("/PartyItemStock/delete", array("id"=>$data["id"]))'
+		,'template'=>'{update}{delete}'
+            
+                ),
+        ),
+)); 
+ echo CHtml::link('Add', array('PartyItemStock/create','item_id'=>$model->id));
+
+
 ?>

@@ -156,7 +156,7 @@ JS;
 	?>
 		<?php echo $form->error($model,'color_prop_val_id'); ?>
 	</div>
-<!--
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'qty'); ?>
 		<div id="code-div">
@@ -165,7 +165,7 @@ JS;
 		<?php echo $form->error($model,'qty'); ?>
 	</div>
 
--->	
+	
 
 
 <?php

@@ -36,8 +36,11 @@
 				array('label'=>'Items', 'url'=>array('/items/admin')),
 			//	array('label'=>'Stocks', 'url'=>array('/stockDetails/admin')),
 				array('label'=>'Articles', 'url'=>array('/articles/admin')),
-				array('label'=>'Reports', 'url'=>array('/stockTransDetails/admin')),
+			//	array('label'=>'Reports', 'url'=>array('/stockTransDetails/admin')),
 				array('label'=>'Production Plans', 'url'=>array('/productionPlans/admin')),
+				array('label'=>'Configuration', 'url'=>array('/configuration/configProcess/admin')),
+				array('label'=>'Purchase', 'url'=>array('/purchase/purchaseOrders/admin')),
+				array('label'=>'Parties', 'url'=>array('/parties/admin')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

@@ -135,8 +135,25 @@ class ProductionPlansController extends Controller
 		if(isset($_POST['ProductionPlans']))
 		{
 			$model->attributes=$_POST['ProductionPlans'];
-			if($model->save())
+			if($model->save()){
+				if(isset($_POST['ProductionPlanFinalDetails']))
+				{
+					$planmodels = ProductionPlanFinalDetails::model()->findAll("plan_id ='" . $model->id . "'");
+					foreach($planmodels as $planmodel){
+						$planmodel->delete();
+					}
+					foreach ($_POST['ProductionPlanFinalDetails'] as $index => $plan_final_details) {
+					
+							$ordermodel = new ProductionPlanFinalDetails;
+							$ordermodel->attributes = $plan_final_details;
+							$ordermodel->plan_id = $model->id;
+							$ordermodel->date=new CDbExpression('NOW()');
+							$ordermodel->save();	
+						
+					}
+				}
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
@@ -211,4 +228,15 @@ class ProductionPlansController extends Controller
 			Yii::app()->end();
 		}
 	}
+	public function actionLoadChildByAjax($index)
+    {
+     // $relmodel = new PurchaseOrderDetails;
+      echo $this->renderPartial('application.views.productionPlanFinalDetails._tform', array(
+            'model' => new ProductionPlanFinalDetails,
+            'index' => $index,
+            'display' => 'block',
+        ),true);
+   //    	echo CHtml::textField('qty');
+        
+    }
 }

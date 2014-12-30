@@ -43,6 +43,8 @@ class Parties extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Rel_party_item_stock'=>array(self::HAS_MANY,'PartyItemStock','party_id'),
+			'Rel_party_production_plan'=>array(self::HAS_MANY,'ProductionPlanDetails','party_id'),
 		);
 	}
 

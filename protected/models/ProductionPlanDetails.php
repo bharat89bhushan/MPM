@@ -51,7 +51,7 @@ class ProductionPlanDetails extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'Rel_production_plan'=>array(self::BELONGS_TO,'ProductionPlan','production_plan_id'),
+			'Rel_production_plan'=>array(self::BELONGS_TO,'ProductionPlans','production_plan_id'),
 			'Rel_article_detail'=>array(self::BELONGS_TO,'ArticleDetails','article_detail_id'),
 			'Rel_party_id'=>array(self::BELONGS_TO,'Parties','party_id'),
 			'Rel_stock_trans'=>array(self::HAS_MANY,'StockTransDetails','production_plan_detail_id'),
@@ -69,6 +69,7 @@ class ProductionPlanDetails extends CActiveRecord
 			'production_plan_id' => 'Production Plan',
 			'article_detail_id' => 'Article Detail',
 			'date' => 'Date',
+			'status' => 'Status',
 			'updated' =>'Updated',
 			'party_id' =>'Party',
 		);

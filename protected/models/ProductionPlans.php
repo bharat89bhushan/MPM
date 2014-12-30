@@ -9,6 +9,7 @@
  * @property string $value
  * @property integer $status
  * @property string $date
+ * @property string $qty
  */
 class ProductionPlans extends CActiveRecord
 {
@@ -17,6 +18,7 @@ class ProductionPlans extends CActiveRecord
 	 */
 	 public $article_code;
 	 public $article_name;
+	 public $tmp;
 	public function tableName()
 	{
 		return 'production_plans';
@@ -32,10 +34,10 @@ class ProductionPlans extends CActiveRecord
 		return array(
 			array('article_id, value, status', 'required'),
 			array('article_id, status', 'numerical', 'integerOnly'=>true),
-			array('value', 'length', 'max'=>10),
+			array('value, qty', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, article_id, value, status,item_code,item_name', 'safe', 'on'=>'search'),
+			array('id, article_id, value, status,item_code,item_name,qty', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,6 +50,7 @@ class ProductionPlans extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Rel_production_plan'=>array(self::HAS_MANY,'ProductionPlanDetails','production_plan_id'),
+			'Rel_production_plan_final'=>array(self::HAS_MANY,'ProductionPlanFinalDetails','plan_id'),
 			'Rel_article'=>array(self::BELONGS_TO,'Articles','article_id'),
 		);
 	}
@@ -63,6 +66,7 @@ class ProductionPlans extends CActiveRecord
 			'value' => 'Qty',
 			'status' => 'Status',
 			'date' => 'Date',
+			'qty' => 'Finished Qty',
 		);
 	}
 
@@ -90,6 +94,7 @@ class ProductionPlans extends CActiveRecord
 		$criteria->compare('value',$this->value,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('date',$this->date);
+		$criteria->compare('qty',$this->qty,true);
 		$criteria->addSearchCondition('Rel_article.code',$this->article_code);
 		$criteria->addSearchCondition('Rel_article.name',$this->article_name);
 

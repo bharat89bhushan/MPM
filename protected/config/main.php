@@ -16,11 +16,14 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.modules.configuration.models.*',
+		'application.modules.purchase.models.*'
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		
+		'configuration',
+		'purchase',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'daknet',

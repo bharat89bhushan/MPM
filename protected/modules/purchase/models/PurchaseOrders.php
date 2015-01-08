@@ -100,26 +100,22 @@ class PurchaseOrders extends CActiveRecord
 	}
 	protected function beforeSave(){
 			if(parent::beforeSave()){
-				if($this->isNewRecord){
-				if(!isset($_POST['PurchaseOrderDetails'])){
-					$this->addError('party_id', 'Add Some Items');
-					return false;
-				} else{
-					$curr = 0;
+			
+				if(isset($_POST['PurchaseOrderDetails'])){
+			
 					foreach ($_POST['PurchaseOrderDetails'] as $index => $order_details) {
 						$ordermodel = new PurchaseOrderDetails;
 						$ordermodel->attributes = $order_details;
 						$ordermodel->purchase_order_id = 0;
-						if($ordermodel->validate())
-							$curr++;
-					}
-					if($curr==0){
+						if(!$ordermodel->validate()){
 						$this->addError('', 'Field is Empty or Contains invalid values ');
-						return false;
+						return false;	
+						}
+							
 					}
 					
 				}
-				}
+				
 			}else{
 				return false;
 			}

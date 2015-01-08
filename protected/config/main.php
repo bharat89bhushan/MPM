@@ -17,13 +17,19 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.modules.configuration.models.*',
-		'application.modules.purchase.models.*'
+		'application.modules.purchase.models.*',
+		'application.modules.productionplan.models.*',
+		'application.modules.sales.models.*',
+		'application.modules.article.models.*'
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		'configuration',
 		'purchase',
+		'productionplan',
+		'sales',
+		'article',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'daknet',

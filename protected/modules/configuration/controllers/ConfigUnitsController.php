@@ -70,8 +70,16 @@ class ConfigUnitsController extends Controller
 		if(isset($_POST['ConfigUnits']))
 		{
 			$model->attributes=$_POST['ConfigUnits'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if($model->save()){
+				if(isset($_POST['ConfigUnitDetails']))
+				{
+					$unitdetailmodel= new ConfigUnitDetails;
+					$unitdetailmodel->attributes = $_POST['ConfigUnitDetails'];
+					$unitdetailmodel->unit_id = $model->id;
+					$unitdetailmodel->save();
+				}
+				$this->redirect(array('admin','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -95,7 +103,7 @@ class ConfigUnitsController extends Controller
 		{
 			$model->attributes=$_POST['ConfigUnits'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(

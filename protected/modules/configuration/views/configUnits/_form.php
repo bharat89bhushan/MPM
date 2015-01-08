@@ -30,6 +30,49 @@
 		<?php echo $form->textField($model,'sign',array('size'=>5,'maxlength'=>5)); ?>
 		<?php echo $form->error($model,'sign'); ?>
 	</div>
+	<?php
+	$buttonToggler_type= <<<JS
+    toggleInput_type=function(src){
+    if(src==3){
+	$("#div_manu").show();
+    }
+	else{
+	$("#div_manu").hide();
+	}
+    }
+	var temp = $('#master_id_lst option:selected').val();
+	if(temp == 3)
+   	$("#div_manu").show();
+   	
+    
+JS;
+	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
+	?>
+  
+	
+
+	<div class="row">
+
+		<?php echo $form->labelEx($model,'master_id'); ?>
+		<?php
+		$type_list=CHtml::listData(ConfigMaster::model()->findAll(),'id','name');
+		echo $form->dropDownList($model,'master_id',$type_list,array('empty'=>'--Select--','onchange'=>'js:toggleInput_type(this.selectedIndex)','id'=>'master_id_lst'));
+		?>
+		<?php echo $form->error($model,'master_id'); ?>
+	</div>
+
+	<div class="row" id="div_manu" style="display: none">
+		<?php
+//		$unitdetailmodel;
+//		if($model->id)
+		 $unitdetailmodel=ConfigUnitDetails::model()->findByAttributes(array('unit_id'=>$model->id));
+		if(!$unitdetailmodel)
+		 $unitdetailmodel= new ConfigUnitDetails;
+		   $this->renderPartial('application.modules.configuration.views.configUnitDetails._tform', array(
+                'model' => $unitdetailmodel,
+            ));
+         ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -80,6 +80,16 @@ $("#loadChildByAjax").click(function(e){
 ?>
 
 
+		<?php
+	$buttonToggler_type= <<<JS
+    deleteChild=function(elm){
+    var element=$(elm).parent().parent();
+     element.remove();
+    }
+JS;
+	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
+	?>
+		
 
 
 	<div class="row buttons">

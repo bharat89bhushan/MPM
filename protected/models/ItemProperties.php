@@ -27,8 +27,9 @@ class ItemProperties extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('item_id, prop_val_id', 'required'),
-			array('item_id, prop_val_id', 'numerical', 'integerOnly'=>true),
+			array('prop_val_id', 'required'),
+			array('prop_val_id', 'numerical', 'integerOnly'=>true),
+			array('type_id','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, item_id, prop_val_id', 'safe', 'on'=>'search'),

@@ -8,7 +8,7 @@
     	<?php $type_list=CHtml::listData(Items::model()->findAll(),'id','name');?>
         <?php echo CHtml::activeDropDownList($model, '[' . $index . ']item_id',$type_list,array('empty'=>'Select')); ?>    
         <?php echo CHtml::activeTextField($model, '[' . $index . ']qty',array('placeholder'=>'Qty')); ?>
-        <?php echo CHtml::link('Delete(Non-Working)', '#', array('onclick' => 'deleteChild(this, ' . $index . '); return false;'));?>
+        <?php echo CHtml::link('Delete', '#', array('onclick' => 'deleteChild(this, ' . $index . '); return false;'));?>
         <?php// echo CHtml::error($model, '[' . $index . ']qty'); ?>
     </div>
 </div>

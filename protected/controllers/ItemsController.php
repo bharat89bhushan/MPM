@@ -82,11 +82,7 @@ class ItemsController extends Controller
 			
 			if($model->save())
 			{
-			/*	$stockmodel = new StockDetails;
-				$stockmodel->item_id=$model->id;
-				if(!$stockmodel->save())
-					print_r($stockmodel->getErrors());
-			*/	
+			/*	
 				if($model->size_prop_val_id){
 				$itemprop = new ItemProperties;
 				$itemprop->item_id = $model->id;
@@ -102,7 +98,17 @@ class ItemsController extends Controller
 				if(!$itemprop->save())
 					print_r($itemprop->getErrors());
 				}
-				
+				*/
+					if(isset($_POST['ItemProperties']))
+				{
+					foreach ($_POST['ItemProperties'] as $index => $order_details) {
+						$ordermodel = new ItemProperties;
+						$ordermodel->attributes = $order_details;
+						$ordermodel->item_id = $model->id;
+						$ordermodel->save();
+					}
+					
+				}
 				
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -136,7 +142,7 @@ class ItemsController extends Controller
 			
 			if($model->save()){
 				
-				
+				/*
 		$itemprops = ItemProperties::model()->findAll('item_id='.$model->id);
 		foreach($itemprops as $itemprop)
 		{
@@ -179,9 +185,24 @@ class ItemsController extends Controller
 				if(!$itemprop->save())
 					print_r($itemprop->getErrors());
 		}
-		
-				
-				
+		*/
+				$purchmodels = ItemProperties::model()->findAll("item_id ='" . $model->id . "'");
+					foreach($purchmodels as $purchmodel){
+						$purchmodel->delete();
+					}
+			if(isset($_POST['ItemProperties']))
+				{
+			
+					foreach ($_POST['ItemProperties'] as $index => $order_details) {
+					
+							$ordermodel = new ItemProperties;
+							$ordermodel->attributes = $order_details;
+							$ordermodel->item_id = $model->id;
+						$ordermodel->save();	
+						
+					}
+					
+				}
 				
 				$this->redirect(array('view','id'=>$model->id));
 			}
@@ -270,17 +291,18 @@ class ItemsController extends Controller
 			Yii::app()->end();
 		}
 	}
-	 public function actionLoadChildByAjax($index)
+	public function actionLoadChildByAjax($index)
     {
-        $model = new ItemProperties;
-        $this->renderPartial('application.views.itemProperties._form', array(
-            'model' => $model,
+     // $relmodel = new PurchaseOrderDetails;
+      echo $this->renderPartial('application.views.itemProperties._tform', array(
+            'model' => new ItemProperties,
             'index' => $index,
-//            'display' => 'block',
-        ), false, true);
+            'notsure'=>0,
+            'display' => 'block',
+        ),true);
+   //    	echo CHtml::textField('qty');
+        
     }
-    
-    
     public function actionDynamicStates()
     {
        

@@ -189,7 +189,43 @@ class ItemPropertiesController extends Controller
 	
 //	echo 10;
 	}*/
+public function actionDynamicStates()
+    {
+       
+   $data=ConfigPropTypeValues::model()->findAll('prop_type_id=:prop_type_id', 
+                  array(':prop_type_id'=>(int)$_POST['type_id']));
+                  
+    $data=CHtml::listData($data,'id','name');
+     echo CHtml::tag('option',
+                   array('value'=>'empty'),CHtml::encode("-Select-"),true);
+    foreach($data as $value=>$name)
+    {
+        echo CHtml::tag('option',
+                   array('value'=>$value),CHtml::encode($name),true);
+    }
+    
+  //  echo "NN";
+    
+    }
+   
 
+	public function actionLoadRegions()
+{
 
-	
+    $IslandID=1;
+
+    $criteria=new CDbCriteria();
+    $criteria->select=array('id,name');
+    $criteria->condition='prop_type_id='.$IslandID;
+   // $criteria->order='RegionName';
+    $RegionsAry= ConfigPropTypeValues::model()->findAll($criteria);
+
+    $ary=array();
+    foreach($RegionsAry as $i=>$obj)
+    {
+         $ary[$i]['id']=$obj->id;
+         $ary[$i]['name']=$obj->name;            
+    }
+    echo json_encode($ary);
+}
 }

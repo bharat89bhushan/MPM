@@ -29,6 +29,22 @@
 	else
 	$("#div_manu").show();
 	
+    };
+    description=function(ind,index){
+	  jQuery.ajax({
+                // The url must be appropriate for your configuration;
+                // this works with the default config of 1.1.11
+                url: 'index.php?r=itemProperties/dynamicStates',
+                type: "POST",
+                data: {type_id: ind}, 
+                success: function(data){
+            		$("#".concat(index,"prop_val_id")).html(data); // deal with data returned
+                    }
+                });
+    };
+    deleteChild=function(elm){
+    var element=$(elm).parent().parent();
+     element.remove();
     }
 JS;
 	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
@@ -128,14 +144,14 @@ JS;
 	<div class="row">
 		<?php echo $form->labelEx($model,'unit_type'); ?>
 		<?php 
-		$type_list=CHtml::listData(ConfigUnits::model()->findAll(),'id','name');
+		$type_list=CHtml::listData(ConfigUnits::model()->findAll('master_id=1'),'id','name');
 		echo //$form->textField($model,'unit_type'); 
 			
 			$form->dropDownList($model,'unit_type',$type_list,array('empty'=>'Select Option'));
 	?>
 		<?php echo $form->error($model,'unit_type'); ?>
 	</div>
-
+<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'size_prop_val_id'); ?>
 		<?php 
@@ -164,29 +180,30 @@ JS;
 		</div>
 		<?php echo $form->error($model,'qty'); ?>
 	</div>
-
+-->
 	
-
-
-<?php
-   // echo CHtml::link('Add Properties', '#', array('id' => 'loadChildByAjax'));
-    ?>
-    <!--
  <div id="Rel_item_prop">
         <?php
-       /* $index = 0;
+        $index = 0;
         foreach ($model->Rel_item_prop as $id => $child):
-            $this->renderPartial('application.views.itemProperties._form', array(
+        	$child->type_id = $child->Rel_prop_val->prop_type_id;
+            $this->renderPartial('application.views.itemProperties._tform', array(
                 'model' => $child,
                 'index' => $id,
+                'notsure'=>$child->type_id,
                 'display' => 'block'
             ));
             $index++;
-        endforeach;*/
+        endforeach;
+        
         ?>
     </div>
 
--->
+
+<?php
+    echo CHtml::link('Add Properties', '#', array('id' => 'loadChildByAjax'));
+    ?>
+   
 
 <!--
 	<div class="row">
@@ -211,7 +228,7 @@ JS;
 </div><!-- form -->
 
 <?php
-/*
+
 Yii::app()->clientScript->registerCoreScript('jquery');
 Yii::app()->clientScript->registerScript('loadchild', '
 var _index = ' . $index . ';
@@ -228,5 +245,5 @@ $("#loadChildByAjax").click(function(e){
     _index++;
 });
 ', CClientScript::POS_END);
-*/
+
 ?>

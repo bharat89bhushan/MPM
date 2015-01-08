@@ -89,7 +89,7 @@ class PurchaseOrdersController extends Controller
 					}
 					
 				}
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->id));
 				
 			}
 		}
@@ -141,7 +141,7 @@ class PurchaseOrdersController extends Controller
 					}
 					
 				}
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
 

@@ -91,7 +91,7 @@ Yii::app()->clientScript->registerScript('toggleFormInputs',$buttonToggler, CCli
 	<div class="row">
 		<?php echo $form->labelEx($model,'unit_type'); ?>
 		<?php 
-		$type_list=CHtml::listData(ConfigUnits::model()->findAll(),'id','name');
+		$type_list=CHtml::listData(ConfigUnits::model()->findAll('master_id=1'),'id','name');
 		echo //$form->textField($model,'unit_type'); 
 			
 			$form->dropDownList($model,'unit_type',$type_list,array('empty'=>'Select Option'));

@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $name
  * @property string $sign
+ * @property integer $master_id
  */
 class ConfigUnits extends CActiveRecord
 {
@@ -26,12 +27,13 @@ class ConfigUnits extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, sign', 'required'),
+			array('name, sign, master_id', 'required'),
+			array('master_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			array('sign', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, sign', 'safe', 'on'=>'search'),
+			array('id, name, sign,master_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +45,7 @@ class ConfigUnits extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Rel_master_id'=>array(self::BELONGS_TO,'ConfigMaster','master_id'),
 		);
 	}
 
@@ -55,6 +58,7 @@ class ConfigUnits extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Name',
 			'sign' => 'Sign',
+			'master_id' => 'Related To',
 		);
 	}
 
@@ -79,6 +83,7 @@ class ConfigUnits extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('sign',$this->sign,true);
+		$criteria->compare('master_id',$this->master_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

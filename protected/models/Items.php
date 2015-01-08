@@ -109,6 +109,7 @@ class Items extends CActiveRecord
 		$criteria->compare('unit_type',$this->unit_type);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('date',$this->date,true);
+		$criteria->compare('qty',$this->qty,true);
 
 		
 
@@ -145,8 +146,7 @@ class Items extends CActiveRecord
 	public function getPropValColour($id)
 	{
 		 $text = 'Not Defined';
-
-	$ItemProps = ItemProperties::model()->findAll('item_id='.$id);
+		$ItemProps = ItemProperties::model()->findAll('item_id='.$id);
 	  foreach($ItemProps as $ItemProp)
         {
             if($ItemProp->Rel_prop_val->Rel_prop_type->name == 'Colour') 
@@ -156,5 +156,21 @@ class Items extends CActiveRecord
 	  return $text;    
 	}
 	
+	protected function beforeSave(){
+			if(parent::beforeSave()){
+				if(isset($_POST['ItemProperties'])){
+				foreach($_POST['ItemProperties'] as $index => $order_details) {
+						$ordermodel = new ItemProperties;
+						$ordermodel->attributes = $order_details;
+					//	$ordermodel->item_id = 0;
+						if(!$ordermodel->validate()){
+							$this->addError('', 'Item Properties Field is Empty or Contains invalid values');
+							return false;
+						}
+					}
+				}
+			}
+			return true;
+	}
 	
 }

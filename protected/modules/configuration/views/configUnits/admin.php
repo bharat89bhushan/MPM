@@ -50,6 +50,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'name',
 		'sign',
 		array(
+		'name'=>'master_id',
+		'value'=>'$data->Rel_master_id->name',
+		'filter' => CHtml::listData( ConfigMaster::model()->findAll(), 'id','name' )
+		),
+		array(
 			'class'=>'CButtonColumn',
 		),
 	),

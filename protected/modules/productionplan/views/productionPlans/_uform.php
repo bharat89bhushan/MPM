@@ -21,9 +21,9 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'article_id'); ?>
-		<?php //echo $form->textField($model,'item_id'); 
+		<?php echo $form->hiddenField($model,'article_id'); 
 		$type_list=CHtml::listData(Articles::model()->findAll(),'id','code');
-			echo $form->dropDownList($model,'article_id',$type_list); ?>
+			echo $form->dropDownList($model,'article_id',$type_list,array('disabled'=>'disabled')); ?>
 		<?php echo $form->error($model,'article_id'); ?>
 	</div>
 
@@ -42,7 +42,14 @@
 	$("#div_manu").show();
 	}
     }
-    
+    var temp = $('#status_lst option:selected').val();
+	if(temp != 1)
+   	$("#div_manu").show();
+   	deleteChild=function(elm){
+    var element=$(elm).parent().parent();
+     element.remove();
+    }
+
 JS;
 	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
 	?>

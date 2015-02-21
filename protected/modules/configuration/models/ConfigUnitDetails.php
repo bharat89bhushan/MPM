@@ -44,6 +44,9 @@ class ConfigUnitDetails extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Rel_sub_unit_id'=>array(self::BELONGS_TO,'ConfigUnits','sub_unit_id'),
+			'Rel_unit_id'=>array(self::BELONGS_TO,'ConfigUnits','unit_id'),
+
 		);
 	}
 

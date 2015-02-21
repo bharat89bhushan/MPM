@@ -37,7 +37,7 @@ class ProductionPlans extends CActiveRecord
 			array('value, qty', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, article_id, value, status,item_code,item_name,qty', 'safe', 'on'=>'search'),
+			array('id, article_id, value, status,item_code,item_name,qty,article_code,article_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -97,6 +97,7 @@ class ProductionPlans extends CActiveRecord
 		$criteria->compare('qty',$this->qty,true);
 		$criteria->addSearchCondition('Rel_article.code',$this->article_code);
 		$criteria->addSearchCondition('Rel_article.name',$this->article_name);
+		$criteria->order = 't.id DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -113,4 +114,38 @@ class ProductionPlans extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+		protected function beforeSave(){
+			if(parent::beforeSave()){
+				if(!$this->isNewRecord){
+					if(!$this->packed){
+					$productiondetails = ProductionPlanDetails::model()->findAll('production_plan_id='.$this->id);
+					if(floatval(ProductionPlans::model()->findByPk($this->id)->value)!=floatval($this->value)){
+						if($productiondetails != null){
+								$this->addError('qty', 'Not Allowed To Change the Qty Now.');
+								return false;
+							
+						}
+					}
+					if(!$this->status){
+						foreach($productiondetails as $productiondetail){
+							if($productiondetail->status){
+								$this->addError('status', 'Few Processes are not completed yet');
+								return false;
+							
+							}
+						}
+					if(!isset($_POST['ProductionPlanFinalDetails'])){
+						$this->addError('', 'Details not Added');
+						return false;
+							
+					}	
+						
+					}
+				}
+				}
+			}
+			return true;
+		}
+	
 }

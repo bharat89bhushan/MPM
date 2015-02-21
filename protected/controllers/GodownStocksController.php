@@ -75,14 +75,25 @@ class GodownStocksController extends Controller
 		if(isset($_POST['GodownStocks']))
 		{
 			$model->attributes=$_POST['GodownStocks'];
-			if($model->save())
+			if($model->save()){
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
 	}
+public function actionPacking($model){
+	if(floatval($model->qty)<floatval($model->sug_qty))
+	{
+		$model->addError('sug_qty', 'Packing Not Possible');
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	
+	}
+}
 
 	/**
 	 * Updates a particular model.
@@ -99,10 +110,23 @@ class GodownStocksController extends Controller
 		if(isset($_POST['GodownStocks']))
 		{
 			$model->attributes=$_POST['GodownStocks'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if($model->save()){
+				$packmodel=GodownStocks::model()->findByAttributes(array('article_id'=>$model->article_id,'quality_id'=>$model->quality_id,'unit_id'=>$model->sug_unit_id));
+				if($packmodel != null){
+					$packmodel->qty=strval(floatval($packmodel->qty)+floatval($model->sug_qty));
+					$packmodel->save();
+				}
+				
+				$this->redirect(array('update','id'=>$model->id));
+			}
 		}
-
+ //		$unitdetailmodel=ConfigUnitDetails::model()->findByAttributes(array('sub_unit_id'=>$model->unit_id));
+		$model->sug_unit_id = $model->Rel_article_id->pack_unit_id;
+		$model->sug_unit_name = $model->Rel_article_id->Rel_pack_unit_id->name;
+		$model->sug_conv = $model->Rel_article_id->pack_qty;
+		$model->sug_qty = strval(intval(floatval($model->qty)/floatval($model->sug_conv)));
+		
+	
 		$this->render('update',array(
 			'model'=>$model,
 		));

@@ -13,6 +13,7 @@ class ArticleDetails extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $calc_per_qty;
 	public function tableName()
 	{
 		return 'article_details';
@@ -28,7 +29,7 @@ class ArticleDetails extends CActiveRecord
 		return array(
 			array('article_id, process_id', 'required'),
 			array('article_id, process_id', 'numerical', 'integerOnly'=>true),
-		//	array('article_id','safe'),
+			array('calc_per_qty','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, article_id, process_id', 'safe', 'on'=>'search'),

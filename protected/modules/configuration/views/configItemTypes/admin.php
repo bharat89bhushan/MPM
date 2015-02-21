@@ -8,8 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Process', 'url'=>array('configProcess/admin')),
 	array('label'=>'Units', 'url'=>array('configUnits/admin')),
+	array('label'=>'Process', 'url'=>array('configProcess/admin')),
+	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
+	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -45,7 +47,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+//		'id',
 		'name',
 		'desc',
 		array(

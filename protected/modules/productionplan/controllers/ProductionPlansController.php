@@ -136,12 +136,12 @@ class ProductionPlansController extends Controller
 		{
 			$model->attributes=$_POST['ProductionPlans'];
 			if($model->save()){
-				if(isset($_POST['ProductionPlanFinalDetails']))
-				{
-					$planmodels = ProductionPlanFinalDetails::model()->findAll("plan_id ='" . $model->id . "'");
+				$planmodels = ProductionPlanFinalDetails::model()->findAll("plan_id ='" . $model->id . "'");
 					foreach($planmodels as $planmodel){
 						$planmodel->delete();
 					}
+				if(isset($_POST['ProductionPlanFinalDetails']))
+				{
 					foreach ($_POST['ProductionPlanFinalDetails'] as $index => $plan_final_details) {
 					
 							$ordermodel = new ProductionPlanFinalDetails;
@@ -258,12 +258,12 @@ class ProductionPlansController extends Controller
 	$model=$this->loadModel($id);
 	
 	foreach($model->Rel_production_plan_final as $finalmodel){
-		$godownmodel = GodownStocks::model()->findByAttributes(array('article_id'=>$model->article_id,'quality_id'=>$finalmodel->quality_id,'unit_id'=>6));
+		$godownmodel = GodownStocks::model()->findByAttributes(array('article_id'=>$model->article_id,'quality_id'=>$finalmodel->quality_id,'unit_id'=>$model->Rel_article->pack_unit_id));
 		if($godownmodel == null){
 			$godownmodel = new GodownStocks;
 			$godownmodel->article_id = $model->article_id;
 			$godownmodel->quality_id = $finalmodel->quality_id;
-			$godownmodel->unit_id = 6;
+			$godownmodel->unit_id = $model->Rel_article->pack_unit_id;
 			$godownmodel->qty = "0";
 		}
 		
@@ -276,10 +276,10 @@ class ProductionPlansController extends Controller
 			$lgodownmodel->qty = "0";
 		}
 		
-		$unitdetailmodel = ConfigUnitDetails::model()->findByAttributes(array('unit_id'=>$godownmodel->unit_id));
+//		$unitdetailmodel = ConfigUnitDetails::model()->findByAttributes(array('unit_id'=>$godownmodel->unit_id));
 	
-		$godownmodel->qty = strval(intval($godownmodel->qty)+intval(intval($finalmodel->qty)/intval($unitdetailmodel->qty)));
-		$lgodownmodel->qty = strval(intval($lgodownmodel->qty)+(intval($finalmodel->qty)%intval($unitdetailmodel->qty)));
+		$godownmodel->qty = strval(intval($godownmodel->qty)+intval(intval($finalmodel->qty)/intval($model->Rel_article->pack_qty)));
+		$lgodownmodel->qty = strval(intval($lgodownmodel->qty)+(intval($finalmodel->qty)%intval($model->Rel_article->pack_qty)));
 		
 		if($godownmodel->save())
 			$lgodownmodel->save();

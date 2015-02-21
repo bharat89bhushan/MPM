@@ -25,6 +25,7 @@ $this->menu=array(
 		'name',
 		'code',
 		'date',
+		'calc_per_qty',
 	),
 )); ?>
 <?php
@@ -39,7 +40,7 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_process, $config);
         	array('name'=>'Process','value'=>'$data->Rel_process->name'),
                 array(
                         'class'=>'CButtonColumn'
-			, 'viewButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/view", array("id"=>$data["id"]))'
+			, 'viewButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/view", array("id"=>$data["id"],"calc_per_qty"=>'.$model->calc_per_qty.'))'
             , 'updateButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/update", array("id"=>$data["id"]))'
             , 'deleteButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/delete", array("id"=>$data["id"]))'
 		,//'template'=>'{update}{delete}'

@@ -14,6 +14,7 @@ class ArticleProcessDetails extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $calc_per_qty;
 	public function tableName()
 	{
 		return 'article_process_details';
@@ -30,6 +31,7 @@ class ArticleProcessDetails extends CActiveRecord
 			array('article_detail_id, item_id', 'required'),
 			array('article_detail_id, item_id', 'numerical', 'integerOnly'=>true),
 			array('qty', 'length', 'max'=>10),
+			array('calc_per_qty','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, article_detail_id, item_id, qty', 'safe', 'on'=>'search'),
@@ -46,6 +48,7 @@ class ArticleProcessDetails extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 				'Rel_item'=>array(self::BELONGS_TO,'Items','item_id'),
+				'Rel_article_detail_id'=>array(self::BELONGS_TO,'ArticleDetails','article_detail_id'),
 		);
 	}
 

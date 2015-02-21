@@ -77,8 +77,8 @@ class ItemsController extends Controller
 			$model->date=new CDbExpression('NOW()');
 			$model->created_by = Yii::app()->user->id;
 			
-			$typemodel = ConfigItemTypes::model()->findByPk($model->type_id);
-			$model->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
+		//	$typemodel = ConfigItemTypes::model()->findByPk($model->type_id);
+		//	$model->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
 			
 			if($model->save())
 			{
@@ -99,7 +99,7 @@ class ItemsController extends Controller
 					print_r($itemprop->getErrors());
 				}
 				*/
-					if(isset($_POST['ItemProperties']))
+				if(isset($_POST['ItemProperties']))
 				{
 					foreach ($_POST['ItemProperties'] as $index => $order_details) {
 						$ordermodel = new ItemProperties;
@@ -107,7 +107,6 @@ class ItemsController extends Controller
 						$ordermodel->item_id = $model->id;
 						$ordermodel->save();
 					}
-					
 				}
 				
 				$this->redirect(array('view','id'=>$model->id));
@@ -137,8 +136,8 @@ class ItemsController extends Controller
 		{
 			$model->attributes=$_POST['Items'];
 			
-			$typemodel = ConfigItemTypes::model()->findByPk($model->type_id);
-			$model->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
+	//		$typemodel = ConfigItemTypes::model()->findByPk($model->type_id);
+	//		$model->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $model->name));
 			
 			if($model->save()){
 				

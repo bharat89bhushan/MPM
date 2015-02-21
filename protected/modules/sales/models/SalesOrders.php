@@ -81,10 +81,13 @@ class SalesOrders extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('party_id',$this->party_id);
 		$criteria->compare('date',$this->date,true);
+		$criteria->order = 'id DESC';
 
-		return new CActiveDataProvider($this, array(
+		$sales_order= new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+		$_SESSION['sales'] = $sales_order;
+		return $sales_order;
 	}
 
 	/**

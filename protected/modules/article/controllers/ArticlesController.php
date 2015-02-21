@@ -24,6 +24,7 @@ class ArticlesController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+	 
 	public function accessRules()
 	{
 		return array(
@@ -74,10 +75,20 @@ class ArticlesController extends Controller
 		{
 			$model->attributes=$_POST['Articles'];
 			$model->date=new CDbExpression('NOW()');
-			if($model->save())
+			if($model->save()){
+				if(isset($_POST['ArticleProperties']))
+				{
+					foreach ($_POST['ArticleProperties'] as $index => $order_details) {
+						$ordermodel = new ArticleProperties;
+						$ordermodel->attributes = $order_details;
+						$ordermodel->article_id = $model->id;
+						$ordermodel->save();
+					}
+				}
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
-
+	$model->calc_per_qty = 1;
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -98,8 +109,26 @@ class ArticlesController extends Controller
 		if(isset($_POST['Articles']))
 		{
 			$model->attributes=$_POST['Articles'];
-			if($model->save())
+			if($model->save()){
+				
+			$purchmodels = ArticleProperties::model()->findAll("article_id ='" . $model->id . "'");
+			foreach($purchmodels as $purchmodel){
+					$purchmodel->delete();
+				}
+			if(isset($_POST['ArticleProperties']))
+				{
+			
+					foreach ($_POST['ArticleProperties'] as $index => $order_details) {
+							$ordermodel = new ArticleProperties;
+							$ordermodel->attributes = $order_details;
+							$ordermodel->article_id = $model->id;
+						$ordermodel->save();	
+					}
+					
+				}
+				
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(
@@ -174,4 +203,16 @@ class ArticlesController extends Controller
 			Yii::app()->end();
 		}
 	}
+	public function actionLoadChildByAjax($index)
+    {
+     // $relmodel = new PurchaseOrderDetails;
+     echo $this->renderPartial('application.modules.article.views.articles._tform', array( 
+     		'model' => new ArticleProperties,
+            'index' => $index,
+            'notsure'=>0,
+            'display' => 'block',
+        ),true);
+   //    	echo CHtml::textField('qty');
+        
+    }
 }

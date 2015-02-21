@@ -28,7 +28,6 @@
 	$("#div_manu").hide();
 	else
 	$("#div_manu").show();
-	
     };
     description=function(ind,index){
 	  jQuery.ajax({
@@ -172,15 +171,12 @@ JS;
 	?>
 		<?php echo $form->error($model,'color_prop_val_id'); ?>
 	</div>
-
+-->
 	<div class="row">
 		<?php echo $form->labelEx($model,'qty'); ?>
-		<div id="code-div">
 		<?php echo $form->textField($model,'qty'); ?>
-		</div>
 		<?php echo $form->error($model,'qty'); ?>
 	</div>
--->
 	
  <div id="Rel_item_prop">
         <?php
@@ -202,7 +198,7 @@ JS;
 
 <?php
     echo CHtml::link('Add Properties', '#', array('id' => 'loadChildByAjax'));
-    ?>
+ ?>
    
 
 <!--

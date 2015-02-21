@@ -72,7 +72,7 @@ class ConfigItemTypesController extends Controller
 		{
 			$model->attributes=$_POST['ConfigItemTypes'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -96,7 +96,7 @@ class ConfigItemTypesController extends Controller
 		{
 			$model->attributes=$_POST['ConfigItemTypes'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('update',array(

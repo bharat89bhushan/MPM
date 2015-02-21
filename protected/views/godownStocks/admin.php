@@ -73,8 +73,13 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'value'=>'$data->Rel_unit_id->name',
 		'filter' => CHtml::listData( ConfigUnits::model()->findAll('master_id=3 or master_id=2'), 'id','name' )
 		),
-	//	array(
-	//		'class'=>'CButtonColumn',
-	//	),
+		array(
+			'class'=>'CButtonColumn',
+			'template'=>'{update}',
+			'buttons'=>array(
+			'update'=>array(
+				'visible'=>'$data->Rel_unit_id->master_id!=3?true:false;',
+			)),
+		),
 	),
 )); ?>

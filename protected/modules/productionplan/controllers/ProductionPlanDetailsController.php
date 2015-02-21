@@ -94,8 +94,8 @@ class ProductionPlanDetailsController extends Controller
 		if(isset($_GET['article_id']))
 			$model->tmp_article_id = $_GET['article_id'];
 			
-		if(isset($_GET['qty']))
-			$model->val = $_GET['qty'];
+	//	if(isset($_GET['qty']))
+	//		$model->val = $_GET['qty'];
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -164,8 +164,8 @@ class ProductionPlanDetailsController extends Controller
 		if(isset($_GET['article_id']))
 			$model->tmp_article_id = $_GET['article_id'];
 	
-		if(isset($_GET['qty']))
-			$model->val = $_GET['qty'];
+	//	if(isset($_GET['qty']))
+	//		$model->val = $_GET['qty'];
 
 
 		$this->render('update',array(

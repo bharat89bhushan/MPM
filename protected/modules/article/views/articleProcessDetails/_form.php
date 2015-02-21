@@ -39,13 +39,14 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'item_id'); ?>
 		<?php
-			$type_list=CHtml::listData(Items::model()->findAll(),'id','name');
+			$type_list=CHtml::listData(Items::model()->findAll(),'id','code');
 		echo $form->dropDownList($model,'item_id',$type_list,array('empty'=>'--Select--'));
 		?>
 		<?php echo $form->error($model,'item_id'); ?>
 	</div>
 
 	<div class="row">
+		<?php echo $form->hiddenField($model,'calc_per_qty'); ?>
 		<?php echo $form->labelEx($model,'qty'); ?>
 		<?php echo $form->textField($model,'qty',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'qty'); ?>

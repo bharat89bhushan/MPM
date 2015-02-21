@@ -30,13 +30,13 @@
 		<?php echo $form->textField($model,'descp',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'descp'); ?>
 	</div>
-
+<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'date'); ?>
 		<?php echo $form->textField($model,'date'); ?>
 		<?php echo $form->error($model,'date'); ?>
 	</div>
-
+-->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

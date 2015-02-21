@@ -25,9 +25,9 @@
 		<?php //echo $form->labelEx($model,'item_id'); 
 		$type_list=CHtml::listData(ConfigPropTypes::model()->findAll(),'id','name');
 		?>
-		<?php echo// $form->textField($model,'type_id');
+		<?php //echo $form->textField($model,'type_id');
 		//$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Option','options' => array(($model->prop_val_id)?$model->Rel_prop_val->Rel_prop_type->id:0=>array('selected'=>true))));
-		);
+	//	);
 	
 		?>
 		
@@ -38,7 +38,7 @@
 	//	$val_list=CHtml::listData(ConfigPropTypeValues::model()->findAll('prop_type_id='.$model->Rel_prop_val->Rel_prop_type->id),'id','name');
 		?>
 		
-		<?php echo// $form->textField($model,'prop_val_id');
+		<?php //echo $form->textField($model,'prop_val_id');
 //			$form->dropDownList($model,'prop_val_id',$val_list,array('empty'=>'Select Option'));
 //	$form->dropDownList($model,'prop_val_id',array(),array('empty'=>'Select Option'));
 		?>

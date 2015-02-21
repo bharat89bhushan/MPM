@@ -77,14 +77,18 @@ class ArticleProcessDetailsController extends Controller
 		if(isset($_POST['ArticleProcessDetails']))
 		{
 			$model->attributes=$_POST['ArticleProcessDetails'];
+			$model->qty = $model->qty/$model->calc_per_qty;
 			if($model->save())
-				$this->redirect(array('articleDetails/view','id'=>$model->article_detail_id));
+				$this->redirect(array('articleDetails/view','id'=>$model->article_detail_id,'calc_per_qty'=>$model->calc_per_qty));
 		}
-
 
 		if(isset($_GET['article_detail_id']))
 		{
 			$model->article_detail_id = $_GET['article_detail_id'];
+		}
+		if(isset($_GET['calc_per_qty']))
+		{
+			$model->calc_per_qty = $_GET['calc_per_qty'];
 		}
 
 
@@ -110,9 +114,18 @@ class ArticleProcessDetailsController extends Controller
 		if(isset($_POST['ArticleProcessDetails']))
 		{
 			$model->attributes=$_POST['ArticleProcessDetails'];
+			$model->qty = $model->qty/$model->calc_per_qty;
+		
 			if($model->save())
-				$this->redirect(array('articleDetails/view','id'=>$model->id));
+				$this->redirect(array('articleDetails/view','id'=>$model->article_detail_id,'calc_per_qty'=>$model->calc_per_qty));
 		}
+
+		if(isset($_GET['calc_per_qty']))
+		{
+			$model->calc_per_qty = $_GET['calc_per_qty'];
+		}
+		$model->qty = $model->qty*$model->calc_per_qty;
+		
 
 		$this->render('update',array(
 			'model'=>$model,

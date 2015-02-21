@@ -17,6 +17,30 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
+<?php
+	$buttonToggler_type= <<<JS
+    toggleInput_type=function(src){
+    if(src==1){
+	$("#received_qty").hide();
+    }
+	else{
+	$("#received_qty").show();
+	}
+    }
+    var temp = $('#status_lst option:selected').val();
+	if(temp != 1)
+   	$("#received_qty").show();
+   	deleteChild=function(elm){
+    var element=$(elm).parent().parent();
+     element.remove();
+    }
+
+JS;
+	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
+	?>
+
+
+
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -40,7 +64,7 @@
 	
 		<?php echo $form->error($model,'party_id'); ?>
 	</div>
-	<?php echo $form->hiddenField($model,'val');?>
+	
 <!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'date'); ?>
@@ -50,10 +74,14 @@
 -->
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->dropDownList($model,'status',array(0=>'Completed',1=>'InProgress')); ?>
+		<?php echo $form->dropDownList($model,'status',array(0=>'Completed',1=>'InProgress'),array('onchange'=>'js:toggleInput_type(this.selectedIndex)','id'=>'status_lst')); ?>
 		<?php echo $form->error($model,'status'); ?>
 	</div>
-
+	<div id="received_qty" class="row" style="display: none">
+		<?php echo $form->labelEx($model,'val'); ?>
+		<?php echo $form->textField($model,'val'); ?>
+		<?php echo $form->error($model,'val'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

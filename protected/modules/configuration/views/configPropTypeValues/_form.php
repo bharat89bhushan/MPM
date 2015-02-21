@@ -21,7 +21,10 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'prop_type_id'); ?>
-		<?php echo $form->textField($model,'prop_type_id'); ?>
+			<?php
+		$type_list=CHtml::listData(ConfigPropTypes::model()->findAll(),'id','name');
+		echo $form->dropDownList($model,'prop_type_id',$type_list,array('empty'=>'--Select--'));
+		?>
 		<?php echo $form->error($model,'prop_type_id'); ?>
 	</div>
 

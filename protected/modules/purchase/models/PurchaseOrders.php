@@ -14,6 +14,8 @@ class PurchaseOrders extends CActiveRecord
 	 * @return string the associated database table name
 	 */
 	 public $qty = array();
+	 public $from_date;
+	 public $to_date;
 	public function tableName()
 	{
 		return 'purchase_orders';
@@ -32,7 +34,7 @@ class PurchaseOrders extends CActiveRecord
 			array('date,qty', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, party_id, date', 'safe', 'on'=>'search'),
+			array('id, party_id, date,from_date,to_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -82,6 +84,19 @@ class PurchaseOrders extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('party_id',$this->party_id);
 		$criteria->compare('date',$this->date,true);
+		$criteria->order = 'id DESC';
+
+		if(!empty($this->from_date) && empty($this->to_date))
+        {
+            $criteria->condition = "date >= '$this->from_date'";  // date is database date column field
+        }elseif(!empty($this->to_date) && empty($this->from_date))
+        {
+            $criteria->condition = "date <= '$this->to_date'";
+        }elseif(!empty($this->to_date) && !empty($this->from_date))
+        {
+            $criteria->condition = "date  >= '$this->from_date' and date <= '$this->to_date'";
+        }
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

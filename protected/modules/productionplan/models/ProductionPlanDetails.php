@@ -11,6 +11,7 @@
  * @property string $date
  * @property string $updated
  * @property integer $party_id
+ * @property integer $val
  */
 class ProductionPlanDetails extends CActiveRecord
 {
@@ -18,7 +19,7 @@ class ProductionPlanDetails extends CActiveRecord
 	 * @return string the associated database table name
 	 */
 	public $tmp_article_id;
-	public $val;
+//	public $val;
 	
 	
 	public function tableName()
@@ -34,9 +35,11 @@ class ProductionPlanDetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('production_plan_id, article_detail_id', 'required'),
+			array('production_plan_id, article_detail_id, val', 'required'),
+			array('val','numerical'),
 			array('production_plan_id, article_detail_id,status,party_id', 'numerical', 'integerOnly'=>true),
 			array('tmp_article_id, date,val,status,updated','safe'),
+			array('article_detail_id','UniqueAttributesValidator', 'with'=>'production_plan_id','message' => 'Process is already Added.'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, production_plan_id, article_detail_id, date,status,party_id', 'safe', 'on'=>'search'),
@@ -72,6 +75,7 @@ class ProductionPlanDetails extends CActiveRecord
 			'status' => 'Status',
 			'updated' =>'Updated',
 			'party_id' =>'Party',
+			'val' => 'Received Qty',
 		);
 	}
 

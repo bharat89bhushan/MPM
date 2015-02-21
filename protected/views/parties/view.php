@@ -2,6 +2,8 @@
 /* @var $this PartiesController */
 /* @var $model Parties */
 
+
+
 $this->breadcrumbs=array(
 	'Parties'=>array('index'),
 	$model->name,
@@ -9,6 +11,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 //	array('label'=>'List Parties', 'url'=>array('index')),
+//	array('label'=>'Create Parties', 'url'=>array('create')),
 	array('label'=>'Create Parties', 'url'=>array('create')),
 	array('label'=>'Update Parties', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Parties', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
@@ -26,9 +29,29 @@ $this->menu=array(
 		'name',
 	),
 )); ?>
-<h3><br><br><br>Party Item Stocks</h3>
+
+
 <?php
 
+Yii::app()->clientScript->registerCoreScript('jquery');
+Yii::app()->clientScript->registerScript('loadchild', '
+$("#party_item_stock_button").click(function(e){
+    $("#party_item_stock").toggle();
+});
+$("#party_article_process_button").click(function(e){
+    $("#party_article_process").toggle();
+});
+', CClientScript::POS_END);
+?>
+<br><br>
+<?php
+    echo CHtml::link('Party Stocks', '#', array('id' => 'party_item_stock_button'));
+ ?>
+<div id="party_item_stock" style="display:none">
+	<!--
+<h3>Party Item Stocks</h3>
+-->
+<?php
 $config = array('keyField'=>'id');
 $dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_item_stock, $config);
  
@@ -41,9 +64,16 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_item_stock, $c
         	'qty',
         ),
 )); 
-
 ?>
+</div>
+<br><br>
+<?php
+    echo CHtml::link('Article Processing', '#', array('id' => 'party_article_process_button'));
+ ?>
+<div id="party_article_process" style="display:none">
+<!--
 <h3>Party Article Processing Details</h3>
+-->
 <?php
 $config = array('keyField'=>'id');
 $dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_production_plan, $config);
@@ -61,3 +91,4 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_production_pla
 )); 
 
 ?>
+</div>

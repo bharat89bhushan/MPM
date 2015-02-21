@@ -10,7 +10,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Process', 'url'=>array('configProcess/admin')),
 	array('label'=>'Item Types', 'url'=>array('configItemTypes/admin')),
-//	array('label'=>'Create ConfigUnits', 'url'=>array('create')),
+	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
+	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

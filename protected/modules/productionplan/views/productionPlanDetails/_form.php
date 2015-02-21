@@ -21,7 +21,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'production_plan_id'); ?>
-		<?php echo $form->textField($model,'production_plan_id'); ?>
+		<?php echo $form->textField($model,'production_plan_id',array('readOnly'=>true)); ?>
 		<?php echo $form->error($model,'production_plan_id'); ?>
 	</div>
 

@@ -10,6 +10,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Units', 'url'=>array('configUnits/admin')),
 	array('label'=>'Item Types', 'url'=>array('configItemTypes/admin')),
+	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
+	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
 //	array('label'=>'Create ConfigProcess', 'url'=>array('create')),
 );
 
@@ -46,10 +48,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+//		'id',
 		'name',
 		'descp',
-		'date',
+//		'date',
 		array(
 			'class'=>'CButtonColumn',
 		),

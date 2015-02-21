@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this SalesOrdersController */
 /* @var $model SalesOrders */
@@ -41,13 +42,32 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div>
 -->
 <!-- search-form -->
+	 <?php
+    Yii::app()->clientScript->registerScript('delete-item', "
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+    $('#export-button').on('click',function() {
+        $.fn.yiiGridView.export();
+    });
+    $.fn.yiiGridView.export = function() {
+        $.fn.yiiGridView.update('sales-orders-grid',{ 
+            success: function() {
+                $('#sales-orders-grid').removeClass('grid-view-loading');
+                window.location = '". $this->createUrl('exportToFile')  . "';
+            },
+             data: $('.search-form form').serialize() + '&export=true'
+        });
+    }
+    ");
+    ?>
+
+<?php
+ Yii::app()->session['id']=$model;
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'sales-orders-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-	//	'id',
+//		'id',
 		array(
 		'name'=>'party_id',
 		'value'=>'$data->Rel_party_id->name',
@@ -59,3 +79,5 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+<?php echo CHtml::link('Export', array('/exportToPDFExcel/courseExportToExcel'), array('class'=>'btnblue'));?>
+

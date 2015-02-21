@@ -28,7 +28,7 @@ class ConfigPropTypeValues extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('prop_type_id, name,type_id', 'required'),
+			array('prop_type_id, name', 'required'),
 			array('prop_type_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			array('desc', 'length', 'max'=>50),

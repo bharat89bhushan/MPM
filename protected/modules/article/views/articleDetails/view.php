@@ -21,7 +21,7 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+	//	'id',
 	//	'article_id',
 	//	'process_id',
 		array(
@@ -43,18 +43,23 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_process_details, $co
         'id'=>'items-comp-grid',
         'dataProvider'=>$dataprovider,
         'columns'=>array(
-        	array('name'=>'Items','value'=>'$data->Rel_item->name'),
-        	'qty',
+        		array('name'=>'Item Code','value'=>'$data->Rel_item->code'),
+        	array('name'=>'Item Name','value'=>'$data->Rel_item->name'),
+       // 	'qty',
+        	array(
+		'name'=>'Qty',
+		'value'=> $model['calc_per_qty'].'*$data->qty',
+		),
                 array(
                         'class'=>'CButtonColumn'
 			, 'viewButtonUrl'=>'Yii::app()->createUrl("/article/articleProcessDetails/view", array("id"=>$data["id"]))'
-            , 'updateButtonUrl'=>'Yii::app()->createUrl("/article/articleProcessDetails/update", array("id"=>$data["id"]))'
+            , 'updateButtonUrl'=>'Yii::app()->createUrl("/article/articleProcessDetails/update", array("id"=>$data["id"],"calc_per_qty"=>'.$model->calc_per_qty.'))'
             , 'deleteButtonUrl'=>'Yii::app()->createUrl("/article/articleProcessDetails/delete", array("id"=>$data["id"]))'
 		,'template'=>'{update}{delete}'
             
                 ),
         ),
 )); 
- echo CHtml::link('Add', array('ArticleProcessDetails/create','article_detail_id'=>$model->id));
+ echo CHtml::link('Add', array('ArticleProcessDetails/create','article_detail_id'=>$model->id,'calc_per_qty'=>$model->calc_per_qty));
 
 ?>

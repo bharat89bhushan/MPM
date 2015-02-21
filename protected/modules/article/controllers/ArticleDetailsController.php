@@ -59,8 +59,14 @@ class ArticleDetailsController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model = $this->loadModel($id);
+			if(isset($_GET['calc_per_qty']))
+		{
+			$model->calc_per_qty = $_GET['calc_per_qty'];
+		}
+
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=> $model,
 		));
 	}
 

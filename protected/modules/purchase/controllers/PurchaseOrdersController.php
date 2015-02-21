@@ -117,15 +117,15 @@ class PurchaseOrdersController extends Controller
 		{
 			$model->attributes=$_POST['PurchaseOrders'];
 			if($model->save()){
-				if(isset($_POST['PurchaseOrderDetails']))
-				{
-					$purchmodels = PurchaseOrderDetails::model()->findAll("purchase_order_id ='" . $model->id . "'");
+				$purchmodels = PurchaseOrderDetails::model()->findAll("purchase_order_id ='" . $model->id . "'");
 					foreach($purchmodels as $purchmodel){
 						$itemmodel = Items::model()->findByPk($purchmodel->item_id);
 						$itemmodel->qty = strval(floatval($itemmodel->qty)-floatval($purchmodel->qty));
 						$itemmodel->save();
 						$purchmodel->delete();
 					}
+				if(isset($_POST['PurchaseOrderDetails']))
+				{
 					foreach ($_POST['PurchaseOrderDetails'] as $index => $order_details) {
 					
 							$ordermodel = new PurchaseOrderDetails;
@@ -181,8 +181,22 @@ class PurchaseOrdersController extends Controller
 	 */
 	public function actionAdmin()
 	{
+unset(Yii::app()->request->cookies['from_date']);  // first unset cookie for dates
+unset(Yii::app()->request->cookies['to_date']);
+ 
+		
 		$model=new PurchaseOrders('search');
 		$model->unsetAttributes();  // clear any default values
+		
+ if(!empty($_POST))
+  {
+    Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_POST['from_date']);  // define cookie for from_date
+    Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_POST['to_date']);
+    $model->from_date = $_POST['from_date'];
+    $model->to_date = $_POST['to_date'];
+}
+		
+		
 		if(isset($_GET['PurchaseOrders']))
 			$model->attributes=$_GET['PurchaseOrders'];
 
@@ -226,17 +240,7 @@ class PurchaseOrdersController extends Controller
             'index' => $index,
             'display' => 'block',
         ),true);
-   //    	echo CHtml::textField('qty');
         
-    }
-    public function actionLoadChildByAjaxI($index)
-    {
-        $model = new ItemProperties;
-        $this->renderPartial('application.views.itemProperties._form', array(
-            'model' => $model,
-            'index' => $index,
-//            'display' => 'block',
-        ), false, true);
     }
     
 }

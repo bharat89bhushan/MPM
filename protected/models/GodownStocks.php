@@ -16,6 +16,12 @@ class GodownStocks extends CActiveRecord
 	 * @return string the associated database table name
 	 */
 	 public $article_code;
+	 public $quality_name;
+	 public $sug_unit_id;
+	 public $sug_unit_name;
+	 public $sug_qty;
+	 public $sug_conv;
+	 
 	public function tableName()
 	{
 		return 'godown_stocks';
@@ -32,7 +38,7 @@ class GodownStocks extends CActiveRecord
 			array('article_id, quality_id, qty, unit_id', 'required'),
 			array('article_id, quality_id, unit_id', 'numerical', 'integerOnly'=>true),
 			array('qty', 'length', 'max'=>10),
-			array('article_code','safe'),
+			array('article_code,quality_name,sug_unit_id,sug_qty,sug_conv','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, article_id, quality_id, qty, unit_id,article_code', 'safe', 'on'=>'search'),
@@ -65,6 +71,7 @@ class GodownStocks extends CActiveRecord
 			'qty' => 'Qty',
 			'unit_id' => 'Unit',
 			'article_code' => 'Article Code',
+			'sug_unit_name'=>'Suggested'
 		);
 	}
 
@@ -90,7 +97,7 @@ class GodownStocks extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('quality_id',$this->quality_id);
 		$criteria->compare('qty',$this->qty,true);
-		$criteria->compare('unit_id',$this->unit_id);
+		$criteria->compare('t.unit_id',$this->unit_id);
 		$criteria->addSearchCondition('Rel_article_id.name',$this->article_id);
 		$criteria->addSearchCondition('Rel_article_id.code',$this->article_code);
 	
@@ -98,15 +105,30 @@ class GodownStocks extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
 	 * @return GodownStocks the static model class
 	 */
+	 
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
+	
+	
+	protected function beforeSave(){
+			if(parent::beforeSave()){
+				$deductval = floatval($this->sug_qty)*floatval($this->sug_conv);
+				if(floatval($this->qty)<$deductval){
+				$this->addError('sug_qty', 'Packing Not Possible');
+				return false;
+				}
+				$this->qty = strval(floatval($this->qty)-$deductval);
+			}
+			return true;
+		}
+
+
 }

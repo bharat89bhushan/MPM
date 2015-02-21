@@ -40,6 +40,45 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 //)); ?>
 </div><!-- search-form -->
 
+<?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'page-form',
+    'enableAjaxValidation'=>true,
+)); ?>
+ 
+<b>From :</b>
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+//	'model'=>$model,
+    'name'=>'from_date',  // name of post parameter
+    'value'=>Yii::app()->request->cookies['from_date'],  // value comes from cookie after submittion
+     'options'=>array(
+        'showAnim'=>'fold',
+        'dateFormat'=>'yy-mm-dd',
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;'
+    ),
+));
+?>
+<b>To :</b>
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+//	'model'=>$model,
+    'name'=>'to_date',
+    'value'=>Yii::app()->request->cookies['to_date'],
+     'options'=>array(
+        'showAnim'=>'fold',
+        'dateFormat'=>'yy-mm-dd',
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;'
+    ),
+));
+?>
+<?php echo CHtml::submitButton('Go'); ?>
+<?php $this->endWidget(); ?>
+
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'purchase-orders-grid',
 	'dataProvider'=>$model->search(),
@@ -50,7 +89,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'value'=>'$data->Rel_party_id->name',
 		'filter' => CHtml::listData( Parties::model()->findAll(), 'id','name' )
 		),
-		'date',
+		array('name'=>'date','filter'=>false),
 		array(
 			'class'=>'CButtonColumn',
 			'template'=>'{view}{update}',

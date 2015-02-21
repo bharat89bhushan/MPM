@@ -18,13 +18,21 @@ $dataprovider = new CArrayDataProvider($rawData=$ppmodel, $config,array('status'
         	'id',
         	array('name'=>'article_id','value'=>'$data->Rel_article->name'),
         	'value',
+        	 array(
+                'class'=>'CLinkColumn',
+                 'label'=>'Add',
+             //   'urlExpression'=>'"/productionplan/productionPlans/addPPStock&id=".$data->id',
+                'urlExpression'=>'Yii::app()->createUrl("/productionplan/productionPlans/addPPStock",array("id"=>$data["id"]))',
+               'linkHtmlOptions'=>array('id'=>'add_cargo'),
+            //    'header'=>'Add'
+                ),
                 array(
                         'class'=>'CButtonColumn'
-			, 'viewButtonUrl'=>'Yii::app()->createUrl("/productionplan/productionPlans/addPPStock", array("id"=>$data["id"]))'
+		//	, 'viewButtonUrl'=>'Yii::app()->createUrl("/productionplan/productionPlans/addPPStock", array("id"=>$data["id"]))'
+			, 'viewButtonUrl'=>'Yii::app()->createUrl("/productionplan/productionPlans/view", array("id"=>$data["id"]))'
         //    , 'updateButtonUrl'=>'Yii::app()->createUrl("/ArticleDetails/update", array("id"=>$data["id"]))'
         //    , 'deleteButtonUrl'=>'Yii::app()->createUrl("/ArticleDetails/delete", array("id"=>$data["id"]))'
 		,'template'=>'{view}'
-            
                 ),
         ),
 )); 

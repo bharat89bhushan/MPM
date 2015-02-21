@@ -7,13 +7,13 @@ $this->breadcrumbs=array(
 	$model->name=>array('view','id'=>$model->id),
 	'Update',
 );
-
+/*
 $this->menu=array(
 	array('label'=>'List ConfigItemTypes', 'url'=>array('index')),
 	array('label'=>'Create ConfigItemTypes', 'url'=>array('create')),
 	array('label'=>'View ConfigItemTypes', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage ConfigItemTypes', 'url'=>array('admin')),
-);
+);*/
 ?>
 
 <h1>Update ConfigItemTypes <?php echo $model->id; ?></h1>

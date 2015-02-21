@@ -103,7 +103,7 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_item_party_stock, $c
                 ),
         ),
 )); 
- echo CHtml::link('Add', array('PartyItemStock/create','item_id'=>$model->id));
+// echo CHtml::link('Add', array('PartyItemStock/create','item_id'=>$model->id));
 
 
 ?>

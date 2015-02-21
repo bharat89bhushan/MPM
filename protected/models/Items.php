@@ -39,6 +39,7 @@ class Items extends CActiveRecord
 			array('name, type_id, unit_type', 'required'),
 			array('type_id, unit_type', 'numerical', 'integerOnly'=>true),
 			array('code, name', 'length', 'max'=>30),
+	//		array('code','unique'),
 	
 			array('date,size_prop_val_id,color_prop_val_id,qty', 'safe'),
 			// The following rule is used by search().
@@ -78,7 +79,7 @@ class Items extends CActiveRecord
 			'date' => 'Date',
 			'size_prop_val_id' => 'Size',
 			'color_prop_val_id' => 'Colour',
-			'qty' => 'Qty',
+			'qty' => 'Opening Qty',
 		);
 	}
 
@@ -110,7 +111,7 @@ class Items extends CActiveRecord
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('qty',$this->qty,true);
-
+		$criteria->order = 't.id DESC';
 		
 
 		return new CActiveDataProvider($this, array(
@@ -158,6 +159,9 @@ class Items extends CActiveRecord
 	
 	protected function beforeSave(){
 			if(parent::beforeSave()){
+			$typemodel = ConfigItemTypes::model()->findByPk($this->type_id);
+			$this->code = strtoupper($typemodel->name)."_".strtoupper(str_replace(' ', '_', $this->name));
+			
 				if(isset($_POST['ItemProperties'])){
 				foreach($_POST['ItemProperties'] as $index => $order_details) {
 						$ordermodel = new ItemProperties;
@@ -167,8 +171,26 @@ class Items extends CActiveRecord
 							$this->addError('', 'Item Properties Field is Empty or Contains invalid values');
 							return false;
 						}
+						$this->code = $this->code."_".strtoupper(str_replace(' ','_',ConfigPropTypeValues::model()->findByPk($ordermodel->prop_val_id)->name));
+				
 					}
 				}
+			if($this->isNewRecord){
+			if(Items::model()->findByAttributes(array('code'=>$this->code)) != null){
+					$this->addError('', 'Item already exist');
+					return false;
+						
+			}	
+			}else{
+			$itemmodel = Items::model()->findByAttributes(array('code'=>$this->code));
+			if($itemmodel != null){
+				if($itemmodel->id != $this->id){
+					$this->addError('', 'Item already exist');
+					return false;
+				}
+			}	
+			}
+				
 			}
 			return true;
 	}

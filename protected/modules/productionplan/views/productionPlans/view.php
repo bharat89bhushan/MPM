@@ -56,9 +56,9 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_production_plan, $co
 	//	'value',
                 array(
                         'class'=>'CButtonColumn'
-			, 'viewButtonUrl'=>'Yii::app()->createUrl("/ProductionPlanDetails/view", array("id"=>$data["id"],"qty"=>'.$model->value.'))'
-            , 'updateButtonUrl'=>'Yii::app()->createUrl("/ProductionPlanDetails/update", array("id"=>$data["id"],"production_plan_id"=>'.$model->id.',"article_id"=>'.$model->article_id.',"qty"=>'.$model->value.'))'
-            , 'deleteButtonUrl'=>'Yii::app()->createUrl("/ProductionPlanDetails/delete", array("id"=>$data["id"]))'
+			, 'viewButtonUrl'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/view", array("id"=>$data["id"],"qty"=>'.$model->value.'))'
+            , 'updateButtonUrl'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/update", array("id"=>$data["id"],"production_plan_id"=>'.$model->id.',"article_id"=>'.$model->article_id.'))'
+            , 'deleteButtonUrl'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/delete", array("id"=>$data["id"]))'
 		,//'template'=>'{update}'
             
                 ),

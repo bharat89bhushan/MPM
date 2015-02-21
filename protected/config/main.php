@@ -20,7 +20,16 @@ return array(
 		'application.modules.purchase.models.*',
 		'application.modules.productionplan.models.*',
 		'application.modules.sales.models.*',
-		'application.modules.article.models.*'
+		'application.modules.article.models.*',
+		'application.modules.tranfer.models.*',
+		
+		
+		'application.modules.rights.*',
+		'application.modules.rights.components.*',
+		
+
+		
+		
 	),
 
 	'modules'=>array(
@@ -30,6 +39,7 @@ return array(
 		'productionplan',
 		'sales',
 		'article',
+		'transfer',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'daknet',

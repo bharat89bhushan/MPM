@@ -182,6 +182,10 @@ class SalesOrdersController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		if(Yii::app()->request->getParam('export')) {
+		 	$this->actionExport();
+    	Yii::app()->end();
+		}
 		$model=new SalesOrders('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['SalesOrders']))
@@ -229,5 +233,103 @@ class SalesOrdersController extends Controller
         ),true);
         
     }
+    
+    public function actionExport()
+	{
+    $fp = fopen('php://temp', 'w');
+ 
+    /* 
+     * Write a header of csv file
+     */
+    $headers = array(
+        'party_id',
+   //     'client.clientFirstName',
+   //     'client.clientLastName',
+        'date',
+    );
+    $row = array();
+    foreach($headers as $header) {
+        $row[] = SalesOrders::model()->getAttributeLabel($header);
+    }
+    fputcsv($fp,$row);
+ 
+    /*
+     * Init dataProvider for first page
+     */
+    $model=new SalesOrders('search');
+    $model->unsetAttributes();  // clear any default values
+    if(isset($_GET['SalesOrders'])) {
+        $model->attributes=$_GET['SalesOrders'];
+    }
+    $dp = $model->search();
+ 
+    /*
+     * Get models, write to a file, then change page and re-init DataProvider
+     * with next page and repeat writing again
+     */
+     /*
+    while($models = $dp->getData()) {
+        foreach($models as $model) {
+            $row = array();
+            foreach($headers as $head) {
+                $row[] = CHtml::value($model,$head);
+            }
+            fputcsv($fp,$row);
+        }
+ 
+        unset($model,$dp,$pg);
+        $model=new SalesOrders('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['SalesOrders']))
+            $model->attributes=$_GET['SalesOrders'];
+ 
+        $dp = $model->search();
+        
+  //      $nextPage = $dp->getPagination()->getCurrentPage()+1;
+  //      $dp->getPagination()->setCurrentPage($nextPage);
+    }
+ */
+    /*
+     * save csv content to a Session
+     */
+    rewind($fp);
+    Yii::app()->user->setState('export',stream_get_contents($fp));
+    fclose($fp);
+    
+	}
+    public function actionGetExportFile()
+	{
+    Yii::app()->request->sendFile('export.csv',Yii::app()->user->getState('export'));
+    Yii::app()->user->clearState('export');
+	}
+	
+	
+	public function actionExportToFile() {
+                //echo 'test';
+                header('Content-type: text/csv');
+                header('Content-Disposition: attachment; filename="report-customers-' . date('YmdHi') .'.csv"');
+
+                $model=new SalesOrders('search');
+                $model->unsetAttributes();  // clear any default values
+                
+                if(Yii::app()->user->getState('exportModel'))
+                      $model=Yii::app()->user->getState('exportModel');
+
+                $dataProvider = $model->search(false);
+                
+                // csv header
+                echo    SalesOrders::model()->getAttributeLabel("id").",". 
+                                SalesOrders::model()->getAttributeLabel("party_id").",". 
+                           //     Customer::model()->getAttributeLabel("Gender_Id").",".
+                           //     Customer::model()->getAttributeLabel("First_Name").",".
+                           //     Customer::model()->getAttributeLabel("Last_Name").
+                                " \r\n";
+                // csv data
+                foreach ($dataProvider->getData() as $data) {
+                        echo "$data->Id, $data->Country_Id, $data->Gender_Id, $data->First_Name, $data->Last_Name \r\n";
+                }
+                
+                exit; 
+        }
 	
 }

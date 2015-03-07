@@ -12,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Item Types', 'url'=>array('configItemTypes/admin')),
 	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
 	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
-//	array('label'=>'Create ConfigProcess', 'url'=>array('create')),
+	array('label'=>'Clean Data', 'url'=>array('default/CleanData')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

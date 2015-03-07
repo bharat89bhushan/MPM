@@ -80,6 +80,15 @@ body
 	text-decoration:none;
 }
 
+
+#mainmenu ul li ul li
+{
+   list-style:none;
+   text-indent:0;
+   position:relative;
+} 
+
+
 div.flash-error, div.flash-notice, div.flash-success
 {
 	padding:.8em;

@@ -95,7 +95,7 @@ class SalesOrdersController extends Controller
 			
 				$this->redirect(array('view','id'=>$model->id));
 			}else{
-					print_r($model->getErrors());
+			//		print_r($model->getErrors());
 			}
 		}
 
@@ -182,14 +182,36 @@ class SalesOrdersController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		
+	
+unset(Yii::app()->request->cookies['from_date']);  // first unset cookie for dates
+unset(Yii::app()->request->cookies['to_date']);
+unset(Yii::app()->request->cookies['party_id']);
+ 
+		/*	
 		if(Yii::app()->request->getParam('export')) {
 		 	$this->actionExport();
     	Yii::app()->end();
 		}
+		*/
 		$model=new SalesOrders('search');
 		$model->unsetAttributes();  // clear any default values
+		
+	if(!empty($_POST))
+  {
+    Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_POST['from_date']);  // define cookie for from_date
+    Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_POST['to_date']);
+    Yii::app()->request->cookies['party_id'] = new CHttpCookie('party_id', $_POST['party_id']);
+    $model->from_date = $_POST['from_date'];
+    $model->to_date = $_POST['to_date'];
+    $model->party_id = $_POST['party_id'];
+}
+		
+		
+		
 		if(isset($_GET['SalesOrders']))
 			$model->attributes=$_GET['SalesOrders'];
+
 
 		$this->render('admin',array(
 			'model'=>$model,

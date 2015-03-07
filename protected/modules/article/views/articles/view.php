@@ -29,7 +29,6 @@ $this->menu=array(
 	),
 )); ?>
 <?php
-
 $config = array('keyField'=>'id');
 $dataprovider = new CArrayDataProvider($rawData=$model->Rel_process, $config);
  

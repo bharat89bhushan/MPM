@@ -26,10 +26,24 @@
 	</div>
 -->
 	<div class="row">
+		<?php echo $form->labelEx($model,'article_group_id'); ?>
+		<?php 
+		$group_list=CHtml::listData(ArticleGroups::model()->findAll(),'id','name');
+		echo //$form->textField($model,'unit_type'); 
+			$form->dropDownList($model,'article_group_id',$group_list,array('id'=>'group_list','empty'=>'Select Option', 'onchange'=>'selectedgroup()'));
+	?>
+		<?php echo CHtml::link("Add", array('articleGroups/create')); ?>
+		<?php echo CHtml::link("Delete", array('articleGroups/admin')); ?>
+		<?php echo $form->error($model,'article_group_id'); ?>
+		
+	</div>
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>30,'maxlength'=>30,'id'=>'articlename','readonly' => true)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'unit_id'); ?>
 		<?php 
@@ -123,6 +137,10 @@
     var element=$(elm).parent().parent();
      element.remove();
     }
+    selectedgroup=function(){
+    var center_id = $('#group_list :selected').text();
+    $('#articlename').val(center_id);
+    };
 JS;
 	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
 	?>

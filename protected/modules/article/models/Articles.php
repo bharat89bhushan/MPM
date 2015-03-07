@@ -12,6 +12,7 @@
  * @property integer $calc_per_qty
  * @property integer $pack_unit_id
  * @property string $pack_qty
+ * @property string $article_group_id
  */
 class Articles extends CActiveRecord
 {
@@ -31,14 +32,14 @@ class Articles extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, unit_id, calc_per_qty', 'required'),
+			array('unit_id, calc_per_qty,article_group_id', 'required'),
 			array('name', 'length', 'max'=>30),
 			array('code', 'length', 'max'=>50),
-			array('calc_per_qty,unit_id,pack_unit_id', 'numerical', 'integerOnly'=>true),
+			array('calc_per_qty,unit_id,pack_unit_id,article_group_id', 'numerical', 'integerOnly'=>true),
 			array('code,date,pack_qty', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, code, date,unit_id,calc_per_qty,pack_unit_id,pack_qty', 'safe', 'on'=>'search'),
+			array('id, name, code, date,unit_id,calc_per_qty,pack_unit_id,pack_qty,article_group_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +54,7 @@ class Articles extends CActiveRecord
 			'Rel_process'=>array(self::HAS_MANY,'ArticleDetails','article_id'),
 			'Rel_article_prop'=>array(self::HAS_MANY,'ArticleProperties','article_id'),
 			'Rel_unit_id'=>array(self::BELONGS_TO,'ConfigUnits','unit_id'),
+			'Rel_article_group_id'=>array(self::BELONGS_TO,'ArticleGroups','article_group_id'),
 			'Rel_pack_unit_id'=>array(self::BELONGS_TO,'ConfigUnits','pack_unit_id'),
 			
 		);
@@ -65,6 +67,7 @@ class Articles extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'article_group_id' => 'Category',
 			'name' => 'Name',
 			'code' => 'Code',
 			'date' => 'Date',
@@ -98,6 +101,7 @@ class Articles extends CActiveRecord
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('unit_id',$this->unit_id);
+		$criteria->compare('article_group_id',$this->article_group_id);
 		$criteria->compare('calc_per_qty',$this->calc_per_qty);
 		$criteria->order = 'id DESC';
 

@@ -6,15 +6,15 @@ $this->breadcrumbs=array(
 	'Production Plan Details'=>array('index'),
 	$model->id,
 );
-/*
+
 $this->menu=array(
-	array('label'=>'List ProductionPlanDetails', 'url'=>array('index')),
-	array('label'=>'Create ProductionPlanDetails', 'url'=>array('create')),
-	array('label'=>'Update ProductionPlanDetails', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete ProductionPlanDetails', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage ProductionPlanDetails', 'url'=>array('admin')),
+//	array('label'=>'List ProductionPlanDetails', 'url'=>array('index')),
+//	array('label'=>'Create ProductionPlanDetails', 'url'=>array('create')),
+//	array('label'=>'Update ProductionPlanDetails', 'url'=>array('update', 'id'=>$model->id)),
+//	array('label'=>'Delete ProductionPlanDetails', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+//	array('label'=>'Manage ProductionPlanDetails', 'url'=>array('admin')),
 );
-*/
+
 ?>
 
 <h1>View ProductionPlanDetails #<?php echo $model->id; ?></h1>

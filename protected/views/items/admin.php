@@ -1,6 +1,9 @@
+
 <?php
 /* @var $this ItemsController */
 /* @var $model Items */
+
+
 
 $this->breadcrumbs=array(
 	'Items'=>array('index'),
@@ -47,10 +50,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		array(
+		/*array(
 			'name'=>'id',
 			'htmlOptions'=>array('width'=>'25')
-			),
+			),*/
 		'code',
 		'name',
 		array(

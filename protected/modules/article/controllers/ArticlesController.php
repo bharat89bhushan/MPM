@@ -76,6 +76,13 @@ class ArticlesController extends Controller
 			$model->attributes=$_POST['Articles'];
 			$model->date=new CDbExpression('NOW()');
 			if($model->save()){
+				$group_processes = ArticleGroupDetails::model()->findAllByAttributes(array('article_group_id'=>$model->article_group_id));
+				foreach($group_processes as $group_process){
+					$article_detail = new ArticleDetails;
+					$article_detail->article_id = $model->id;
+					$article_detail->process_id = $group_process->process_id;
+					$article_detail->save();
+				}
 				if(isset($_POST['ArticleProperties']))
 				{
 					foreach ($_POST['ArticleProperties'] as $index => $order_details) {

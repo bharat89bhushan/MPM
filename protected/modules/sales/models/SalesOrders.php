@@ -10,6 +10,10 @@
  */
 class SalesOrders extends CActiveRecord
 {
+	public $qty;
+	public $from_date;
+	public $to_date;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -30,7 +34,7 @@ class SalesOrders extends CActiveRecord
 			array('party_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, party_id, date', 'safe', 'on'=>'search'),
+			array('id, party_id, date,from_date,to_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,16 +81,45 @@ class SalesOrders extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
+	//	$criteria->with = array('Rel_sales_detail'=>array('select'=>'qty','together'=>true));
+	//	$criteria->with = array('Rel_sales_detail');
+//		$criteria->together = true;
+		$criteria->compare('t.id',$this->id);
+		
 		$criteria->compare('party_id',$this->party_id);
 		$criteria->compare('date',$this->date,true);
-		$criteria->order = 'id DESC';
+//		$criteria->compare('Rel_sales_detail.qty',$this->qty,true);
+		$criteria->order = 't.id DESC';
+		
+		
+		$order_criteria=new CDbCriteria;
+	//	$order_criteria->compare('order_id',$this->id);
+		$order_criteria->with = array('Rel_order_id');
+		$order_criteria->compare('Rel_order_id.party_id',$this->party_id);
+		
+	
+		
+		if(!empty($this->from_date) && empty($this->to_date))
+        {
+            $criteria->condition = "date >= '$this->from_date'";  // date is database date column field
+            $order_criteria->condition = "Rel_order_id.date >= '$this->from_date'";  // date is database date column field
+        }elseif(!empty($this->to_date) && empty($this->from_date))
+        {
+            $criteria->condition = "date <= '$this->to_date'";
+            $order_criteria->condition = "Rel_order_id.date <= '$this->to_date'";
+        }elseif(!empty($this->to_date) && !empty($this->from_date))
+        {
+        	$criteria->condition = "date  >= '$this->from_date 00:00:00' and date <= '$this->to_date 23:59:59'";
+            $order_criteria->condition = "Rel_order_id.date  >= '$this->from_date 00:00:00' and Rel_order_id.date <= '$this->to_date 23:59:59'";
+        }
 
 		$sales_order= new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-		$_SESSION['sales'] = $sales_order;
+		$sales_order_details= new CActiveDataProvider('SalesOrderDetails', array(
+			'criteria'=>$order_criteria,
+		));
+		$_SESSION['sales'] = $sales_order_details;
 		return $sales_order;
 	}
 

@@ -47,7 +47,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+	//	'id',
 		'name',
 		'sign',
 		array(
@@ -60,5 +60,5 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); 
-echo CHtml::link('Add Unit', array('configUnits/create'));
+echo CHtml::link("Add Unit\n", array('configUnits/create'));
 ?>

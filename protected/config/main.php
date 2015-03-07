@@ -21,7 +21,7 @@ return array(
 		'application.modules.productionplan.models.*',
 		'application.modules.sales.models.*',
 		'application.modules.article.models.*',
-		'application.modules.tranfer.models.*',
+		'application.modules.transfer.models.*',
 		
 		
 		'application.modules.rights.*',

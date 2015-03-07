@@ -111,7 +111,7 @@ class Items extends CActiveRecord
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('qty',$this->qty,true);
-		$criteria->order = 't.id DESC';
+		$criteria->order = 't.code';
 		
 
 		return new CActiveDataProvider($this, array(

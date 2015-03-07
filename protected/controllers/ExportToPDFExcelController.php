@@ -79,8 +79,8 @@ class ExportToPDFExcelController extends CController
 			'model'=>$model
 		), true);
 		$this->exporttopdf('Semester Report','Semester.pdf',$html);	       
-	
 	}
+
 
 	public function actionAcademicTermExportToExcel()
 	{
@@ -4100,14 +4100,16 @@ class ExportToPDFExcelController extends CController
 		$this->exporttopdf('Course Report','Course.pdf',$html);
 		
 	}
-	public function actionCourseExportToExcel()
+	public function actionSalesExportToExcel()
 	{
-		
 		$this->toExcel( $_SESSION['sales'],
 		array(
 		//'id',
-		'Rel_party_id.name::Party',
-		'date',
+//		'Rel_party_id.name::Party',
+//		'date',
+		'order_id',
+		'Rel_godown_id.Rel_article_id.name',
+		'qty',
 		/*'course_name',
 		'relCat.qualification_type_name::Category Name',
 		'course_level',
@@ -4127,6 +4129,38 @@ class ExportToPDFExcelController extends CController
 	    
 	    
 	}	    
+
+public function actionPurchaseExportToExcel()
+	{
+		$this->toExcel( $_SESSION['sales'],
+		array(
+		//'id',
+//		'Rel_party_id.name::Party',
+//		'date',
+		'order_id',
+		'Rel_godown_id.Rel_article_id.name',
+		'qty',
+		/*'course_name',
+		'relCat.qualification_type_name::Category Name',
+		'course_level',
+		'course_completion_hours',
+		'course_code',
+		'course_cost',
+		'course_desc',
+		'Rel_user.user_organization_email_id::Created By',
+		*/
+		),
+		'Sales_Orders',
+		array(
+		    'creator' => 'Bharat',
+		),
+		'Excel5'
+	    );
+	    
+	    
+	}	    
+
+	
 
 	protected function exporttopdf($title,$filename,$html)
 	{

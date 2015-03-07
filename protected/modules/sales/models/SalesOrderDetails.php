@@ -47,6 +47,7 @@ class SalesOrderDetails extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Rel_godown_id'=>array(self::BELONGS_TO,'GodownStocks','godown_id'),
+				'Rel_order_id'=>array(self::BELONGS_TO,'SalesOrders','order_id'),
 		);
 	}
 

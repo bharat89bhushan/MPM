@@ -5,7 +5,7 @@
     </div>
  
     <div class="row">
-    	<?php $type_list=CHtml::listData(Articles::model()->findAll(),'id','name');?>
+    	<?php $type_list=CHtml::listData(Articles::model()->findAll(),'id','code');?>
         <?php echo CHtml::activeDropDownList($model, '[' . $index . ']article_id',$type_list,array('empty'=>'Select')); ?>    
         
         <?php $quality_list=CHtml::listData(ConfigQualityTypes::model()->findAll(),'id','name');?>

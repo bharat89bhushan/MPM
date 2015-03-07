@@ -19,6 +19,9 @@ class ProductionPlans extends CActiveRecord
 	 public $article_code;
 	 public $article_name;
 	 public $tmp;
+	 public $from_date;
+	 public $to_date;
+
 	public function tableName()
 	{
 		return 'production_plans';
@@ -35,9 +38,10 @@ class ProductionPlans extends CActiveRecord
 			array('article_id, value, status', 'required'),
 			array('article_id, status', 'numerical', 'integerOnly'=>true),
 			array('value, qty', 'length', 'max'=>10),
+			array('to_date,from_date','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, article_id, value, status,item_code,item_name,qty,article_code,article_name', 'safe', 'on'=>'search'),
+			array('id, article_id, value, status,item_code,item_name,qty,article_code,article_name,from_date,to_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -93,11 +97,24 @@ class ProductionPlans extends CActiveRecord
 		$criteria->compare('article_id',$this->article_id);
 		$criteria->compare('value',$this->value,true);
 		$criteria->compare('status',$this->status,true);
-		$criteria->compare('date',$this->date);
+		$criteria->compare('t.date',$this->date);
 		$criteria->compare('qty',$this->qty,true);
+		
+		if(!empty($this->from_date) && empty($this->to_date))
+        {
+            $criteria->addCondition("t.date >= '$this->from_date'");  // date is database date column field
+        }elseif(!empty($this->to_date) && empty($this->from_date))
+        {
+            $criteria->addCondition("t.date <= '$this->to_date'");
+        }elseif(!empty($this->to_date) && !empty($this->from_date))
+        {
+            $criteria->addCondition("t.date  >= '$this->from_date 00:00:00' and t.date <= '$this->to_date 23:59:59'");
+        }
+
 		$criteria->addSearchCondition('Rel_article.code',$this->article_code);
 		$criteria->addSearchCondition('Rel_article.name',$this->article_name);
 		$criteria->order = 't.id DESC';
+	
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

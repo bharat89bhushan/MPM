@@ -103,12 +103,13 @@ class SalesOrdersController extends Controller
 			'model'=>$model,
 		));
 	}
-
+	
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
-	 */
+	 **/
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -188,12 +189,6 @@ unset(Yii::app()->request->cookies['from_date']);  // first unset cookie for dat
 unset(Yii::app()->request->cookies['to_date']);
 unset(Yii::app()->request->cookies['party_id']);
  
-		/*	
-		if(Yii::app()->request->getParam('export')) {
-		 	$this->actionExport();
-    	Yii::app()->end();
-		}
-		*/
 		$model=new SalesOrders('search');
 		$model->unsetAttributes();  // clear any default values
 		
@@ -206,7 +201,6 @@ unset(Yii::app()->request->cookies['party_id']);
     $model->to_date = $_POST['to_date'];
     $model->party_id = $_POST['party_id'];
 }
-		
 		
 		
 		if(isset($_GET['SalesOrders']))
@@ -353,5 +347,21 @@ unset(Yii::app()->request->cookies['party_id']);
                 
                 exit; 
         }
-	
+	public function actionDynamicStates()
+    {
+       
+   $data=Articles::model()->findAllByAttributes(array('article_group_id'=>$_POST['type_id']));
+                  
+    $data=CHtml::listData($data,'id','code');
+     echo CHtml::tag('option',
+                   array('value'=>''),CHtml::encode("-Select-"),true);
+    foreach($data as $value=>$name)
+    {
+        echo CHtml::tag('option',
+                   array('value'=>$value),CHtml::encode($name),true);
+    }
+    
+  //  echo "NN";
+    
+    }
 }

@@ -183,6 +183,7 @@ class PurchaseOrdersController extends Controller
 	{
 unset(Yii::app()->request->cookies['from_date']);  // first unset cookie for dates
 unset(Yii::app()->request->cookies['to_date']);
+unset(Yii::app()->request->cookies['party_id']);
  
 		
 		$model=new PurchaseOrders('search');
@@ -192,8 +193,10 @@ unset(Yii::app()->request->cookies['to_date']);
   {
     Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_POST['from_date']);  // define cookie for from_date
     Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_POST['to_date']);
+    Yii::app()->request->cookies['party_id'] = new CHttpCookie('party_id', $_POST['party_id']);
     $model->from_date = $_POST['from_date'];
     $model->to_date = $_POST['to_date'];
+    $model->party_id = $_POST['party_id'];
 }
 		
 		

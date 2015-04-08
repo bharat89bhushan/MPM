@@ -63,6 +63,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 		'qty',
 		/*
+		array(
+			'name'=>'qty',
+			'value'=>'$data->qty.\' \'.$data->Rel_unit_type->name',
+			),
+			*/
+		array(
+			'name'=>'unit_type',
+			'header'=>'Unit',
+			'value'=>'$data->Rel_unit_type->name',
+			'filter' => CHtml::listData( ConfigUnits::model()->findAll(), 'id','name' )
+			),
+		
+		/*
 		'unit_type',
 		'created_by',
 		'date',

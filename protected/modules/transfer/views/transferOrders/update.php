@@ -16,6 +16,6 @@ $this->menu=array(
 );*/
 ?>
 
-<h1>Update TransferOrders <?php echo $model->id; ?></h1>
+<h1>Update IssueOrder <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

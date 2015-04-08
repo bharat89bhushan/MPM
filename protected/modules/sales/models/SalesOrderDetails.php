@@ -14,7 +14,7 @@ class SalesOrderDetails extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	 public $article_id,$quality_id,$unit_id;
+	 public $article_id,$quality_id,$unit_id,$category_id;
 	public function tableName()
 	{
 		return 'sales_order_details';
@@ -31,7 +31,7 @@ class SalesOrderDetails extends CActiveRecord
 			array('article_id, quality_id,unit_id, qty', 'required'),
 			array('article_id, quality_id,unit_id,', 'numerical', 'integerOnly'=>true),
 			array('qty', 'length', 'max'=>10),
-			array('article_id, quality_id,unit_id','safe'),
+			array('article_id, quality_id,unit_id,category_id','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, order_id, godown_id, qty', 'safe', 'on'=>'search'),

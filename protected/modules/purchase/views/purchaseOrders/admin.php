@@ -45,6 +45,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
     'enableAjaxValidation'=>true,
 )); ?>
  
+ <b>Party :</b>
+<?php
+	$type_list=CHtml::listData(Parties::model()->findAll(),'id','name');
+	echo CHtml::dropDownList('party_id','',$type_list,array('empty'=>'--Select--','options' => array(isset(Yii::app()->request->cookies["party_id"])?Yii::app()->request->cookies["party_id"]->value:0=>array('selected'=>true))));
+?>
+<br>
+<br>
+ 
 <b>From :</b>
 <?php
 $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -75,19 +83,19 @@ $this->widget('zii.widgets.jui.CJuiDatePicker', array(
     ),
 ));
 ?>
-<?php echo CHtml::submitButton('Go'); ?>
+<?php echo ' '.CHtml::submitButton('Search'); ?>
 <?php $this->endWidget(); ?>
 
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'purchase-orders-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+//	'filter'=>$model,
 	'columns'=>array(
 		array(
 		'name'=>'party_id',
 		'value'=>'$data->Rel_party_id->name',
-		'filter' => CHtml::listData( Parties::model()->findAll(), 'id','name' )
+//		'filter' => CHtml::listData( Parties::model()->findAll(), 'id','name' )
 		),
 		array('name'=>'date','filter'=>false),
 		array(
@@ -96,3 +104,4 @@ $this->widget('zii.widgets.jui.CJuiDatePicker', array(
 		),
 	),
 )); ?>
+<?php echo CHtml::link('Export', array('/exportToPDFExcel/purchaseExportToExcel'), array('class'=>'btnblue'));?>

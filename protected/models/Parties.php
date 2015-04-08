@@ -13,6 +13,10 @@ class Parties extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 
+	public $from_date;
+	public $to_date;
+
 	public function tableName()
 	{
 		return 'parties';
@@ -31,7 +35,7 @@ class Parties extends CActiveRecord
 			array('name', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, code, name', 'safe', 'on'=>'search'),
+			array('id, code, name,from_date,to_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -82,9 +86,26 @@ class Parties extends CActiveRecord
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+	$criteria->with = array('Rel_party_production_plan');
+	
+	
+		if(!empty($this->from_date) && empty($this->to_date))
+        {
+            $criteria->condition = "Rel_party_production_plan.date >= '$this->from_date'";  // date is database date column field
+        //    $order_criteria->condition = "Rel_order_id.date >= '$this->from_date'";  // date is database date column field
+        }elseif(!empty($this->to_date) && empty($this->from_date))
+        {
+            $criteria->condition = "Rel_party_production_plan.date <= '$this->to_date'";
+       //     $order_criteria->condition = "Rel_order_id.date <= '$this->to_date'";
+        }elseif(!empty($this->to_date) && !empty($this->from_date))
+        {
+        	$criteria->condition = "Rel_party_production_plan.date  >= '$this->from_date 00:00:00' and date <= '$this->to_date 23:59:59'";
+    //        $order_criteria->condition = "Rel_order_id.date  >= '$this->from_date 00:00:00' and Rel_order_id.date <= '$this->to_date 23:59:59'";
+        }
+
+	$partyplan = new CActiveDataProvider($this, array('criteria'=>$criteria,));
+//	$_SESSION['partyplan'] = $partyplan;
+		return $partyplan;
 	}
 
 	/**
@@ -92,7 +113,7 @@ class Parties extends CActiveRecord
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
 	 * @return Parties the static model class
-	 */
+	 **/
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

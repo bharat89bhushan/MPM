@@ -79,7 +79,7 @@ class Items extends CActiveRecord
 			'date' => 'Date',
 			'size_prop_val_id' => 'Size',
 			'color_prop_val_id' => 'Colour',
-			'qty' => 'Opening Qty',
+			'qty' => 'Qty',
 		);
 	}
 

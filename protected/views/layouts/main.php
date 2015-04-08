@@ -37,7 +37,7 @@
 			//	array('label'=>'Reports', 'url'=>array('/stockTransDetails/admin')),
 				array('label'=>'Items', 'url'=>array('/items/admin')),
 				array('label'=>'Articles', 'url'=>array('/article/articles/admin')),
-				array('label'=>'Item Transfer', 'url'=>array('/transfer/transferOrders/admin')),
+				array('label'=>'Issue Items', 'url'=>array('/transfer/transferOrders/admin')),
 				array('label'=>'Production Plans', 'url'=>array('/productionplan/productionPlans/admin')),
 				array('label'=>'Godown Stocks', 'url'=>array('/godownStocks/admin')),
 				array('label'=>'Purchase', 'url'=>array('/purchase/purchaseOrders/admin')),

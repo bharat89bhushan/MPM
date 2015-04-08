@@ -8,7 +8,7 @@
     <div class="row">
     	<?php $type_list=CHtml::listData(ConfigPropTypes::model()->findAll(),'id','name');?>
     	<?php $tindex = $index;?>
-        <?php echo CHtml::activeDropDownList($model, '[' . $index . ']type_id',$type_list,array('empty'=>'Select','onChange' => 'js:description(this.selectedIndex,'.$tindex.')' ,
+        <?php echo CHtml::activeDropDownList($model, '[' . $index . ']type_id',$type_list,array('empty'=>'Select','onChange' => 'js:description(this.value,'.$tindex.')' ,
         )); ?>    
        	<?php $type_val_list=CHtml::listData(ConfigPropTypeValues::model()->findAll('prop_type_id='.$notsure),'id','name');?>
             <?php echo CHtml::activeDropDownList($model, '[' . $index . ']prop_val_id',$type_val_list,array('empty'=>'Select','id'=>$index .'prop_val_id')); ?>

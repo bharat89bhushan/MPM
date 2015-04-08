@@ -45,6 +45,7 @@ class PurchaseOrderDetails extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'Rel_item_id'=>array(self::BELONGS_TO,'Items','item_id'),
+			'Rel_order_id'=>array(self::BELONGS_TO,'PurchaseOrders','purchase_order_id'),
 		);
 	}
 

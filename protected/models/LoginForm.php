@@ -48,12 +48,48 @@ class LoginForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
+			$sys = SysDetails::model()->findByPk(1);
+			
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
 				$this->addError('password','Incorrect username or password.');
+			if($sys->mac != $this->getmac($sys->os))
+				$this->addError('password','Not Authorized to System');
+				
 		}
 	}
 
+	/**
+	 * Retrive the mac address of system.
+	 * @return string mac address
+	 **/
+	public function getmac($os){
+				
+		ob_start();
+		if($os == 'win')
+			system('ipconfig /all'); //Window
+		elseif($os == 'linux')
+			system('/sbin/ifconfig');
+		else
+			$this->addError('password','Unknown Operating System');
+			
+		$mycom=ob_get_contents(); // Capture the output into a variable
+		ob_clean(); 
+		if($os == 'win')
+			$findme = "Physical";//Window
+		else
+			$findme = "HWaddr";
+		$pos = strpos($mycom, $findme);
+		
+		
+		if($os == 'win')
+			$macp=substr($mycom,($pos+36),17); //Window
+		else
+			$macp=substr($mycom,($pos+7),17);
+			
+		return $macp;
+		
+	}
 	/**
 	 * Logs in the user using the given username and password in the model.
 	 * @return boolean whether login is successful

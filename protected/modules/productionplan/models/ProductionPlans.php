@@ -16,7 +16,7 @@ class ProductionPlans extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	 public $article_code;
+	 public $article_code,$category_id;
 	 public $article_name;
 	 public $tmp;
 	 public $from_date;
@@ -112,13 +112,15 @@ class ProductionPlans extends CActiveRecord
         }
 
 		$criteria->addSearchCondition('Rel_article.code',$this->article_code);
-		$criteria->addSearchCondition('Rel_article.name',$this->article_name);
+		$criteria->addSearchCondition('Rel_article.article_group_id',$this->article_name);
 		$criteria->order = 't.id DESC';
 	
 
-		return new CActiveDataProvider($this, array(
+		$productionplan = new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+		$_SESSION['productionplan'] = $productionplan;
+		return $productionplan;
 	}
 
 	/**

@@ -173,7 +173,7 @@ JS;
 	</div>
 -->
 	<div class="row">
-		<?php echo $form->labelEx($model,'qty'); ?>
+		<?php echo $form->labelEx($model,'',array('label'=>'Opening Qty')); ?>
 		<?php echo $form->textField($model,'qty'); ?>
 		<?php echo $form->error($model,'qty'); ?>
 	</div>

@@ -53,8 +53,46 @@ class PartiesController extends Controller
 	 */
 	public function actionView($id)
 	{
+unset(Yii::app()->request->cookies['from_date']);  // first unset cookie for dates
+unset(Yii::app()->request->cookies['to_date']);
+//unset(Yii::app()->request->cookies['party_id']);
+	$model=$this->loadModel($id);	
+	
+//	$model=new Parties('search');
+//	$model->unsetAttributes();  // clear any default values
+if(!empty($_POST))
+  {
+    Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_POST['from_date']);  // define cookie for from_date
+    Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_POST['to_date']);
+ //   Yii::app()->request->cookies['party_id'] = new CHttpCookie('party_id', $_POST['party_id']);
+    $model->from_date = $_POST['from_date'];
+    $model->to_date = $_POST['to_date'];
+  //  $model->party_id = $_POST['party_id'];
+}
+
+
+		$criteria=new CDbCriteria();
+//		$criteria->select = "party_id,date";
+		$criteria->condition = "party_id='$id'";
+	
+		if(!empty($model->from_date) && empty($model->to_date))
+        {
+            $criteria->condition = "date >= '$model->from_date'";  // date is database date column field
+        }elseif(!empty($model->to_date) && empty($model->from_date))
+        {
+            $criteria->condition = "date <= '$model->to_date'";
+        }elseif(!empty($model->to_date) && !empty($model->from_date))
+        {
+        	$criteria->condition = "date  >= '$model->from_date 00:00:00' and date <= '$model->to_date 23:59:59'";
+        }
+
+
+	$_SESSION['partyplan'] = ProductionPlanDetails::model()->findAll($criteria);
+	
+	
+		
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
 		));
 	}
 

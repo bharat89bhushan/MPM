@@ -48,26 +48,23 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-	//	'id',
-	//	'article_id',
+	
+		array(
+		'name'=>'article_id',
+		'header'=>'Category',
+		'value'=>'$data->Rel_article_id->Rel_article_group_id->name',
+		'filter' => CHtml::listData( ArticleGroups::model()->findAll(), 'id','name' )
+		),
 		array(
 		'name'=>'article_code',
 		'value'=>'$data->Rel_article_id->code',
-//		'filter' => CHtml::listData( ConfigQualityTypes::model()->findAll(), 'id','name' )
 		),
-		array(
-		'name'=>'article_id',
-		'value'=>'$data->Rel_article_id->name',
-//		'filter' => CHtml::listData( ConfigQualityTypes::model()->findAll(), 'id','name' )
-		),
-	//	'quality_id',
 		array(
 		'name'=>'quality_id',
 		'value'=>'$data->Rel_quality_id->name',
 		'filter' => CHtml::listData( ConfigQualityTypes::model()->findAll(), 'id','name' )
 		),
 		'qty',
-	//	'unit_id',
 		array(
 		'name'=>'unit_id',
 		'value'=>'$data->Rel_unit_id->name',

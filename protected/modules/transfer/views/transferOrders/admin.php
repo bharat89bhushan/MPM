@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 //	array('label'=>'List TransferOrders', 'url'=>array('index')),
-	array('label'=>'Create TransferOrders', 'url'=>array('create')),
+	array('label'=>'Create IssueOrder', 'url'=>array('create')),
 );
 /*
 Yii::app()->clientScript->registerScript('search', "
@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 */
 ?>
 
-<h1>Manage Transfer Orders</h1>
+<h1>Manage Issue Orders</h1>
 <!--
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

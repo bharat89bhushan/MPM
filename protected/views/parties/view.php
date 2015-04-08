@@ -74,9 +74,50 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_item_stock, $c
 <!--
 <h3>Party Article Processing Details</h3>
 -->
+<?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'page-form',
+    'enableAjaxValidation'=>true,
+)); ?>
+<br>
+<b>From :</b>
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+//	'model'=>$model,
+    'name'=>'from_date',  // name of post parameter
+    'value'=>Yii::app()->request->cookies['from_date'],  // value comes from cookie after submittion
+     'options'=>array(
+        'showAnim'=>'fold',
+        'dateFormat'=>'yy-mm-dd',
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;'
+    ),
+));
+
+?>
+<b>To :</b>
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+//	'model'=>$model,
+    'name'=>'to_date',
+    'value'=>Yii::app()->request->cookies['to_date'],
+     'options'=>array(
+        'showAnim'=>'fold',
+        'dateFormat'=>'yy-mm-dd',
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;'
+    ),
+));
+?>
+<?php echo " ".CHtml::submitButton('Search'); ?>
+<?php $this->endWidget(); ?>
+
+
+
 <?php
 $config = array('keyField'=>'id');
-$dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_production_plan, $config);
+$dataprovider = new CArrayDataProvider($rawData=$_SESSION['partyplan'], $config);
  
 	$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'items-comp-grid',
@@ -87,8 +128,9 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_party_production_pla
         	array('name'=>'Article Name','value'=>'$data->Rel_article_detail->Rel_article->name'),
         	array('name'=>'Qty','value'=>'$data->Rel_production_plan->value'),
         	array('name'=>'Status','value'=>'$data->status?"InProgress":"Completed"'),
+        	'date',
         ),
 )); 
-
 ?>
+<?php echo CHtml::link('Export', array('/exportToPDFExcel/partyPlanExportToExcel'), array('class'=>'btnblue'));?>
 </div>

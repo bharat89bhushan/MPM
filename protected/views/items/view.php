@@ -93,14 +93,14 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_item_party_stock, $c
         	array('name'=>'Party Code','value'=>'$data->Rel_party_id->code'),
 		array('name'=>'Party Name','value'=>'$data->Rel_party_id->name'),
 		'qty',
-                array(
+                /*array(
                         'class'=>'CButtonColumn'
 			, 'viewButtonUrl'=>'Yii::app()->createUrl("/PartyItemStock/view", array("id"=>$data["id"]))'
             , 'updateButtonUrl'=>'Yii::app()->createUrl("/PartyItemStock/update", array("id"=>$data["id"]))'
             , 'deleteButtonUrl'=>'Yii::app()->createUrl("/PartyItemStock/delete", array("id"=>$data["id"]))'
 		,'template'=>'{update}{delete}'
             
-                ),
+                ),*/
         ),
 )); 
 // echo CHtml::link('Add', array('PartyItemStock/create','item_id'=>$model->id));

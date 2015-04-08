@@ -15,6 +15,7 @@ class GodownStocks extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $group_id;
 	 public $article_code;
 	 public $quality_name;
 	 public $sug_unit_id;
@@ -38,7 +39,7 @@ class GodownStocks extends CActiveRecord
 			array('article_id, quality_id, qty, unit_id', 'required'),
 			array('article_id, quality_id, unit_id', 'numerical', 'integerOnly'=>true),
 			array('qty', 'length', 'max'=>10),
-			array('article_code,quality_name,sug_unit_id,sug_qty,sug_conv','safe'),
+			array('article_code,quality_name,sug_unit_id,sug_qty,sug_conv,group_id','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, article_id, quality_id, qty, unit_id,article_code', 'safe', 'on'=>'search'),
@@ -98,7 +99,7 @@ class GodownStocks extends CActiveRecord
 		$criteria->compare('quality_id',$this->quality_id);
 		$criteria->compare('qty',$this->qty,true);
 		$criteria->compare('t.unit_id',$this->unit_id);
-		$criteria->addSearchCondition('Rel_article_id.name',$this->article_id);
+		$criteria->addSearchCondition('Rel_article_id.article_group_id',$this->article_id);
 		$criteria->addSearchCondition('Rel_article_id.code',$this->article_code);
 	
 		return new CActiveDataProvider($this, array(

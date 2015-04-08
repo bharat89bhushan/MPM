@@ -13,6 +13,6 @@ $this->menu=array(
 );*/
 ?>
 
-<h1>Create TransferOrders</h1>
+<h1>Create IssueOrder</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

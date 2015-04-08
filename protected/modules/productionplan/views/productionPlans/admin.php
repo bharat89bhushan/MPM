@@ -48,9 +48,12 @@ echo CHtml::link('Advanced Search','#',array('class'=>'search-button'));
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		array(
+			'name'=>'id',
+			'htmlOptions'=>array('width'=>'50')
+			),
+		array('name'=>'article_name','header'=>'Category','value'=>'$data->Rel_article->Rel_article_group_id->name','filter'=> CHtml::listData( ArticleGroups::model()->findAll(), 'id','name' )),
 		array('name'=>'article_code','header'=>'Article Code','value'=>'$data->Rel_article->code','filter'=> CHtml::activeTextField($model, 'article_code')),
-		array('name'=>'article_name','header'=>'Article Name','value'=>'$data->Rel_article->name','filter'=> CHtml::activeTextField($model, 'article_name')),
 		'value',
 		array('name'=>'status','value'=>'(!$data->status)?\'Complete\':\'In Progress\'','filter' => array('0' => 'Complete', '1' => 'In Progress'),),
 		'date',
@@ -60,3 +63,4 @@ echo CHtml::link('Advanced Search','#',array('class'=>'search-button'));
 		),
 	),
 )); ?>
+<?php echo CHtml::link('Export', array('/exportToPDFExcel/planExportToExcel'), array('class'=>'btnblue'));?>

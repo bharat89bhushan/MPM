@@ -110,12 +110,29 @@ public function actionPacking($model){
 		if(isset($_POST['GodownStocks']))
 		{
 			$model->attributes=$_POST['GodownStocks'];
+			if(isset($_POST['GodownStocksAdjust'])){
+		
+				foreach($_POST['GodownStocksAdjust'] as $index => $model_godown){
+					$godown_model = new GodownStocks;
+					$godown_model->attributes = $model_godown;
+					$act_model = GodownStocks::model()->findByAttributes(array('article_id'=>$godown_model->article_id,'quality_id'=>$godown_model->quality_id,'unit_id'=>$godown_model->unit_id));
+					if($act_model != null){
+						if(intval($act_model->qty)>=intval($godown_model->qty)){
+						$model->qty =strval(intval($model->qty)+ intval($godown_model->qty));
+						$act_model->qty =strval(intval($act_model->qty)- intval($godown_model->qty));
+						$act_model->save();
+						}
+					}
+				}
+			}
 			if($model->save()){
+		
 				$packmodel=GodownStocks::model()->findByAttributes(array('article_id'=>$model->article_id,'quality_id'=>$model->quality_id,'unit_id'=>$model->sug_unit_id));
 				if($packmodel != null){
 					$packmodel->qty=strval(floatval($packmodel->qty)+floatval($model->sug_qty));
 					$packmodel->save();
 				}
+			
 				
 				$this->redirect(array('update','id'=>$model->id));
 			}
@@ -199,4 +216,16 @@ public function actionPacking($model){
 			Yii::app()->end();
 		}
 	}
+	
+	public function actionLoadChildByAjax($index,$unit)
+    {
+      echo $this->renderPartial('application.views.godownStocks._tform', array(
+            'model' => new GodownStocksAdjust,
+            'index' => $index,
+            'unit' => $unit,
+            'display' => 'block',
+        ),true);
+        
+    }
+    
 }

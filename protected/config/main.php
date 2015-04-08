@@ -22,13 +22,8 @@ return array(
 		'application.modules.sales.models.*',
 		'application.modules.article.models.*',
 		'application.modules.transfer.models.*',
-		
-		
 		'application.modules.rights.*',
 		'application.modules.rights.components.*',
-		
-
-		
 		
 	),
 

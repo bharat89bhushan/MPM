@@ -9,14 +9,14 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 //	array('label'=>'List TransferOrders', 'url'=>array('index')),
-	array('label'=>'Create TransferOrders', 'url'=>array('create')),
-	array('label'=>'Update TransferOrders', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Create IssueOrder', 'url'=>array('create')),
+	array('label'=>'Update IssueOrder', 'url'=>array('update', 'id'=>$model->id)),
 //	array('label'=>'Delete TransferOrders', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage TransferOrders', 'url'=>array('admin')),
+	array('label'=>'Manage IssueOrder', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View TransferOrders #<?php echo $model->id; ?></h1>
+<h1>View IssueOrder #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

@@ -202,8 +202,28 @@ class TransferOrdersController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		
+unset(Yii::app()->request->cookies['from_date']);  // first unset cookie for dates
+unset(Yii::app()->request->cookies['to_date']);
+unset(Yii::app()->request->cookies['party_id']);
+
+		
+		
 		$model=new TransferOrders('search');
 		$model->unsetAttributes();  // clear any default values
+	
+ if(!empty($_POST))
+  {
+    Yii::app()->request->cookies['from_date'] = new CHttpCookie('from_date', $_POST['from_date']);  // define cookie for from_date
+    Yii::app()->request->cookies['to_date'] = new CHttpCookie('to_date', $_POST['to_date']);
+    Yii::app()->request->cookies['party_id'] = new CHttpCookie('party_id', $_POST['party_id']);
+    $model->from_date = $_POST['from_date'];
+    $model->to_date = $_POST['to_date'];
+    $model->party_id = $_POST['party_id'];
+}
+	
+
+
 		if(isset($_GET['TransferOrders']))
 			$model->attributes=$_GET['TransferOrders'];
 
@@ -248,4 +268,24 @@ class TransferOrdersController extends Controller
         ),true);
         
     }
+    
+    
+	public function actionDynamicStates()
+    {
+       
+   $data=Items::model()->findAllByAttributes(array('type_id'=>$_POST['type_id']));
+                  
+    $data=CHtml::listData($data,'id','code');
+     echo CHtml::tag('option',
+                   array('value'=>''),CHtml::encode("-Select-"),true);
+    foreach($data as $value=>$name)
+    {
+        echo CHtml::tag('option',
+                   array('value'=>$value),CHtml::encode($name),true);
+    }
+    
+  //  echo "NN";
+    
+    }
+    
 }

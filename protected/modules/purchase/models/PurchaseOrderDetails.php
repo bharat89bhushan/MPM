@@ -14,6 +14,7 @@ class PurchaseOrderDetails extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $type_id;
 	public function tableName()
 	{
 		return 'purchase_order_details';
@@ -51,7 +52,7 @@ class PurchaseOrderDetails extends CActiveRecord
 
 	/**
 	 * @return array customized attribute labels (name=>label)
-	 */
+	 **/
 	public function attributeLabels()
 	{
 		return array(

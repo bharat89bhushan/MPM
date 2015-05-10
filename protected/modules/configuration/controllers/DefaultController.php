@@ -13,54 +13,63 @@ class DefaultController extends Controller
 	}
 	public function actionCleanPlan()
 	{
-		ProductionPlanFinalDetails::model()->DeleteAll();
-		ProductionPlanDetails::model()->DeleteAll();
-		ProductionPlans::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(ProductionPlanFinalDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(ProductionPlanDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(ProductionPlans::model()->tableName());
+	
 			$this->render('admin_del');
 	
 	}
 	public function actionCleanGodownStock()
 	{
-		GodownStocks::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(GodownStocks::model()->tableName());
 		$this->render('admin_del');
 	
 	}
 	public function actionPurchase()
 	{
-		PurchaseOrderDetails::model()->DeleteAll();
-		PurchaseOrders::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(PurchaseOrderDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(PurchaseOrders::model()->tableName());
 		$this->render('admin_del');
 	
 	}
 	public function actionSales()
 	{
-		SalesOrderDetails::model()->DeleteAll();
-		SalesOrders::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(SalesOrderDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(SalesOrders::model()->tableName());
 		$this->render('admin_del');
 	
 	}
 	public function actionTransfer()
 	{
-		TransferOrderDetails::model()->DeleteAll();
-		TransferOrders::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(TransferOrderDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(TransferOrders::model()->tableName());
 		$this->render('admin_del');
 	
 	}
 	
 	public function actionParties()
 	{
-		Parties::model()->DeleteAll();
-		PartyItemStock::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(Parties::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(PartyItemStock::model()->tableName());
 		$this->render('admin_del');
-	
 	}
+	
+	public function actionPartiesStocks()
+	{
+		Yii::app()->db->createCommand()->truncateTable(Parties::model()->tableName());
+		$this->render('admin_del');
+	}
+	
+	
+	
 	
 	public function actionArticles()
 	{
-		ArticleProcessDetails::model()->DeleteAll();
-		ArticleDetails::model()->DeleteAll();
-		ArticleProperties::model()->DeleteAll();
-		Articles::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(ArticleProcessDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(ArticleDetails::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(ArticleProperties::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(Articles::model()->tableName());
 		$this->render('admin_del');
 	
 	}
@@ -68,9 +77,11 @@ class DefaultController extends Controller
 	
 	public function actionItems()
 	{
-		ItemProperties::model()->DeleteAll();
-		Items::model()->DeleteAll();
+		Yii::app()->db->createCommand()->truncateTable(ItemProperties::model()->tableName());
+		Yii::app()->db->createCommand()->truncateTable(Items::model()->tableName());
 		$this->render('admin_del');
 	
 	}
+	
+	
 }

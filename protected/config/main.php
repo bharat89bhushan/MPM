@@ -34,6 +34,7 @@ return array(
 		'productionplan',
 		'sales',
 		'article',
+		'backup',
 		'transfer',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',

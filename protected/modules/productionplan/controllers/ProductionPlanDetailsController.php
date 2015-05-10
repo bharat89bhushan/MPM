@@ -63,7 +63,7 @@ class ProductionPlanDetailsController extends Controller
 	public function actionView($id)
 	{
 		$model=$this->loadModel($id);
-		$model->val = $_GET['qty'];
+	//	$model->val = $_GET['qty'];
 		$this->render('view',array(
 			'model'=>$model,
 		));
@@ -72,7 +72,7 @@ class ProductionPlanDetailsController extends Controller
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
+	 **/
 	public function actionCreate()
 	{
 		$model=new ProductionPlanDetails;
@@ -101,12 +101,12 @@ class ProductionPlanDetailsController extends Controller
 			'model'=>$model,
 		));
 	}
-
-	/**
+	
+	/*
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
-	 */
+	 **/
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);

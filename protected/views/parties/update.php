@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Parties', 'url'=>array('index')),
+//	array('label'=>'List Parties', 'url'=>array('index')),
 	array('label'=>'Create Parties', 'url'=>array('create')),
 	array('label'=>'View Parties', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Manage Parties', 'url'=>array('admin')),

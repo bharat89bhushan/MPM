@@ -30,7 +30,7 @@ class Parties extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
+			array('code,name', 'required'),
 			array('code', 'length', 'max'=>10),
 			array('name', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -59,7 +59,7 @@ class Parties extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'code' => 'Code',
+			'code' => 'Short Name',
 			'name' => 'Name',
 		);
 	}

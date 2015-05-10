@@ -1,23 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "production_plan_final_details".
+ * This is the model class for table "config_plan_status".
  *
- * The followings are the available columns in table 'production_plan_final_details':
+ * The followings are the available columns in table 'config_plan_status':
  * @property integer $id
- * @property integer $plan_id
- * @property integer $quality_id
- * @property string $qty
- * @property string $date
+ * @property string $name
  */
-class ProductionPlanFinalDetails extends CActiveRecord
+class ConfigPlanStatus extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'production_plan_final_details';
+		return 'config_plan_status';
 	}
 
 	/**
@@ -28,12 +25,11 @@ class ProductionPlanFinalDetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('plan_id, quality_id, qty, date', 'required'),
-			array('plan_id, quality_id', 'numerical', 'integerOnly'=>true),
-			array('qty', 'length', 'max'=>10),
+			array('name', 'required'),
+			array('name', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, plan_id, quality_id, qty, date', 'safe', 'on'=>'search'),
+			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +41,6 @@ class ProductionPlanFinalDetails extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-				'Rel_quality'=>array(self::BELONGS_TO,'ConfigQualityTypes','quality_id'),
 		);
 	}
 
@@ -56,10 +51,7 @@ class ProductionPlanFinalDetails extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'plan_id' => 'Plan',
-			'quality_id' => 'Quality',
-			'qty' => 'Qty',
-			'date' => 'Date',
+			'name' => 'Name',
 		);
 	}
 
@@ -82,10 +74,7 @@ class ProductionPlanFinalDetails extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('plan_id',$this->plan_id);
-		$criteria->compare('quality_id',$this->quality_id);
-		$criteria->compare('qty',$this->qty,true);
-		$criteria->compare('date',$this->date,true);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -96,7 +85,7 @@ class ProductionPlanFinalDetails extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ProductionPlanFinalDetails the static model class
+	 * @return ConfigPlanStatus the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

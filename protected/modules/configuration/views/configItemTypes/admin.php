@@ -6,14 +6,14 @@ $this->breadcrumbs=array(
 	'Config Item Types'=>array('index'),
 	'Manage',
 );
-
+/*
 $this->menu=array(
 	array('label'=>'Units', 'url'=>array('configUnits/admin')),
 	array('label'=>'Process', 'url'=>array('configProcess/admin')),
 	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
 	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
 );
-
+*/
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -52,9 +52,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'desc',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{delete}'
 		),
 	),
 )); 
-echo CHtml::link('Add Item Types', array('configItemTypes/create'));
+//echo CHtml::link('Add Item Types', array('configItemTypes/create'));
 
 ?>

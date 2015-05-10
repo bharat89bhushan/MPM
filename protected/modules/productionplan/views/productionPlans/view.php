@@ -55,15 +55,39 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_production_plan, $co
 		array('name'=>'Completed','value'=>'$data->status?NULL:$data->updated'),
 	//	'value',
                 array(
-                        'class'=>'CButtonColumn'
+            'class'=>'CButtonColumn'
 			, 'viewButtonUrl'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/view", array("id"=>$data["id"],"qty"=>'.$model->value.'))'
             , 'updateButtonUrl'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/update", array("id"=>$data["id"],"production_plan_id"=>'.$model->id.',"article_id"=>'.$model->article_id.'))'
-            , 'deleteButtonUrl'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/delete", array("id"=>$data["id"]))'
+            ,'buttons'=>array(
+            	'delete'=>array(
+            	'url'=>'Yii::app()->createUrl("/productionplan/ProductionPlanDetails/delete", array("id"=>$data["id"]))',
+            	'visible'=>'$data->status?true:false;',
+            	)
+            	)
 		,//'template'=>'{update}'
             
                 ),
         ),
-)); 
+));
+if($model['status'])
  echo CHtml::link('Add', array('ProductionPlanDetails/create','production_plan_id'=>$model->id,'article_id'=>$model->article_id));
  
+else{
+$config = array('keyField'=>'id');
+$dataprovider = new CArrayDataProvider($rawData=$model->Rel_production_plan_final, $config);
+ 
+	$this->widget('zii.widgets.grid.CGridView', array(
+        'id'=>'items-comp-grid',
+        'dataProvider'=>$dataprovider,
+        'columns'=>array(
+   //     'plan_id',
+   
+		array('name'=>'Quality Code','value'=>'$data->Rel_quality->code'),
+		array('name'=>'Quality Name','value'=>'$data->Rel_quality->name'),
+		array('name'=>'Qty','value'=>'$data->qty'),
+	//	array('name'=>'Completed','value'=>'$data->status?NULL:$data->updated'),
+	//	'value',
+        ),
+));
+}
 ?>

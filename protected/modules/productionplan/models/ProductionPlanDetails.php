@@ -58,6 +58,7 @@ class ProductionPlanDetails extends CActiveRecord
 			'Rel_article_detail'=>array(self::BELONGS_TO,'ArticleDetails','article_detail_id'),
 			'Rel_party_id'=>array(self::BELONGS_TO,'Parties','party_id'),
 			'Rel_stock_trans'=>array(self::HAS_MANY,'StockTransDetails','production_plan_detail_id'),
+			'Rel_status'=>array(self::BELONGS_TO,'ConfigPlanStatus','status'),
 		
 		);
 	}

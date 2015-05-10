@@ -56,6 +56,7 @@ class ProductionPlans extends CActiveRecord
 			'Rel_production_plan'=>array(self::HAS_MANY,'ProductionPlanDetails','production_plan_id'),
 			'Rel_production_plan_final'=>array(self::HAS_MANY,'ProductionPlanFinalDetails','plan_id'),
 			'Rel_article'=>array(self::BELONGS_TO,'Articles','article_id'),
+			'Rel_status'=>array(self::BELONGS_TO,'ConfigPlanStatus','status'),
 		);
 	}
 
@@ -139,9 +140,10 @@ class ProductionPlans extends CActiveRecord
 				if(!$this->isNewRecord){
 					if(!$this->packed){
 					$productiondetails = ProductionPlanDetails::model()->findAll('production_plan_id='.$this->id);
-					if(floatval(ProductionPlans::model()->findByPk($this->id)->value)!=floatval($this->value)){
+					$planmodel = ProductionPlans::model()->findByPk($this->id);
+					if(floatval($planmodel->value)!=floatval($this->value) || $planmodel->article_id != $this->article_id){
 						if($productiondetails != null){
-								$this->addError('qty', 'Not Allowed To Change the Qty Now.');
+								$this->addError('article_id', 'Not Allowed To Change Now. Already Started');
 								return false;
 							
 						}
@@ -158,7 +160,19 @@ class ProductionPlans extends CActiveRecord
 						$this->addError('', 'Details not Added');
 						return false;
 							
-					}	
+					}
+					foreach ($_POST['ProductionPlanFinalDetails'] as $index => $plan_final_details) {
+					
+							$ordermodel = new ProductionPlanFinalDetails;
+							$ordermodel->attributes = $plan_final_details;
+							$ordermodel->plan_id = $this->id;
+							$ordermodel->date=new CDbExpression('NOW()');
+							if(!$ordermodel->validate()){
+								$this->addError('', 'Details are invalid');
+								return false;
+							}
+						
+					}
 						
 					}
 				}

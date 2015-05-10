@@ -11,7 +11,7 @@ $this->menu=array(
 //	array('label'=>'List SalesOrders', 'url'=>array('index')),
 	array('label'=>'Create SalesOrders', 'url'=>array('create')),
 	array('label'=>'Update SalesOrders', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete SalesOrders', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+//	array('label'=>'Delete SalesOrders', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage SalesOrders', 'url'=>array('admin')),
 );
 ?>

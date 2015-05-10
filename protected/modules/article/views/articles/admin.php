@@ -53,9 +53,16 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'filter' => CHtml::listData( ArticleGroups::model()->findAll(), 'id','name' )
 		),
 		'code',
-		'date',
+		array(
+		'name'=>'unit_id',
+		'value'=>'$data->Rel_unit_id->name',
+		'filter' => CHtml::listData( ConfigUnits::model()->findAll(), 'id','name' )
+		),
+	//	'date',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>
+<?php echo CHtml::link('Export', array('/exportToPDFExcel/articlesExportToExcel'), array('class'=>'btnblue'));?>

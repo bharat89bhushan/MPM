@@ -67,7 +67,7 @@ class ItemsController extends Controller
 	public function actionCreate()
 	{
 		$model=new Items;
-
+		Yii::app()->user->returnUrl = Yii::app()->request->requestUri;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -128,7 +128,8 @@ class ItemsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		Yii::app()->user->returnUrl = Yii::app()->request->requestUri;
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 

@@ -27,20 +27,24 @@
 	<div class="row">
 		<?php $article_detail_model = ArticleDetails::model()->findByPk($model->article_detail_id);?>
 		<?php echo $form->labelEx($model,'article_detail_id',array('label'=>'Article')); ?>
-		<?php echo $form->textField($model,'',array('value'=>$article_detail_model->Rel_article->code)); ?>
+		<?php echo $form->textField($model,'',array('readonly'=>'true','value'=>$article_detail_model->Rel_article->code)); ?>
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'article_detail_id',array('label'=>'Process')); ?>
-		<?php echo $form->textField($model,'',array('value'=>$article_detail_model->Rel_process->name)); ?>
+		<?php echo $form->textField($model,'',array('readonly'=>'true','value'=>$article_detail_model->Rel_process->name)); ?>
 	</div>
 
-
-
+	<div class="row">
+		<?php echo $form->labelEx($model,'type_id',array('label'=>'Item Type')); ?>
+		
+   		<?php $category_list=CHtml::listData(ConfigItemTypes::model()->findAll(),'id','name');?>
+    	<?php echo $form->dropDownList($model,'type_id',$category_list,array('empty'=>'Select','onChange' => 'js:description(this.value)')); ?>    
+    </div> 
 	<div class="row">
 		<?php echo $form->labelEx($model,'item_id'); ?>
 		<?php
 			$type_list=CHtml::listData(Items::model()->findAll(),'id','code');
-		echo $form->dropDownList($model,'item_id',$type_list,array('empty'=>'--Select--'));
+			echo $form->dropDownList($model,'item_id',$type_list,array('empty'=>'--Select--','id'=>'prop_val_id'));
 		?>
 		<?php echo $form->error($model,'item_id'); ?>
 	</div>
@@ -59,3 +63,23 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+		<?php
+	$buttonToggler_type= <<<JS
+	description=function(ind){
+	  jQuery.ajax({
+                // The url must be appropriate for your configuration;
+                // this works with the default config of 1.1.11
+                url: 'index.php?r=transfer/transferOrders/dynamicStates',
+                type: "POST",
+                data: {type_id: ind}, 
+                success: function(data){
+            		$("#".concat("prop_val_id")).html(data); // deal with data returned
+                    }
+                });
+    };
+   
+JS;
+	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
+	?>
+		

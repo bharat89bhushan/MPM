@@ -72,7 +72,8 @@ class ConfigItemTypesController extends Controller
 		{
 			$model->attributes=$_POST['ConfigItemTypes'];
 			if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(Yii::app()->user->returnUrl);
+			//	$this->redirect(array('admin','id'=>$model->id));
 		}
 
 		$this->render('create',array(

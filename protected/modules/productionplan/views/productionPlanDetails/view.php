@@ -88,18 +88,20 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_
 }
 }else{
 $config = array('keyField'=>'id');
-$dataprovider = new CArrayDataProvider($rawData=$model->Rel_stock_trans, $config);
+//$dataprovider = new CArrayDataProvider($rawData=$model->Rel_stock_trans, $config);
+$dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_process_details, $config);
  
 	$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'items-comp-grid',
         'dataProvider'=>$dataprovider,
         //l($data->qty)*floatval('.$model->val.')<floatval($data->Rel_item->qty)?"Green":"Red"',
         'columns'=>array(
-        	array('name'=>'Item Code','value'=>'$data->Rel_trans_item_id->code'),
-		array('name'=>'Item Name','value'=>'$data->Rel_trans_item_id->name'),
+        	array('name'=>'Item Code','value'=>'$data->Rel_item->code'),
+		array('name'=>'Item Name','value'=>'$data->Rel_item->name'),
 		array(
          'name' => 'Qty',
-         'value' => '$data->qty',
+        'value' => 'strval(floatval($data->qty)*floatval('.$model->val.'))',
+     	
      	),
         ),
 ));

@@ -13,7 +13,6 @@ $this->menu=array(
 	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
 	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
 );
-
 ?>
 
 <h1>Clean Data</h1>
@@ -27,13 +26,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <div class="search-form" style="display:none">
 <?php// $this->renderPartial('_search',array(
 	//'model'=>$model,
-//)); ?>
+//));
+?>
 </div>--><!-- search-form -->
+
 <?php
 echo CHtml::link("Clean ProductionPlan<br>", array('default/CleanPlan'));
-?>
-<?php
-echo CHtml::link('Clean GodownStocks<br>', array('default/CleanGodownStock'));
 ?>
 <?php
 echo CHtml::link('Clean Purchase<br>', array('default/Purchase'));
@@ -41,21 +39,36 @@ echo CHtml::link('Clean Purchase<br>', array('default/Purchase'));
 <?php
 echo CHtml::link('Clean Sales<br>', array('default/Sales'));
 ?>
+<?php
+echo CHtml::link('Clean Issue Orders<br>', array('default/Transfer'));
+?>
+<br>
+<br>
+
 
 <?php
-echo CHtml::link('Clean ItemTransfer<br>', array('default/Transfer'));
+echo CHtml::link('Clean GodownStocks<br>', array('default/CleanGodownStock'));
 ?>
-
 <?php
 echo CHtml::link('Clean Parties and Party Stock <br>', array('default/Parties'));
 ?>
-
+<?php
+echo CHtml::link('Clean Party Stock only <br>', array('default/PartiesStocks'));
+?>
 <?php
 echo CHtml::link('Clean Articles<br>', array('default/Articles'));
 ?>
 
 <?php
 echo CHtml::link('Clean Items<br>', array('default/Items'));
+?>
+
+<br>
+<br>
+<br>
+
+<?php
+echo CHtml::link('Clean All<br>', array('/backup/default/clean'));
 ?>
 
 

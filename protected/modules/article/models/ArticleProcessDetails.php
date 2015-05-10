@@ -14,7 +14,7 @@ class ArticleProcessDetails extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	 public $calc_per_qty;
+	 public $calc_per_qty,$type_id;
 	public function tableName()
 	{
 		return 'article_process_details';
@@ -92,6 +92,7 @@ class ArticleProcessDetails extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -103,4 +104,17 @@ class ArticleProcessDetails extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+/*	protected function beforeDelete()
+	{
+		$planmodel = ProductionPlanDetails::model()->findByAttributes(array('article_detail_id'=>$this->article_detail_id));
+		if($planmodel != null){
+			return false;
+		}
+		
+	return true;
+
+	}
+*/	
+	
 }

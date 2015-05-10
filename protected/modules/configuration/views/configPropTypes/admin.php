@@ -10,9 +10,12 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Units', 'url'=>array('configUnits/admin')),
 	array('label'=>'Process', 'url'=>array('configProcess/admin')),
-	array('label'=>'Item Types', 'url'=>array('configItemTypes/admin')),
+//	array('label'=>'Item Types', 'url'=>array('configItemTypes/admin')),
 //	array('label'=>'Property Types', 'url'=>array('configPropTypes/admin')),
 	array('label'=>'Property Type Values', 'url'=>array('configPropTypeValues/admin')),
+	array('label'=>'Clean Data', 'url'=>array('default/CleanData')),
+	array('label'=>'Backup & Restore Data', 'url'=>array('/backup/default/upload')),
+
 );
 /*
 Yii::app()->clientScript->registerScript('search', "

@@ -64,6 +64,9 @@ JS;
        ) ));
        */
 	?>
+		<?php echo CHtml::link("Add", array('configuration/configItemTypes/create')); ?>
+		<?php echo CHtml::link("Delete", array('configuration/configItemTypes/admin')); ?>
+	
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 

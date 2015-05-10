@@ -139,7 +139,14 @@ class ArticleProcessDetailsController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		$planmodel = ProductionPlanDetails::model()->findByAttributes(array('article_detail_id'=>$model->article_detail_id));
+		if($planmodel == null){
+			$model->delete();
+		}else{
+			 throw new CHttpException(400, "Delete Not Possible");
+		}
+	
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

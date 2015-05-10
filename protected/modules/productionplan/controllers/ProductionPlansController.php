@@ -131,7 +131,7 @@ class ProductionPlansController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['ProductionPlans']))
 		{
 			$model->attributes=$_POST['ProductionPlans'];
@@ -155,7 +155,8 @@ class ProductionPlansController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
-
+		
+		$model->category_id = $model->Rel_article->article_group_id;
 		$this->render('update',array(
 			'model'=>$model,
 		));

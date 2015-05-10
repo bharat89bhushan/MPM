@@ -40,6 +40,8 @@
         <?php
         $index = 0;
         foreach ($model->Rel_purchase_detail as $id => $child):
+            $child->type_id = $child->Rel_item_id->type_id;
+        
             $this->renderPartial('application.modules.purchase.views.purchaseOrderDetails._tform', array(
                 'model' => $child,
                 'index' => $id,
@@ -82,6 +84,18 @@ $("#loadChildByAjax").click(function(e){
 
 		<?php
 	$buttonToggler_type= <<<JS
+	description=function(ind,index){
+	  jQuery.ajax({
+                // The url must be appropriate for your configuration;
+                // this works with the default config of 1.1.11
+                url: 'index.php?r=transfer/transferOrders/dynamicStates',
+                type: "POST",
+                data: {type_id: ind}, 
+                success: function(data){
+            		$("#".concat(index,"prop_val_id")).html(data); // deal with data returned
+                    }
+                });
+    };
     deleteChild=function(elm){
     var element=$(elm).parent().parent();
      element.remove();

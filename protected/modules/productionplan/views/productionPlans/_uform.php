@@ -19,11 +19,21 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'category_id'); ?>
+		<?php //echo $form->textField($model,'item_id'); 
+		$type_list=CHtml::listData(ArticleGroups::model()->findAll(),'id','name');
+			echo $form->dropDownList($model,'category_id',$type_list,array('empty'=>'Select','onChange' => 'js:description(this.value)')); ?>
+		<?php echo $form->error($model,'category_id'); ?>
+	</div>
+
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'article_id'); ?>
-		<?php echo $form->hiddenField($model,'article_id'); 
+		<?php //echo $form->textField($model,'item_id'); 
 		$type_list=CHtml::listData(Articles::model()->findAll(),'id','code');
-			echo $form->dropDownList($model,'article_id',$type_list,array('disabled'=>'disabled')); ?>
+			echo $form->dropDownList($model,'article_id',$type_list,array('empty'=>'Select','id'=>'prop_val_id')); ?>
 		<?php echo $form->error($model,'article_id'); ?>
 	</div>
 
@@ -49,6 +59,18 @@
     var element=$(elm).parent().parent();
      element.remove();
     }
+    description=function(ind){
+	  jQuery.ajax({
+                // The url must be appropriate for your configuration;
+                // this works with the default config of 1.1.11
+                url: 'index.php?r=sales/salesOrders/dynamicStates',
+                type: "POST",
+                data: {type_id: ind}, 
+                success: function(data){
+            		$("#prop_val_id").html(data); // deal with data returned
+                    }
+                });
+    };
 
 JS;
 	Yii::app()->clientScript->registerScript('toggleFormInputs_types',$buttonToggler_type, CClientScript::POS_READY);
@@ -106,7 +128,7 @@ $("#loadChildByAjax").click(function(e){
     _index++;
 });
 ', CClientScript::POS_END);
-
 ?>
 
 </div>
+	

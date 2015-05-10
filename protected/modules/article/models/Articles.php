@@ -105,9 +105,11 @@ class Articles extends CActiveRecord
 		$criteria->compare('calc_per_qty',$this->calc_per_qty);
 		$criteria->order = 'id DESC';
 
-		return new CActiveDataProvider($this, array(
+		$articles =  new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+		$_SESSION['articles'] = $articles;
+		return $articles;
 	}
 
 	/**

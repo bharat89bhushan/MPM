@@ -42,7 +42,7 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_process, $config);
 			, 'viewButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/view", array("id"=>$data["id"],"calc_per_qty"=>'.$model->calc_per_qty.'))'
             , 'updateButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/update", array("id"=>$data["id"]))'
             , 'deleteButtonUrl'=>'Yii::app()->createUrl("/article/articleDetails/delete", array("id"=>$data["id"]))'
-		,//'template'=>'{update}{delete}'
+		,'template'=>'{view}'
             
                 ),
         ),

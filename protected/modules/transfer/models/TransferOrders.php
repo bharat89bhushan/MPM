@@ -13,6 +13,9 @@ class TransferOrders extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	public $from_date;
+	public $to_date;
+
 	public function tableName()
 	{
 		return 'transfer_orders';
@@ -83,9 +86,35 @@ class TransferOrders extends CActiveRecord
 		$criteria->compare('date',$this->date,true);
 		$criteria->order = 'id DESC';
 
-		return new CActiveDataProvider($this, array(
+		$order_criteria=new CDbCriteria;
+		$order_criteria->with = array('Rel_order_id');
+		$order_criteria->compare('Rel_order_id.party_id',$this->party_id);
+
+		if(!empty($this->from_date) && empty($this->to_date))
+        {
+            $criteria->condition = "date >= '$this->from_date'";  // date is database date column field
+            $order_criteria->condition = "Rel_order_id.date >= '$this->from_date'";  // date is database date column field
+        }elseif(!empty($this->to_date) && empty($this->from_date))
+        {
+            $criteria->condition = "date <= '$this->to_date'";
+            $order_criteria->condition = "Rel_order_id.date <= '$this->to_date'";
+        }elseif(!empty($this->to_date) && !empty($this->from_date))
+        {
+        	$criteria->condition = "date  >= '$this->from_date 00:00:00' and date <= '$this->to_date 23:59:59'";
+            $order_criteria->condition = "Rel_order_id.date  >= '$this->from_date 00:00:00' and Rel_order_id.date <= '$this->to_date 23:59:59'";
+        }
+
+
+	$transfer_order= new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+		$transfer_order_details= new CActiveDataProvider('TransferOrderDetails', array(
+			'criteria'=>$order_criteria,
+		));
+		$_SESSION['transfer'] = $transfer_order_details;
+		return $transfer_order;
+	
+
 	}
 
 	/**

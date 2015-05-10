@@ -57,18 +57,14 @@ class ExportToPDFExcelController extends CController
 		//'id',
 //		'Rel_party_id.name::Party',
 //		'date',
-		'order_id',
-		'Rel_godown_id.Rel_article_id.name',
+		'order_id::Sales ID',
+		'Rel_order_id.Rel_party_id.name::Vender',
+		'Rel_godown_id.Rel_article_id.Rel_article_group_id.name::Category',
+		'Rel_godown_id.Rel_article_id.code::Article Code',
+		'Rel_godown_id.Rel_quality_id.name::Quality',
 		'qty',
-		/*'course_name',
-		'relCat.qualification_type_name::Category Name',
-		'course_level',
-		'course_completion_hours',
-		'course_code',
-		'course_cost',
-		'course_desc',
-		'Rel_user.user_organization_email_id::Created By',
-		*/
+		'Rel_godown_id.Rel_unit_id.name::Unit',
+		
 		),
 		'Sales_Orders',
 		array(
@@ -80,15 +76,44 @@ class ExportToPDFExcelController extends CController
 	    
 	}	    
 
+public function actionTransferExportToExcel()
+	{
+		$this->toExcel( $_SESSION['transfer'],
+		array(
+		//'id',
+//		'Rel_party_id.name::Party',
+//		'date',
+		'Rel_order_id.id',
+		'Rel_order_id.Rel_party_id.name::Vendor Name',
+		'Rel_order_id.date',
+		'Rel_item_id.Rel_item_type.name::Item Type',
+		'Rel_item_id.code::Item Code',
+		'qty',
+		),
+		'Issue_Orders',
+		array(
+		    'creator' => 'Bharat',
+		),
+		'Excel5'
+	    );
+	    
+	    
+	}	    
+
+
+
 public function actionPartyPlanExportToExcel()
 	{
 		$this->toExcel( $_SESSION['partyplan'],
 		array(
 		'production_plan_id',
+		'Rel_article_detail.Rel_article.Rel_article_group_id.name',
 		'Rel_article_detail.Rel_article.code',
-		'Rel_article_detail.Rel_article.name',
+		'Rel_status.name::Status',
 //		'status?"InProgress":"Completed"',
-//		'qty',
+		'val',
+		'updated',
+
 		),
 		'Party_Plan_Details',
 		array(
@@ -105,13 +130,36 @@ public function actionPlanExportToExcel()
 	{
 		$this->toExcel( $_SESSION['productionplan'],
 		array(
-		'id',
-//		'Rel_article_detail.Rel_article.code',
-//		'Rel_article_detail.Rel_article.name',
-//		'status?"InProgress":"Completed"',
+		'id::Plan ID',
+		'Rel_article.Rel_article_group_id.name',
+		'Rel_article.code',
+		'Rel_status.name::Status',
 		'value',
+		'date',
 		),
 		'Production_Plan_Details',
+		array(
+		    'creator' => 'Bharat',
+		),
+		'Excel5'
+	    );
+	    
+	    
+	}	    
+
+
+public function actionArticlesExportToExcel()
+	{
+		$this->toExcel( $_SESSION['articles'],
+		array(
+	//	'id',
+		'Rel_article_group_id.name::Category',
+		'code::Code',
+		'Rel_unit_id.name::Unit',
+		'Rel_pack_unit_id.name::Packing Unit',
+		'pack_qty::Packing Qty'
+		),
+		'Articles',
 		array(
 		    'creator' => 'Bharat',
 		),
@@ -128,9 +176,13 @@ public function actionPurchaseExportToExcel()
 		$this->toExcel( $_SESSION['purchase'],
 		array(
 		
-		'purchase_order_id',
-		'Rel_item_id.code',
+		'Rel_order_id.id',
+		'Rel_order_id.Rel_party_id.name::Vendor Name',
+		'Rel_order_id.date',
+		'Rel_item_id.Rel_item_type.name::Item Type',
+		'Rel_item_id.code::Item Code',
 		'qty',
+		'Rel_item_id.Rel_unit_type.name::Unit',
 	
 		),
 		'Purchase_Orders',

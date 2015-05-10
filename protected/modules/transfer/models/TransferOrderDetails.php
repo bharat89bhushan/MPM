@@ -14,6 +14,7 @@ class TransferOrderDetails extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $type_id;
 	public function tableName()
 	{
 		return 'transfer_order_details';
@@ -45,6 +46,8 @@ class TransferOrderDetails extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 				'Rel_item_id'=>array(self::BELONGS_TO,'Items','item_id'),
+				'Rel_order_id'=>array(self::BELONGS_TO,'TransferOrders','transfer_id'),
+	
 		);
 	}
 

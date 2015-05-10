@@ -121,6 +121,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'date',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

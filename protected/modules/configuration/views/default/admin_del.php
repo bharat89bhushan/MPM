@@ -68,7 +68,7 @@ echo CHtml::link('Clean Items<br>', array('default/Items'));
 <br>
 
 <?php
-echo CHtml::link('Clean All<br>', array('/backup/default/clean'));
+// echo CHtml::link('Clean All<br>', array('/backup/default/clean'));
 ?>
 
 

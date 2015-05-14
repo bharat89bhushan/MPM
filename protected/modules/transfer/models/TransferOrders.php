@@ -81,14 +81,8 @@ class TransferOrders extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('party_id',$this->party_id);
-		$criteria->compare('date',$this->date,true);
-		$criteria->order = 'id DESC';
 
 		$order_criteria=new CDbCriteria;
-		$order_criteria->with = array('Rel_order_id');
-		$order_criteria->compare('Rel_order_id.party_id',$this->party_id);
 
 		if(!empty($this->from_date) && empty($this->to_date))
         {
@@ -103,6 +97,18 @@ class TransferOrders extends CActiveRecord
         	$criteria->condition = "date  >= '$this->from_date 00:00:00' and date <= '$this->to_date 23:59:59'";
             $order_criteria->condition = "Rel_order_id.date  >= '$this->from_date 00:00:00' and Rel_order_id.date <= '$this->to_date 23:59:59'";
         }
+
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('party_id',$this->party_id);
+		$criteria->compare('date',$this->date,true);
+		$criteria->order = 'id DESC';
+
+
+
+		$order_criteria->with = array('Rel_order_id');
+		$order_criteria->compare('Rel_order_id.party_id',$this->party_id);
+
 
 
 	$transfer_order= new CActiveDataProvider($this, array(

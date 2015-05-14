@@ -56,7 +56,7 @@ JS;
 		<?php echo $form->labelEx($model,'master_id'); ?>
 		<?php
 		$type_list=CHtml::listData(ConfigMaster::model()->findAll(),'id','name');
-		echo $form->dropDownList($model,'master_id',$type_list,array('empty'=>'--Select--','onchange'=>'js:toggleInput_type(this.selectedIndex)','id'=>'master_id_lst'));
+		echo $form->dropDownList($model,'master_id',$type_list,array('empty'=>'--Select--'));
 		?>
 		<?php echo $form->error($model,'master_id'); ?>
 	</div>

@@ -50,10 +50,10 @@ class LoginForm extends CFormModel
 		{
 			$sys = SysDetails::model()->findByPk(1);
 			
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->username,md5($this->password));
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
-			if($sys->mac != $this->getmac($sys->os))
+				$this->addError('password','Incorrect username or password.'.md5($this->password));
+			if($sys->mac != md5($this->getmac($sys->os)))
 				$this->addError('password','Not Authorized to System');
 				
 		}

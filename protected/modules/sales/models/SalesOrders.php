@@ -81,16 +81,9 @@ class SalesOrders extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('t.id',$this->id);
-		
-		$criteria->compare('party_id',$this->party_id);
-		$criteria->compare('date',$this->date,true);
-		$criteria->order = 't.id DESC';
 		
 		
 		$order_criteria=new CDbCriteria;
-		$order_criteria->with = array('Rel_order_id');
-		$order_criteria->compare('Rel_order_id.party_id',$this->party_id);
 		
 	
 		
@@ -108,6 +101,19 @@ class SalesOrders extends CActiveRecord
             $order_criteria->condition = "Rel_order_id.date  >= '$this->from_date 00:00:00' and Rel_order_id.date <= '$this->to_date 23:59:59'";
         }
 
+		$criteria->compare('t.id',$this->id);
+		
+		$criteria->compare('party_id',$this->party_id);
+		$criteria->compare('date',$this->date,true);
+		$criteria->order = 't.id DESC';
+	
+	
+	
+		$order_criteria->with = array('Rel_order_id');
+		$order_criteria->compare('Rel_order_id.party_id',$this->party_id);
+	
+	
+	
 		$sales_order= new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

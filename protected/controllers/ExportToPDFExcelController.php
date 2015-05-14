@@ -59,6 +59,7 @@ class ExportToPDFExcelController extends CController
 //		'date',
 		'order_id::Sales ID',
 		'Rel_order_id.Rel_party_id.name::Vender',
+		'Rel_order_id.date',
 		'Rel_godown_id.Rel_article_id.Rel_article_group_id.name::Category',
 		'Rel_godown_id.Rel_article_id.code::Article Code',
 		'Rel_godown_id.Rel_quality_id.name::Quality',
@@ -112,7 +113,7 @@ public function actionPartyPlanExportToExcel()
 		'Rel_status.name::Status',
 //		'status?"InProgress":"Completed"',
 		'val',
-		'updated',
+		'updated::Received Date',
 
 		),
 		'Party_Plan_Details',

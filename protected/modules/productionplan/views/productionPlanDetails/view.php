@@ -47,7 +47,6 @@ if($model->status){
 if($model->party_id){	
 $config = array('keyField'=>'id');
 $dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_process_details, $config);
- 
 	$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'items-comp-grid',
         'dataProvider'=>$dataprovider,
@@ -60,7 +59,7 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_
      	),
 		 array(
          'name' => 'Required',
-         'value' => 'strval(floatval($data->qty)*floatval('.$model->val.'))',
+         'value' => 'strval(floatval($data->qty)*floatval('.$model->Rel_production_plan->value.'))',
      	),
         ),
 ));
@@ -81,7 +80,7 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_article_detail->Rel_
      	),
 		 array(
          'name' => 'Required',
-         'value' => 'strval(floatval($data->qty)*floatval('.$model->val.'))',
+         'value' => 'strval(floatval($data->qty)*floatval('.$model->Rel_production_plan->value.'))',
      	),
         ),
 ));	

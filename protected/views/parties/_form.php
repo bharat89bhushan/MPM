@@ -20,6 +20,22 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+				<?php echo $form->labelEx($model,'type_id'); ?>
+		<?php 
+			$type_list=CHtml::listData(ConfigPartyTypes::model()->findAll(),'id','name');
+		echo //$form->textField($model,'type_id'); 
+	
+		$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type'));
+	?>
+		<?php echo CHtml::link("Add", array('configuration/configPartyTypes/create')); ?>
+		<?php echo CHtml::link("Delete", array('configuration/configPartyTypes/admin')); ?>
+	
+		<?php echo $form->error($model,'type_id'); ?>
+
+	</div>
+
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'code'); ?>
 		<?php echo $form->textField($model,'code',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'code'); ?>

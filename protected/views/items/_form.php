@@ -56,13 +56,6 @@ JS;
 		echo //$form->textField($model,'type_id'); 
 	
 		$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type'));
-	/*			$form->dropDownList($model,'type_id',$type_list,array('empty'=>'Select Type','onchange'=>'js:toggleInput_type(this.selectedIndex)',
-				'ajax' => array(
-                        'type'=>'POST',
-                        'url'=>CController::createUrl('items/dynamicStates'),
-                        'update'=>'#'.CHtml::activeId($model,'sub_type_id'),
-       ) ));
-       */
 	?>
 		<?php echo CHtml::link("Add", array('configuration/configItemTypes/create')); ?>
 		<?php echo CHtml::link("Delete", array('configuration/configItemTypes/admin')); ?>

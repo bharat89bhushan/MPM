@@ -52,7 +52,8 @@ $dataprovider = new CArrayDataProvider($rawData=$model->Rel_production_plan, $co
 		array('name'=>'Process','value'=>'$data->Rel_article_detail->Rel_process->name'),
 	//	array('name'=>'Item Code','value'=>'$data->Rel_plan_rel_item_id->code'),
 		array('name'=>'Created','value'=>'$data->date'),
-		array('name'=>'Completed','value'=>'$data->status?NULL:$data->updated'),
+		array('name'=>'Received Date','value'=>'$data->status?NULL:$data->updated'),
+		array('name'=>'Received Qty','value'=>'$data->status?NULL:$data->val'),
 	//	'value',
                 array(
             'class'=>'CButtonColumn'

@@ -14,7 +14,7 @@ $this->menu=array(
 //	array('label'=>'Create Parties', 'url'=>array('create')),
 	array('label'=>'Create Parties', 'url'=>array('create')),
 	array('label'=>'Update Parties', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Parties', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+//	array('label'=>'Delete Parties', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Parties', 'url'=>array('admin')),
 );
 ?>
@@ -25,6 +25,11 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
+		array(
+		'label'=>'Type',
+		'name'=>'Rel_party_type.name',
+	//	'value'=> $model['Rel_item_type.name'],
+		),
 		'code',
 		'name',
 	),
@@ -126,9 +131,10 @@ $dataprovider = new CArrayDataProvider($rawData=$_SESSION['partyplan'], $config)
         	'production_plan_id',
         	array('name'=>'Article Code','value'=>'$data->Rel_article_detail->Rel_article->code'),
         	array('name'=>'Article Name','value'=>'$data->Rel_article_detail->Rel_article->name'),
-        	array('name'=>'Qty','value'=>'$data->Rel_production_plan->value'),
+        	array('name'=>'Qty','value'=>'$data->val'),
         	array('name'=>'Status','value'=>'$data->status?"InProgress":"Completed"'),
-        	'date',
+        	array('name'=>'Date','value'=>'$data->date'),
+            array('name'=>'Received Date','value'=>'$data->status?NULL:$data->updated'),
         ),
 )); 
 ?>

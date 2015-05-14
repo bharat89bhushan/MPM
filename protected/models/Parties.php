@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $code
  * @property string $name
+ * @property string $type_id
  */
 class Parties extends CActiveRecord
 {
@@ -30,12 +31,13 @@ class Parties extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code,name', 'required'),
+			array('code,type_id', 'required'),
 			array('code', 'length', 'max'=>10),
 			array('name', 'length', 'max'=>50),
+			array('from_date,to_date','safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, code, name,from_date,to_date', 'safe', 'on'=>'search'),
+			array('id, code, name,from_date,to_date,type_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,6 +49,7 @@ class Parties extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'Rel_party_type'=>array(self::BELONGS_TO,'ConfigPartyTypes','type_id'),
 			'Rel_party_item_stock'=>array(self::HAS_MANY,'PartyItemStock','party_id'),
 			'Rel_party_production_plan'=>array(self::HAS_MANY,'ProductionPlanDetails','party_id'),
 		);
@@ -61,6 +64,7 @@ class Parties extends CActiveRecord
 			'id' => 'ID',
 			'code' => 'Short Name',
 			'name' => 'Name',
+			'type_id' => 'Party Type',
 		);
 	}
 
@@ -85,6 +89,7 @@ class Parties extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('type_id',$this->type_id,true);
 
 	$criteria->with = array('Rel_party_production_plan');
 	

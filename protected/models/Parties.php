@@ -31,7 +31,7 @@ class Parties extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code,type_id', 'required'),
+			array('name,type_id', 'required'),
 			array('code', 'length', 'max'=>10),
 			array('name', 'length', 'max'=>50),
 			array('from_date,to_date','safe'),

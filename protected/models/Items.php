@@ -38,7 +38,8 @@ class Items extends CActiveRecord
 	//		array('code, name, type_id, unit_type,size_prop_val_id,color_prop_val_id', 'required'),
 			array('name, type_id, unit_type', 'required'),
 			array('type_id, unit_type', 'numerical', 'integerOnly'=>true),
-			array('code, name', 'length', 'max'=>30),
+			array('name', 'length', 'max'=>30),
+			array('code', 'length', 'max'=>50),
 	//		array('code','unique'),
 	
 			array('date,size_prop_val_id,color_prop_val_id,qty', 'safe'),

@@ -30,7 +30,7 @@ $this->menu=array(
 		'name'=>'Rel_party_type.name',
 	//	'value'=> $model['Rel_item_type.name'],
 		),
-		'code',
+	//	'code',
 		'name',
 	),
 )); ?>

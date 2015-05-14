@@ -178,11 +178,13 @@ class DefaultController extends Controller
 		fwrite ( $this->fp, 'SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;'.PHP_EOL );
 		fwrite ( $this->fp, 'SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;'.PHP_EOL );
 		fwrite ( $this->fp, '-- -------------------------------------------'.PHP_EOL );
+		
 		$this->writeComment('START BACKUP');
 		return true;
 	}
 	public function EndBackup($addcheck = true)
 	{
+		
 		fwrite ( $this->fp, '-- -------------------------------------------'.PHP_EOL );
 		fwrite ( $this->fp, 'SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;'.PHP_EOL );
 		fwrite ( $this->fp, 'SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;'.PHP_EOL );
@@ -192,6 +194,7 @@ class DefaultController extends Controller
 			fwrite ( $this->fp,  'COMMIT;' .PHP_EOL );
 		}
 		fwrite ( $this->fp, '-- -------------------------------------------'.PHP_EOL );
+		
 		$this->writeComment('END BACKUP');
 		fclose($this->fp);
 		$this->fp = null;

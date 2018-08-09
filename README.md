@@ -13,5 +13,14 @@ MPM can be use to any manufactoring plant/units to mantain their stocks/data eve
 			'password' => \<db-password\>,<br>
 			</I>
 
+## Test the application
+* Browse the index.php and check accessibilty
+* If page is accesible, try to login into Application (Default Credentials). If login sucessfull, it means Database is configured correctly.
+
+## Nomenclature
+* Items - Raw Materials use at various level in processing to manufactor final product (Article)
+* Article - Final output product
+* Production Plan - It is the mechanishm to track output progress of articles. This progress is tracked in batches. Batches are created as per quatity of Articles.
+* Processes - Different level that are involved in manufactoring of one Article
 
 <br> To be continue...

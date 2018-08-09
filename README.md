@@ -18,9 +18,11 @@ MPM can be use to any manufactoring plant/units to mantain their stocks/data eve
 * If page is accesible, try to login into Application (Default Credentials). If login sucessfull, it means Database is configured correctly.
 
 ## Nomenclature
-* Items - Raw Materials use at various level in processing to manufactor final product (Article)
-* Article - Final output product
-* Production Plan - It is the mechanishm to track output progress of articles. This progress is tracked in batches. Batches are created as per quatity of Articles.
-* Processes - Different level that are involved in manufactoring of one Article
+* Items - Raw Materials use at various level in processing to manufactor final product (e.g. Cloth, leather)
+* Article - Final output product (e.g. Shoe)
+* Production Plan - It is the mechanishm to track output progress of articles. This progress is tracked in batches. Batches are created as per quatity of Articles (e.g. Plan to produce 100 pairs of Shoe)
+* Processes - Different level that are involved in manufactoring of one Article (e.g. cutting, molding)
+* Parties - Parties could be any entity from which items(raw) is being purchased, Godowen stock (Article) is being sold or involved in intermittent processing of Articles (e.g. party X- from which we purchase cloth; party Y- do cutting for making shoe; party Z - purchase shoes from us)
+* Issue Items - Transfer Items(raw products) to parties those are involved in intermittent processing of articles and these items are used in processing. (e.g. Give 10 m cloth to party X for cutting as per plan of 100 shoes)
 
 <br> To be continue...
